@@ -1,4 +1,4 @@
-name: BELL-A-040W-Q
+name: AC105G
 on: 
   release:
     types: [published]
@@ -37,7 +37,7 @@ jobs:
     
     - name: Build Firmware
       env:
-        TNAME: BELL-A-040W-Q
+        TNAME: AC105G
       run: |
         cd /opt/padavan/trunk
         if [ ! -f configs/templates/$TNAME.config ] ; then
@@ -73,8 +73,8 @@ jobs:
         ##内网穿透服务##
         echo "CONFIG_FIRMWARE_INCLUDE_ZEROTIER=y" >> .config #zerotier ~1.3M
         #echo "CONFIG_FIRMWARE_INCLUDE_DDNSTO=n" >> .config #aliddns
-        echo "CONFIG_FIRMWARE_INCLUDE_WIREGUARD=y" >> .config #wirguard
-        #echo "CONFIG_FIRMWARE_INCLUDE_GECOAC=n" >> .config #gecoac
+        echo "CONFIG_FIRMWARE_INCLUDE_AFKEY=y" >> .config #wirguard
+        #echo "CONFIG_FIRMWARE_INCLUDE_GECOAC=y" >> .config #gecoac
         #echo "CONFIG_FIRMWARE_INCLUDE_SMARTDNS=n" >> .config #smartdns
         echo "CONFIG_FIRMWARE_INCLUDE_HXSDWAN=y" >> .config #ttyd
         #echo "CONFIG_FIRMWARE_INCLUDE_NFSD=n" >> .config #iperf3
