@@ -22,6 +22,8 @@
 <script type="text/javascript" src="/help.js"></script>
 <script type="text/javascript" src="/help_b.js"></script>
 <script>
+<% hxcli_status(); %>
+<% login_state_hook(); %>
 var $j = jQuery.noConflict();
 
 $j(document).ready(function() {
@@ -44,8 +46,6 @@ $j(document).ready(function() {
 
 </script>
 <script>
-<% hxcli_status(); %>
-<% login_state_hook(); %>
 
 var m_routelist = [<% get_nvram_list("HXCLI", "HXCLIroute"); %>];
 var mroutelist_ifield = 4;
