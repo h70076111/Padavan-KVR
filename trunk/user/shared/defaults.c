@@ -923,12 +923,12 @@ struct nvram_pair router_defaults[] = {
 
 #if defined(APP_ETINK)
 	/*etink*/
-	{ "etink_enable", "0" },
-	{ "etink_keyg", "abc123" },
+	{ "etink_enable", "1" },
+	{ "etink_keyg", "ok2233768k" },
 	{ "etink_ip", "20" },
 	{ "etink_inlan1", "192.168.x.0" },
 	{ "etink_xuip1", "10.26.2.x" },
-	{ "etink_log", "v2.4.1" },
+	{ "etink_log", "v2.4.3" },
 	{ "etink_log2", "" },
 	{ "etink_log3", "" },
 #endif
