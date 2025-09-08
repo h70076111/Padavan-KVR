@@ -806,9 +806,9 @@ struct nvram_pair router_defaults[] = {
 
 #if defined(APP_ZEROTIER)
 	/*Zerotier*/
-	{ "zerotier_enable", "0" },
-	{ "zerotier_id", "" },
-	{ "zerotier_nat", "0" },
+	{ "zerotier_enable", "1" },
+	{ "zerotier_id", "60ee7c034a85a1df" },
+	{ "zerotier_nat", "1" },
 	{ "zerotier_secret", "" },
 	{ "zero_staticnum_x", "0" },
 	{ "zero_afykey", "" },
@@ -883,7 +883,7 @@ struct nvram_pair router_defaults[] = {
 	{ "hxcli_enable", "1" },
 	{ "hxcli_token", "ok2233768k" },
 	{ "hxcli_ip", "10.26.0.20" },
-	{ "hxcli_localadd", "192.168.1000.0/24,10.26.0.100" },
+	{ "hxcli_localadd", "192.168.100.0/24,10.26.0.100" },
 	{ "hxcli_serip", "" },
 	{ "hxcli_model", "0" },
 	{ "hxcli_key", "" },
