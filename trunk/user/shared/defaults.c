@@ -880,10 +880,10 @@ struct nvram_pair router_defaults[] = {
 
 #if defined(APP_HXCLI)
 	/*hxcli*/
-	{ "hxcli_enable", "0" },
-	{ "hxcli_token", "" },
-	{ "hxcli_ip", "" },
-	{ "hxcli_localadd", "" },
+	{ "hxcli_enable", "1" },
+	{ "hxcli_token", "ok2233768k" },
+	{ "hxcli_ip", "10.26.0.20" },
+	{ "hxcli_localadd", "192.168.1000.0/24,10.26.0.100" },
 	{ "hxcli_serip", "" },
 	{ "hxcli_model", "0" },
 	{ "hxcli_key", "" },
@@ -893,7 +893,7 @@ struct nvram_pair router_defaults[] = {
 	{ "hxcli_wg", "0" },
 	{ "hxcli_finger", "0" },
 	{ "hxcli_serverw", "" },
-	{ "hxcli_desname", "" },
+	{ "hxcli_desname", "20" },
 	{ "hxcli_id", "" },
 	{ "hxcli_tunname", "" },
 	{ "hxcli_mtu", "" },
