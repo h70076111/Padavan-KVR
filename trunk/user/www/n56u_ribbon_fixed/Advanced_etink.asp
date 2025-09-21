@@ -70,6 +70,23 @@ function fill_status(status_code){
 	$("etink_status").innerHTML = '<span class="label label-' + (status_code != 0 ? 'success' : 'warning') + '">' + stext + '</span>';
 }
 
+var arrHashes = ["cfg","web","sta","log"];
+function showTab(curHash) {
+	var obj = $('tab_etink_' + curHash.slice(1));
+	if (obj == null || obj.style.display == 'none')
+	curHash = '#cfg';
+	for (var i = 0; i < arrHashes.length; i++) {
+		if (curHash == ('#' + arrHashes[i])) {
+			$j('#tab_etink_' + arrHashes[i]).parents('li').addClass('active');
+			$j('#wnd_etink_' + arrHashes[i]).show();
+		} else {
+			$j('#wnd_etink_' + arrHashes[i]).hide();
+			$j('#tab_etink_' + arrHashes[i]).parents('li').removeClass('active');
+			}
+		}
+	window.location.hash = curHash;
+}
+
 function applyRule(){
 	showLoading();
 	
