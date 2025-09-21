@@ -30,7 +30,7 @@ $j(document).ready(function() {
 	
 	init_itoggle('etink_enable');
 
-	$j("#tab_et_cfg, #tab_et_web, #tab_et_sta, #tab_et_log").click(
+	$j("#tab_etink_cfg, #tab_etink_web, #tab_etink_sta, #tab_etink_log").click(
 	function () {
 		var newHash = $j(this).attr('href').toLowerCase();
 		showTab(newHash);
@@ -102,7 +102,7 @@ function clearLog(){
 	var $j = jQuery.noConflict();
 	$j.post('/apply.cgi', {
 		'action_mode': ' CleareasytierLog ',
-		'next_host': 'Advanced_easytier.asp#log'
+		'next_host': 'Advanced_etink.asp#log'
 	}).always(function() {
 		setTimeout(function() {
 			location.reload(); 
@@ -115,7 +115,7 @@ function button_et_peer(){
 	$j('#btn_peer').attr('disabled', 'disabled');
 	$j.post('/apply.cgi', {
 		'action_mode': ' CMDetpeer ',
-		'next_host': 'Advanced_easytier.asp#sta'
+		'next_host': 'Advanced_etink.asp#sta'
 	}).always(function() {
 		setTimeout(function() {
 			location.reload(); 
@@ -128,7 +128,7 @@ function button_et_connector(){
 	$j('#btn_connector').attr('disabled', 'disabled');
 	$j.post('/apply.cgi', {
 		'action_mode': ' CMDetconnector ',
-		'next_host': 'Advanced_easytier.asp#sta'
+		'next_host': 'Advanced_etink.asp#sta'
 	}).always(function() {
 		setTimeout(function() {
 			location.reload(); 
@@ -141,7 +141,7 @@ function button_et_stun(){
 	$j('#btn_stun').attr('disabled', 'disabled');
 	$j.post('/apply.cgi', {
 		'action_mode': ' CMDetstun ',
-		'next_host': 'Advanced_easytier.asp#sta'
+		'next_host': 'Advanced_etink.asp#sta'
 	}).always(function() {
 		setTimeout(function() {
 			location.reload(); 
@@ -154,7 +154,7 @@ function button_et_route(){
 	$j('#btn_route').attr('disabled', 'disabled');
 	$j.post('/apply.cgi', {
 		'action_mode': ' CMDetroute ',
-		'next_host': 'Advanced_easytier.asp#sta'
+		'next_host': 'Advanced_etink.asp#sta'
 	}).always(function() {
 		setTimeout(function() {
 			location.reload(); 
@@ -167,7 +167,7 @@ function button_et_peer_center(){
 	$j('#btn_peer_center').attr('disabled', 'disabled');
 	$j.post('/apply.cgi', {
 		'action_mode': ' CMDetpeer_center ',
-		'next_host': 'Advanced_easytier.asp#sta'
+		'next_host': 'Advanced_etink.asp#sta'
 	}).always(function() {
 		setTimeout(function() {
 			location.reload(); 
@@ -180,7 +180,7 @@ function button_et_vpn_portal(){
 	$j('#btn_vpn_portal').attr('disabled', 'disabled');
 	$j.post('/apply.cgi', {
 		'action_mode': ' CMDetvpn_portal ',
-		'next_host': 'Advanced_easytier.asp#sta'
+		'next_host': 'Advanced_etink.asp#sta'
 	}).always(function() {
 		setTimeout(function() {
 			location.reload(); 
@@ -193,7 +193,7 @@ function button_et_node(){
 	$j('#btn_node').attr('disabled', 'disabled');
 	$j.post('/apply.cgi', {
 		'action_mode': ' CMDetnode ',
-		'next_host': 'Advanced_easytier.asp#sta'
+		'next_host': 'Advanced_etink.asp#sta'
 	}).always(function() {
 		setTimeout(function() {
 			location.reload(); 
@@ -206,7 +206,7 @@ function button_et_proxy(){
 	$j('#btn_proxy').attr('disabled', 'disabled');
 	$j.post('/apply.cgi', {
 		'action_mode': ' CMDetproxy ',
-		'next_host': 'Advanced_easytier.asp#sta'
+		'next_host': 'Advanced_etink.asp#sta'
 	}).always(function() {
 		setTimeout(function() {
 			location.reload(); 
@@ -219,7 +219,7 @@ function button_et_status() {
 	$j('#btn_status').attr('disabled', 'disabled');
 	$j.post('/apply.cgi', {
 		'action_mode': ' CMDetstatus ',
-		'next_host': 'Advanced_easytier.asp#sta'
+		'next_host': 'Advanced_etink.asp#sta'
 	}).always(function() {
 		setTimeout(function() {
 			location.reload(); 
@@ -285,15 +285,16 @@ function button_etweb(){
 	<div class="row-fluid">
 	<div class="span12">
 	<div class="box well grad_colour_dark_blue">
-	<h2 class="box_head round_top">EasyTier</h2>
+	<h2 class="box_head round_top">ET组网</h2>
 	<div class="round_bottom">
 	<div>
 	<ul class="nav nav-tabs" style="margin-bottom: 10px;">
-	<li class="active"><a id="tab_et_cfg" href="#cfg">基本设置</a></li>
-	<li><a id="tab_et_web" href="#web">自建WEB</a></li>
-	<li><a id="tab_et_sta" href="#sta">运行状态</a></li>
-	<li><a id="tab_et_log" href="#log">运行日志</a></li>
-	</ul>
+	<li class="active"><a id="tab_etink_cfg" href="#cfg">基本设置</a></li>
+	<li><a id="tab_etink_sta" href="#sta">运行状态</a></li>
+	<li><a id="tab_etink_log" href="#log">运行日志</a></li>
+	</th>
+	</tr>
+	<tr>
 	</div>
 	<div class="row-fluid">
 									<div id="tabMenu" class="submenuBlock"></div>
@@ -357,14 +358,16 @@ function button_etweb(){
 										<td colspan="4" style="border-top: 0 none;">
 												<br />
 												<center><input class="btn btn-primary" style="width: 219px" type="button" value="<#CTL_apply#>" onclick="applyRule()" /></center>
-	</div>
+												</td>
+										</tr>	
+    </div>
 	</td>
 	</tr>
 	</table>
 	</table>
 	</div>
 	<!-- 状态 -->
-	<div id="wnd_et_sta" style="display:none">
+	<div id="wnd_etink_sta" style="display:none">
 	<table width="100%" cellpadding="4" cellspacing="0" class="table">
 	<tr>
 		<td colspan="3" style="border-top: 0 none; padding-bottom: 0px;">
@@ -394,7 +397,7 @@ function button_etweb(){
 	</div>
 
 	<!-- 日志 -->
-	<div id="wnd_et_log" style="display:none">
+	<div id="wnd_etink_log" style="display:none">
 	<table width="100%" cellpadding="4" cellspacing="0" class="table">
 	<tr>
 	<td colspan="3" style="border-top: 0 none; padding-bottom: 0px;">
