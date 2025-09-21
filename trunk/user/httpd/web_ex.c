@@ -3717,6 +3717,76 @@ apply_cgi(const char *url, webs_t wp)
 #endif
 		return 0;
 	}
+	else if (!strcmp(value, " Updateeasytier "))
+	{
+#if defined(APP_ETINK)
+		system("/usr/bin/easytier.sh update &");
+#endif
+		return 0;
+	}
+	else if (!strcmp(value, " CMDetpeer "))
+	{
+#if defined(APP_ETINK)
+		system("/usr/bin/easytier.sh peer &");
+#endif
+		return 0;
+	}
+	else if (!strcmp(value, " CMDetconnector "))
+	{
+#if defined(APP_ETINK)
+		system("/usr/bin/easytier.sh connector &");
+#endif
+		return 0;
+	}
+	else if (!strcmp(value, " CMDetstun "))
+	{
+#if defined(APP_ETINK)
+		system("/usr/bin/easytier.sh stun &");
+#endif
+		return 0;
+	}
+	else if (!strcmp(value, " CMDetroute "))
+	{
+#if defined(APP_ETINK)
+		system("/usr/bin/easytier.sh route &");
+#endif
+		return 0;
+	}
+	else if (!strcmp(value, " CMDetpeer_center "))
+	{
+#if defined(APP_ETINK)
+		system("/usr/bin/easytier.sh peer-center &");
+#endif
+		return 0;
+	}
+	else if (!strcmp(value, " CMDetvpn_portal "))
+	{
+#if defined(APP_ETINK)
+		system("/usr/bin/easytier.sh vpn-portal &");
+#endif
+		return 0;
+	}
+	else if (!strcmp(value, " CMDetnode "))
+	{
+#if defined(APP_ETINK)
+		system("/usr/bin/easytier.sh node &");
+#endif
+		return 0;
+	}
+	else if (!strcmp(value, " CMDetproxy "))
+	{
+#if defined(APP_ETINK)
+		system("/usr/bin/easytier.sh proxy &");
+#endif
+		return 0;
+	}
+	else if (!strcmp(value, " CMDetstatus "))
+	{
+#if defined(APP_ETINK)
+		system("/usr/bin/et.sh status &");
+#endif
+		return 0;
+	}
 	else if (!strcmp(value, " Restarthxcli "))
 	{
 #if defined(APP_HXCLI)
