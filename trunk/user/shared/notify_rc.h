@@ -88,6 +88,7 @@
 #define RCN_RESTART_DDNSTO      "restart_ddnsto"
 #define RCN_RESTART_ALDRIVER	"restart_aldriver"
 #define RCN_RESTART_WIREGUARD	"restart_wireguard"
+#define RCN_RESTART_BAFA	"restart_bafa"
 #define RCN_RESTART_HXCLI	"restart_hxcli"
 #define RCN_RESTART_NELINK	"restart_nelink"
 #define RCN_RESTART_ETINK	"restart_etink"
