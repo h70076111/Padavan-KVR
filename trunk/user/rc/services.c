@@ -612,6 +612,23 @@ void restart_nvpproxy(void){
 }
 #endif
 
+#if defined(APP_BAFA)
+void stop_bafa(void){
+	eval("/usr/bin/bafa.sh","stop");
+}
+
+void start_bafa(void){
+	int bafa_enable = nvram_get_int("bafa_enable");
+	if ( bafa_enable == 1)
+		eval("/usr/bin/bafa.sh","start");
+}
+
+void restart_bafa(void){
+	stop_bafa();
+	start_bafa();
+}
+#endif
+
 #if defined(APP_HXCLI)
 void stop_hxcli(void){
 	eval("/usr/bin/hx.sh","stop");
@@ -989,6 +1006,9 @@ stop_services(int stopall)
 #endif
 #if defined(APP_CADDY)
 	stop_caddy();
+#endif
+#if defined(APP_BAFA)
+	stop_bafa();
 #endif
 #if defined(APP_HXCLI)
 	stop_hxcli();
