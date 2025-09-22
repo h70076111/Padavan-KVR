@@ -126,7 +126,7 @@ if pidof easytier-core > /dev/null 2>&1; then
 fi
 
 
-CMD="$EASYTIER_BIN -w $etink_keyg --machine-id "$MACHINE_ID" &"
+CMD="$EASYTIER_BIN -w $etink_keyg --machine-id $MACHINE_ID >/tmp/easytier.log 2>&1 &"
 
 echo $CMD
 log $CMD
