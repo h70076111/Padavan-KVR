@@ -730,9 +730,9 @@ if (found_app_wyy()) {
 	menuL2.push(mx);
 	tabMenuHash.put('20', mx2);
 }
-if (found_app_aldriver()) {
-	var mx = { "title": "<#menu5_36#>", "link": "Advanced_aliyundrive.asp", index: "22" };
-	var mx2 = [{ "title": "<#menu5_36_1#>", "link": "Advanced_aliyundrive.asp" }];
+if (found_app_bafa()) {
+	var mx = { "title": "<#menu5_40#>", "link": "Advanced_bafa.asp", index: "22" };
+	var mx2 = [{ "title": "<#Web_Title#_1#>", "link": "Advanced_bafa.asp" }];
 	menuL2.push(mx);
 	tabMenuHash.put('22', mx2);
 }
