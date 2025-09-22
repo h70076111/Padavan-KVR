@@ -39,9 +39,9 @@ logger -t "自动启动" "正在启动集客AC管理"
 /usr/bin/gecoac.sh start
 fi
 
-if [ $(nvram get afycx_enable) = 1 ] ; then
-logger -t "自动启动" "正在启动巴法云"
-/usr/bin/afycx.sh start
+if [ $(nvram get bafa_enable) = 1 ] ; then
+logger -t "自动启动" "正在启动八法云物联网"
+/usr/bin/bafa.sh start &
 fi
 
 if [ $(nvram get adbyby_enable) = 1 ] ; then
