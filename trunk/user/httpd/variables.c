@@ -1551,6 +1551,9 @@
 #if defined(APP_WIREGUARD)
 		{"WIREGUARD",		variables_WIREGUARD},
 #endif
+#if defined(APP_BAFA)
+		{"BAFA",		variables_BAFA},
+#endif
 #if defined(APP_HXCLI)
 		{"HXCLI",		variables_HXCLI},
 #endif
@@ -1688,6 +1691,9 @@
 #endif
 #if defined(APP_WIREGUARD)
 		{EVM_RESTART_WIREGUARD,		EVT_RESTART_WIREGUARD,		RCN_RESTART_WIREGUARD,	0},
+#endif
+#if defined(APP_BAFA)
+		{EVM_RESTART_BAFA,		EVT_RESTART_BAFA,		RCN_RESTART_BAFA,	0},
 #endif
 #if defined(APP_HXCLI)
 		{EVM_RESTART_HXCLI,		EVT_RESTART_HXCLI,		RCN_RESTART_HXCLI,	0},
