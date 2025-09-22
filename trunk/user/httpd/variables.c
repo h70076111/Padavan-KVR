@@ -1269,6 +1269,21 @@
 	};
 #endif
 
+#if defined(APP_BAFA)
+	struct variable variables_BAFA[] = {
+			{"bafa_enable", "", NULL, EVM_RESTART_BAFA},
+			{"bafa_topics", "", NULL, EVM_RESTART_BAFA},
+			{"bafa_token", "", NULL, EVM_RESTART_BAFA},
+			{"bafa_qos", "", NULL, EVM_RESTART_BAFA},
+			{"bafa_host", "", NULL, EVM_RESTART_BAFA},
+			{"bafa_port", "", NULL, EVM_RESTART_BAFA},
+			{"bafa_show", "", NULL, EVM_RESTART_BAFA},
+			{"bafa_bin", "", NULL, EVM_RESTART_BAFA},
+			{"scripts.bafa_script.sh", "File", NULL, EVM_RESTART_BAFA},
+			{0,0,0,0}
+	};
+#endif
+
 #if defined(APP_HXCLI)
 	struct variable variables_HXCLI[] = {
 			{"hxcli_enable", "", NULL, EVM_RESTART_HXCLI},
