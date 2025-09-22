@@ -243,6 +243,9 @@ endif
 ifneq ($(CONFIG_FIRMWARE_INCLUDE_DDNSTO),y)
 	rm -f $(INSTALLDIR)/www/Advanced_ddnsto.asp
 endif
+ifneq ($(CONFIG_FIRMWARE_INCLUDE_BAFA),y)
+	rm -f $(INSTALLDIR)/www/Advanced_bafa.asp
+endif
 ifneq ($(CONFIG_FIRMWARE_INCLUDE_HXCLI),y)
 	rm -f $(INSTALLDIR)/www/Advanced_hxzn.asp
 endif
