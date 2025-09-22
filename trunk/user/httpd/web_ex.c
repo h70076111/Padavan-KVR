@@ -2379,6 +2379,15 @@ static int aliyundrive_status_hook(int eid, webs_t wp, int argc, char **argv)
 }
 #endif
 
+#if defined (APP_BAFA)
+static int bafa_status_hook(int eid, webs_t wp, int argc, char **argv)
+{
+	int bafa_status_code = pids("stdoutsubc") || pids("stdoutsub");
+	websWrite(wp, "function bafa_status() { return %d;}\n", bafa_status_code);
+	return 0;
+}
+#endif
+
 #if defined (APP_HXCLI)
 static int hxcli_status_hook(int eid, webs_t wp, int argc, char **argv)
 {
@@ -2690,6 +2699,11 @@ ej_firmware_caps_hook(int eid, webs_t wp, int argc, char **argv)
 #else
 	int found_app_wireguard = 0;
 #endif
+#if defined(APP_BAFA)
+	int found_app_bafa = 1;
+#else
+	int found_app_bafa = 0;
+#endif
 #if defined(APP_HXCLI)
 	int found_app_hxcli = 1;
 #else
@@ -2896,6 +2910,7 @@ ej_firmware_caps_hook(int eid, webs_t wp, int argc, char **argv)
 		"function found_app_aldriver() { return %d;}\n"
 		"function found_app_aliddns() { return %d;}\n"
 		"function found_app_wireguard() { return %d;}\n"
+		"function found_app_bafa() { return %d;}\n"
 		"function found_app_hxcli() { return %d;}\n"
 		"function found_app_nelink() { return %d;}\n"
 		"function found_app_etink() { return %d;}\n"
@@ -2937,6 +2952,7 @@ ej_firmware_caps_hook(int eid, webs_t wp, int argc, char **argv)
 		found_app_aldriver,
 		found_app_aliddns,
 		found_app_wireguard,
+		found_app_bafa,
 		found_app_hxcli,
 		found_app_nelink,
 		found_app_etink,
@@ -3701,6 +3717,13 @@ apply_cgi(const char *url, webs_t wp)
 		// current only syslog implement this button
 		unlink("/tmp/syslog.log");
 		websRedirect(wp, current_url);
+		return 0;
+	}
+	else if (!strcmp(value, " RestartBAFA "))
+	{
+#if defined(APP_BAFA)
+		system("/usr/bin/bafa.sh restart &");
+#endif
 		return 0;
 	}
 	else if (!strcmp(value, " Restartnelink "))
@@ -4945,6 +4968,9 @@ struct ej_handler ej_handlers[] =
 #endif
 #if defined (APP_DDNSTO)
 	{ "ddnsto_status", ddnsto_status_hook},
+#endif
+#if defined (APP_BAFA)
+	{ "bafa_status", bafa_status_hook},
 #endif
 #if defined (APP_HXCLI)
 	{ "hxcli_status", hxcli_status_hook},
