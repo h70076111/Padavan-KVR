@@ -617,6 +617,11 @@ void stop_wireguard(void);
 void start_wireguard(void);
 void restart_wireguard(void);
 #endif
+#if defined(APP_EBAFA)
+void stop_bafa(void);
+void start_bafa(void);
+void restart_bafa(void);
+#endif
 #if defined(APP_HXCLI)
 void stop_hxcli(void);
 void start_hxcli(void);
