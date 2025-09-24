@@ -43,22 +43,14 @@ $j(document).ready(function() {
 </script>
 <script>
 
-<% login_state_hook(); %>
-
-
 function initial(){
 	show_banner(2);
-	show_menu(5,17,0);
-	showmenu();
+	show_menu(5,33,0);
+	fill_status(nelink_status());
 	show_footer();
-	fill_status(etink_status());
-	change_etink_enable(1);
 	if (!login_safe())
         		textarea_scripts_enabled(0);
-}
 
-function textarea_scripts_enabled(v){
-	inputCtrl(document.form['scripts.wg0.conf'], v);
 }
 
 function fill_status(status_code){
@@ -67,7 +59,7 @@ function fill_status(status_code){
 		stext = "<#Stopped#>";
 	else if (status_code == 1)
 		stext = "<#Running#>";
-	$("etink_status").innerHTML = '<span class="label label-' + (status_code != 0 ? 'success' : 'warning') + '">' + stext + '</span>';
+	$("nelink_status").innerHTML = '<span class="label label-' + (status_code != 0 ? 'success' : 'warning') + '">' + stext + '</span>';
 }
 
 var arrHashes = ["cfg","web","sta","log"];
