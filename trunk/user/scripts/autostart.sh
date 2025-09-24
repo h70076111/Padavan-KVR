@@ -40,7 +40,7 @@ logger -t "自动启动" "正在启动集客AC管理"
 fi
 
 if [ $(nvram get bafa_enable) = 1 ] ; then
-logger -t "自动启动" "正在启动八法云物联网"
+logger -t "自动启动" "正在启动巴法云物联网"
 /usr/bin/bafa.sh start &
 fi
 
