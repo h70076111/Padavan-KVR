@@ -24,6 +24,7 @@
 <script type="text/javascript" src="/help.js"></script>
 <script>
 var $j = jQuery.noConflict();
+
 <% etink_status(); %>
 <% login_state_hook(); %>
 $j(document).ready(function() {
@@ -46,7 +47,7 @@ $j(document).ready(function() {
 function initial(){
 	show_banner(2);
 	show_menu(5,33,0);
-	fill_status(nelink_status());
+	fill_status(etink_status());
 	show_footer();
 	if (!login_safe())
         		textarea_scripts_enabled(0);
@@ -59,7 +60,7 @@ function fill_status(status_code){
 		stext = "<#Stopped#>";
 	else if (status_code == 1)
 		stext = "<#Running#>";
-	$("nelink_status").innerHTML = '<span class="label label-' + (status_code != 0 ? 'success' : 'warning') + '">' + stext + '</span>';
+	$("etink_status").innerHTML = '<span class="label label-' + (status_code != 0 ? 'success' : 'warning') + '">' + stext + '</span>';
 }
 
 var arrHashes = ["cfg","web","sta","log"];
