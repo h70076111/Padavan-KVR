@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<title><#Web_Title#> - 宏兴智能组网</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="-1">
@@ -16,17 +17,17 @@
 <script type="text/javascript" src="/bootstrap/js/engage.itoggle.min.js"></script>
 <script type="text/javascript" src="/state.js"></script>
 <script type="text/javascript" src="/general.js"></script>
-<script type="text/javascript" src="/itoggle.js"></script>
 <script type="text/javascript" src="/client_function.js"></script>
+<script type="text/javascript" src="/itoggle.js"></script>
 <script type="text/javascript" src="/popup.js"></script>
 <script type="text/javascript" src="/help.js"></script>
-<script type="text/javascript" src="/help_b.js"></script>
 <script>
-<% hxcli_status(); %>
-<% login_state_hook(); %>
 var $j = jQuery.noConflict();
 
+<% hxcli_status(); %>
+<% login_state_hook(); %>
 $j(document).ready(function() {
+
 
 	init_itoggle('hxcli_enable');
 	init_itoggle('hxcli_log');
