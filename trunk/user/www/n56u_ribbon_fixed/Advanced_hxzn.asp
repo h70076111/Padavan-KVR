@@ -52,7 +52,8 @@ function initial(){
 	show_banner(2);
 	show_menu(5,33,0);
 	fill_status(hxcli_status());
-	show_footer();
+	change_hxcli_enable(1);
+	change_hxcli_model(1);
 	if (!login_safe())
         		textarea_scripts_enabled(0);
 
@@ -114,19 +115,6 @@ function applyRule(){
 
 function done_validating(action){
 	refreshpage();
-}
-
-function fill_status(status_code){
-	var stext = "Unknown";
-	if (status_code == 0)
-		stext = "<#Stopped#>";
-	else if (status_code == 1)
-		stext = "<#Running#>";
-	$("hxcli_status").innerHTML = '<span class="label label-' + (status_code != 0 ? 'success' : 'warning') + '">' + stext + '</span>';
-}
-
-function textarea_scripts_enabled(v){
-    	inputCtrl(document.form['scripts.hx.conf'], v);
 }
 
 function change_hxcli_model(mflag){
