@@ -125,7 +125,7 @@ fi
 EEE
 	chmod 755 "$bafa_script"
 fi
-	bafacmd="${bafa_bin} ${CMD} --script /etc/storage/bafa_script.sh >/tmp/bafayun.log 2>&1"
+	bafacmd="/usr/bin/stdoutsubc $bafa_topics --clientid $bafa_token --qos 1 --script /etc/storage/bafa_script.sh >/tmp/bafayun.log 2>&1"
 	logg "运行${bafacmd}"
 	eval "$bafacmd" &
 	sleep 4
