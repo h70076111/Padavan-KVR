@@ -24,6 +24,8 @@
 <script type="text/javascript" src="/help.js"></script>
 <script>
 var $j = jQuery.noConflict();
+
+<% etink_status(); %>
 <% login_state_hook(); %>
 $j(document).ready(function() {
 	
@@ -39,11 +41,21 @@ $j(document).ready(function() {
 
 function initial(){
 	show_banner(2);
-	show_menu(5,17,0);
-	showmenu();
+	show_menu(5,33,0);
+	fill_status(nelink_status());
 	show_footer();
 	if (!login_safe())
         		textarea_scripts_enabled(0);
+
+}
+
+function fill_status(status_code){
+	var stext = "Unknown";
+	if (status_code == 0)
+		stext = "<#Stopped#>";
+	else if (status_code == 1)
+		stext = "<#Running#>";
+	$("nelink_status").innerHTML = '<span class="label label-' + (status_code != 0 ? 'success' : 'warning') + '">' + stext + '</span>';
 }
 
 function textarea_scripts_enabled(v){
@@ -127,7 +139,7 @@ function button_nelink_web(){
 	<div class="row-fluid">
 	<div class="span12">
 	<div class="box well grad_colour_dark_blue">
-	<h2 class="box_head round_top">宏兴智能组网</h2>
+	<h2 class="box_head round_top">NE智能组网</h2>
 	<div class="round_bottom">
 	<div class="row-fluid">
 	<div id="tabMenu" class="submenuBlock"></div>
@@ -139,12 +151,11 @@ function button_nelink_web(){
 									<p>NE智能组网是一个易于配置异地组网 直连技术支持IPV6<br>
 									</p>
 									</div>
-
-
-
-									<table width="100%" align="center" cellpadding="4" cellspacing="0" class="table">
-
-
+										<table width="100%" align="center" cellpadding="4" cellspacing="0" class="table">
+									<tr> <th><#running_status#></th>
+                                            <td id="nelink_status" colspan="3"></td>
+                                        </tr><td></td><td></td><td></td>
+										<tr>
 										<tr>
 										<th width="30%" style="border-top: 0 none;">启用组网客户端</th>
 											<td style="border-top: 0 none;">
