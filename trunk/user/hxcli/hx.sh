@@ -112,7 +112,7 @@ stop_hx() {
 	logger -t "【HX客户端】" "正在关闭hx-cli..."
 	sed -Ei '/【HX客户端】|^$/d' /tmp/script/_opt_script_check
 	scriptname=$(basename $0)
-	$HXCLI --stop >>/tmp/hx-cli.log
+	/usr/bin/hx-cli --stop >>/tmp/hx-cli.log
 	if [ -z "$hxcli_tunname" ] ; then
 		tunname="hxsdwan"
 	else
