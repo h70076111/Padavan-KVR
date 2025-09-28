@@ -29,6 +29,20 @@ start_ne() {
 	logg "运行${necmd}"
 	eval "$necmd" &
 	sleep 4
+
+route add -net $nelink_inlan1/24 gw $nelink_xuip1
+$nelink_log
+$nelink_log2
+$nelink_log3
+
+if [ ! -z "`pidof netlink`" ] ; then
+logger -t "netlink" "启动成功"
+#放行netlink防火墙
+iptables -I INPUT -i nehxkj -j ACCEPT
+iptables -I FORWARD -i nehxkj -o nehxkj -j ACCEPT
+iptables -I FORWARD -i nehxkj -j ACCEPT
+iptables -t nat -I POSTROUTING -o nehxkj -j MASQUERADE
+
 	if [ ! -z "`pidof netlink`" ] ; then
  		mem=$(cat /proc/$(pidof netlink)/status | grep -w VmRSS | awk '{printf "%.1f MB", $2/1024}')
    		necpu="$(top -b -n1 | grep -E "$(pidof netlink)" 2>/dev/null| grep -v grep | awk '{for (i=1;i<=NF;i++) {if ($i ~ /netlink/) break; else cpu=i}} END {print $cpu}')"
@@ -44,24 +58,6 @@ start_ne() {
 	fi
 	return 0
 
-route add -net $nelink_inlan1/24 gw $nelink_xuip1
-$nelink_log
-$nelink_log2
-$nelink_log3
-
-if [ ! -z "`pidof netlink`" ] ; then
-logger -t "netlink" "启动成功"
-#放行netlink防火墙
-iptables -I INPUT -i nehxkj -j ACCEPT
-iptables -I FORWARD -i nehxkj -o nehxkj -j ACCEPT
-iptables -I FORWARD -i nehxkj -j ACCEPT
-iptables -t nat -I POSTROUTING -o nehxkj -j MASQUERADE
-
-#开启arp
-ifconfig nehxkj arp
-else
-logger -t "netlink" "启动失败"
-fi
 }
 
 stop_ne() {
