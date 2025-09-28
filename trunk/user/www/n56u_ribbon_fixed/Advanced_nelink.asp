@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<!--Copyright by hiboy-->
 <html>
 <head>
-<title><#Web_Title#> - NE异地组网</title>
+<title><#Web_Title#> - NE智能组网</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="-1">
@@ -28,21 +27,19 @@ var $j = jQuery.noConflict();
 <% nelink_status(); %>
 <% login_state_hook(); %>
 $j(document).ready(function() {
-	
-	init_itoggle('nelink_enable');
 
-	$j("#tab_nelink_cfg, #tab_nelink_web, #tab_nelink_sta, #tab_nelink_log").click(
+	init_itoggle('nelink_enable');
+	$j("#tab_nelink_cfg, #tab_nelink_log").click(
 	function () {
 		var newHash = $j(this).attr('href').toLowerCase();
 		showTab(newHash);
 		return false;
 	});
 
+});
+
 </script>
 <script>
-
-<% login_state_hook(); %>
-
 
 function initial(){
 	show_banner(2);
@@ -63,18 +60,18 @@ function fill_status(status_code){
 	$("nelink_status").innerHTML = '<span class="label label-' + (status_code != 0 ? 'success' : 'warning') + '">' + stext + '</span>';
 }
 
-var arrHashes = ["cfg","web","sta","log"];
+var arrHashes = ["cfg","log"];
 function showTab(curHash) {
 	var obj = $('tab_nelink_' + curHash.slice(1));
 	if (obj == null || obj.style.display == 'none')
 	curHash = '#cfg';
 	for (var i = 0; i < arrHashes.length; i++) {
 		if (curHash == ('#' + arrHashes[i])) {
-			$j('#tab_etink_' + arrHashes[i]).parents('li').addClass('active');
-			$j('#wnd_etink_' + arrHashes[i]).show();
+			$j('#tab_nelink_' + arrHashes[i]).parents('li').addClass('active');
+			$j('#wnd_nelink_' + arrHashes[i]).show();
 		} else {
-			$j('#wnd_etink_' + arrHashes[i]).hide();
-			$j('#tab_etink_' + arrHashes[i]).parents('li').removeClass('active');
+			$j('#wnd_nelink_' + arrHashes[i]).hide();
+			$j('#tab_nelink_' + arrHashes[i]).parents('li').removeClass('active');
 			}
 		}
 	window.location.hash = curHash;
@@ -87,11 +84,11 @@ function showTab(curHash) {
 	document.form.submit();
 }
 
-function  button_restartwg(){
+function  button_restarnelink(){
     	var $j = jQuery.noConflict();
     	$j.post('/apply.cgi',
     	{
-        		'action_mode': ' Restartwg ',
+        		'action_mode': ' Restarnelink ',
     	});
 }
 
@@ -99,8 +96,12 @@ function done_validating(action){
 	refreshpage();
 }
 
+function textarea_scripts_enabled(v){
+    	inputCtrl(document.form['scripts.nelink_script.sh'], v);
+}
+
 function button_nelink_web(){
-	var port = '6688';
+	var port = '23336';
 	var url = window.location.protocol + "//" + window.location.hostname + ":" + port;
 	window.open(url);
 }
@@ -129,7 +130,7 @@ function button_nelink_web(){
 	<input type="hidden" name="current_page" value="Advanced_nelink.asp">
 	<input type="hidden" name="next_page" value="">
 	<input type="hidden" name="next_host" value="">
-	<input type="hidden" name="sid_list" value="NELINK;">
+	<input type="hidden" name="sid_list" value="NELINK;LANHostConfig;General;">
 	<input type="hidden" name="group_id" value="">
 	<input type="hidden" name="action_mode" value="">
 	<input type="hidden" name="action_script" value="">
@@ -159,7 +160,6 @@ function button_nelink_web(){
 	<div>
 	<ul class="nav nav-tabs" style="margin-bottom: 10px;">
 	<li class="active"><a id="tab_nelink_cfg" href="#cfg">基本设置</a></li>
-	<li><a id="tab_nelink_sta" href="#sta">运行状态</a></li>
 	<li><a id="tab_nelink_log" href="#log">运行日志</a></li>
 	</th>
 	</tr>
