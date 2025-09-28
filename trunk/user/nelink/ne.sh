@@ -64,7 +64,7 @@ stop_ne() {
 	logg  "正在关闭..."
 	sed -Ei '/【nelink】|^$/d' /tmp/script/_opt_script_check
 	scriptname=$(basename $0)
-	if [ -z "$et_tunname" ] ; then
+	if [ -z "$ne_tunname" ] ; then
 		tunname="nehxkj"
 	else
 		tunname="${ne_tunname}"
