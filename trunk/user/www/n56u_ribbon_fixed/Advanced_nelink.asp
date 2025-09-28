@@ -25,13 +25,18 @@
 <script>
 var $j = jQuery.noConflict();
 
-<% etink_status(); %>
+<% nelink_status(); %>
 <% login_state_hook(); %>
 $j(document).ready(function() {
 	
 	init_itoggle('nelink_enable');
 
-});
+	$j("#tab_nelink_cfg, #tab_nelink_web, #tab_nelink_sta, #tab_nelink_log").click(
+	function () {
+		var newHash = $j(this).attr('href').toLowerCase();
+		showTab(newHash);
+		return false;
+	});
 
 </script>
 <script>
@@ -58,12 +63,22 @@ function fill_status(status_code){
 	$("nelink_status").innerHTML = '<span class="label label-' + (status_code != 0 ? 'success' : 'warning') + '">' + stext + '</span>';
 }
 
-function textarea_scripts_enabled(v){
-	inputCtrl(document.form['scripts.wg0.conf'], v);
+var arrHashes = ["cfg","web","sta","log"];
+function showTab(curHash) {
+	var obj = $('tab_nelink_' + curHash.slice(1));
+	if (obj == null || obj.style.display == 'none')
+	curHash = '#cfg';
+	for (var i = 0; i < arrHashes.length; i++) {
+		if (curHash == ('#' + arrHashes[i])) {
+			$j('#tab_etink_' + arrHashes[i]).parents('li').addClass('active');
+			$j('#wnd_etink_' + arrHashes[i]).show();
+		} else {
+			$j('#wnd_etink_' + arrHashes[i]).hide();
+			$j('#tab_etink_' + arrHashes[i]).parents('li').removeClass('active');
+			}
+		}
+	window.location.hash = curHash;
 }
-
-function applyRule(){
-	showLoading();
 	
 	document.form.action_mode.value = " Apply ";
 	document.form.current_page.value = "/Advanced_nelink.asp";
@@ -141,9 +156,14 @@ function button_nelink_web(){
 	<div class="box well grad_colour_dark_blue">
 	<h2 class="box_head round_top">NE智能组网</h2>
 	<div class="round_bottom">
-	<div class="row-fluid">
-	<div id="tabMenu" class="submenuBlock"></div>
-	</ul>
+	<div>
+	<ul class="nav nav-tabs" style="margin-bottom: 10px;">
+	<li class="active"><a id="tab_nelink_cfg" href="#cfg">基本设置</a></li>
+	<li><a id="tab_nelink_sta" href="#sta">运行状态</a></li>
+	<li><a id="tab_nelink_log" href="#log">运行日志</a></li>
+	</th>
+	</tr>
+	<tr>
 	</div>
 	<div class="row-fluid">
 									<div id="tabMenu" class="submenuBlock"></div>
