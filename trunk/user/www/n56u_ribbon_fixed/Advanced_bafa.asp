@@ -165,7 +165,7 @@ function button_restartBAFA(){
 	<div id="tabMenu" class="submenuBlock"></div>
 	<div id="wnd_bafa_cfg">
 	<div class="alert alert-info" style="margin: 10px;">
-	通过MQTT协议连接巴法云，可接入米家等智能家居控制系统，实现远程控制语言控制设备。<br>
+	通过MQTT协议连接巴法云，可接入米家等智能家居控制系统，实现远程控重起设备。<br>
 	<div>【官网】：<a href="https://cloud.bemfa.com/" target="blank">cloud.bemfa.com</a>&nbsp;&nbsp;【控制台】：<a href="https://cloud.bemfa.com/tcp/devicemqtt.html" target="blank">cloud.bemfa.com/tcp/devicemqtt.html</a></div>
 	
 	</div>
