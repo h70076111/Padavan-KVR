@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!--Copyright by hiboy-->
 <html>
 <head>
 <title><#Web_Title#> - NE智能组网</title>
@@ -130,7 +131,7 @@ function button_nelink_web(){
 	<input type="hidden" name="current_page" value="Advanced_nelink.asp">
 	<input type="hidden" name="next_page" value="">
 	<input type="hidden" name="next_host" value="">
-	<input type="hidden" name="sid_list" value="NELINK;LANHostConfig;General;">
+	<input type="hidden" name="sid_list" value="NELINK;">
 	<input type="hidden" name="group_id" value="">
 	<input type="hidden" name="action_mode" value="">
 	<input type="hidden" name="action_script" value="">
@@ -258,19 +259,42 @@ function button_nelink_web(){
 													
 	</table>
 
-										
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+	<!-- 日志 -->
+	<div id="wnd_nelink_log" style="display:none">
+	<table width="100%" cellpadding="4" cellspacing="0" class="table">
+	<tr>
+	<td colspan="3" style="border-top: 0 none; padding-bottom: 0px;">
+	<textarea rows="21" class="span12" style="height:377px; font-family:'Courier New', Courier, mono; font-size:13px;" readonly="readonly" wrap="off" id="textarea"><% nvram_dump("nelink.log",""); %></textarea>
+	</td>
+	</tr>
+	<tr>
+	<td width="15%" style="text-align: left; padding-bottom: 0px;">
+	<input type="button" onClick="location.reload()" value="刷新日志" class="btn btn-primary" style="width: 200px">
+	</td>
+	<td width="15%" style="text-align: left; padding-bottom: 0px;">
+	<input type="button" onClick="location.href='easytier.log'" value="<#CTL_onlysave#>" class="btn btn-success" style="width: 200px">
+	</td>
+	<td width="75%" style="text-align: right; padding-bottom: 0px;">
+	<input type="button" onClick="clearLog();" value="清除日志" class="btn btn-info" style="width: 200px">
+	</td>
+	</tr>
+	<br><td colspan="5" style="border-top: 0 none; text-align: center; padding-top: 4px;">
+	<span style="color:#888;">🚫注意：日志可能包含一些隐私信息，切勿随意分享！</span>
+	</td>
+	</table>
 	</div>
 
+	</table>
+	</div>
+	
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
 	</form>
-
 	<div id="footer"></div>
-</div>
+	</div>
 </body>
+
 </html>
