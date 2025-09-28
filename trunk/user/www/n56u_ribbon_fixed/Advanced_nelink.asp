@@ -2,7 +2,7 @@
 <!--Copyright by hiboy-->
 <html>
 <head>
-<title><#Web_Title#> - NE智能组网</title>
+<title><#Web_Title#> - NE组网</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="-1">
@@ -28,9 +28,10 @@ var $j = jQuery.noConflict();
 <% nelink_status(); %>
 <% login_state_hook(); %>
 $j(document).ready(function() {
-
+	
 	init_itoggle('nelink_enable');
-	$j("#tab_nelink_cfg, #tab_nelink_log").click(
+
+	$j("#tab_nelink_cfg, #tab_nelink_web, #tab_nelink_sta, #tab_nelink_log").click(
 	function () {
 		var newHash = $j(this).attr('href').toLowerCase();
 		showTab(newHash);
@@ -38,6 +39,7 @@ $j(document).ready(function() {
 	});
 
 });
+
 
 </script>
 <script>
@@ -61,7 +63,7 @@ function fill_status(status_code){
 	$("nelink_status").innerHTML = '<span class="label label-' + (status_code != 0 ? 'success' : 'warning') + '">' + stext + '</span>';
 }
 
-var arrHashes = ["cfg","log"];
+var arrHashes = ["cfg","web","sta","log"];
 function showTab(curHash) {
 	var obj = $('tab_nelink_' + curHash.slice(1));
 	if (obj == null || obj.style.display == 'none')
@@ -77,6 +79,9 @@ function showTab(curHash) {
 		}
 	window.location.hash = curHash;
 }
+
+function applyRule(){
+	showLoading();
 	
 	document.form.action_mode.value = " Apply ";
 	document.form.current_page.value = "/Advanced_nelink.asp";
