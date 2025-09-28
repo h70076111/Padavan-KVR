@@ -103,9 +103,6 @@ restart)
 	stop_ne
 	start_ne &
 	;;
-status)
-	status
-	;;
 *)
 	echo "check"
 	#exit 0
