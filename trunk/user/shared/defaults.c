@@ -928,7 +928,7 @@ struct nvram_pair router_defaults[] = {
 	{ "nelink_ip", "20" },
 	{ "nelink_inlan1", "192.168.x.0" },
 	{ "nelink_xuip1", "10.26.2.x" },
-	{ "nelink_log", "" },
+	{ "nelink_log", "txt://n.hon.dedyn.io" },
 	{ "nelink_log2", "" },
 	{ "nelink_log3", "" },
 #endif
