@@ -277,7 +277,7 @@ function button_nelink_web(){
 	<input type="button" onClick="location.reload()" value="刷新日志" class="btn btn-primary" style="width: 200px">
 	</td>
 	<td width="15%" style="text-align: left; padding-bottom: 0px;">
-	<input type="button" onClick="location.href='easytier.log'" value="<#CTL_onlysave#>" class="btn btn-success" style="width: 200px">
+	<input type="button" onClick="location.href='nelink.log'" value="<#CTL_onlysave#>" class="btn btn-success" style="width: 200px">
 	</td>
 	<td width="75%" style="text-align: right; padding-bottom: 0px;">
 	<input type="button" onClick="clearLog();" value="清除日志" class="btn btn-info" style="width: 200px">
