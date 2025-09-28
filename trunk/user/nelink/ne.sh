@@ -1,7 +1,7 @@
 #!/bin/sh
 
 nelink_enable=$(nvram get nelink_enable)
-neilnk_keyg=$(nvram get nelink_keyg)
+nelink_keyg=$(nvram get nelink_keyg)
 echo $nelink_keyg
 nelink_ip=$(nvram get nelink_ip)
 echo $nelink_ip
