@@ -85,13 +85,13 @@ iptables -t nat -D POSTROUTING -o nehxkj -j MASQUERADE 2>/dev/null
 		eval $(ps -w | grep "$scriptname" | grep -v $$ | grep -v grep | awk '{print "kill "$1";";}')
 		eval $(ps -w | grep "$scriptname" | grep -v $$ | grep -v grep | awk '{print "kill -9 "$1";";}')
 	fi
-}
-
 ne_error="错误：${ne_cli} 未运行，请运行成功后执行此操作！"
 ne_process=$(pidof netlink)
 nepath=$(dirname "$ne_cli")
 cmdfile="/tmp/nelink.log"
+}
 
+case $1 in
 start)
 	start_ne &
 	;;
