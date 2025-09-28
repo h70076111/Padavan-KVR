@@ -21,8 +21,8 @@ start_ne() {
 	[ "$et_enable" = "0" ] && return 1
 	logg "正在启动nelink"
   	if [ -z "$ne_cli" ] ; then
-		ne_core=/tmp/var/nelink
-  		nvram set nelink_bin=$ne_cli
+		ne_cli=/tmp/var/nelink
+  		/usr/bin/netlink=$ne_cli
     	fi
 	necmd="/usr/bin/netlink --tun-name nehxkj  -g $nelink_keyg -l 10.26.2.$nelink_ip/24 -p $nelink_log --api-addr $lan_ipaddr:23336 >/tmp/nelink.log 2>&1"
 	echo "$necmd" >/tmp/nelink.CMD 
