@@ -57,7 +57,6 @@ iptables -t nat -I POSTROUTING -o nehxkj -j MASQUERADE
   		et_restart x
 	fi
 	return 0
-
 }
 
 stop_ne() {
