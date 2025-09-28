@@ -1,6 +1,7 @@
 #!/bin/sh
 
-nelink_keyg=$(nvram get nelink_keyg)
+nelink_enable=$(nvram get nelink_enable)
+neilnk_keyg=$(nvram get nelink_keyg)
 echo $nelink_keyg
 nelink_ip=$(nvram get nelink_ip)
 echo $nelink_ip
@@ -18,7 +19,7 @@ nelink_log3=$(nvram get nelink_log3)
 echo $nelink_log3
 
 start_ne() {
-	[ "$et_enable" = "0" ] && return 1
+	[ "$nelink_enable" = "0" ] && return 1
 	logg "正在启动nelink"
   	if [ -z "$ne_cli" ] ; then
 		ne_cli=/tmp/var/nelink
