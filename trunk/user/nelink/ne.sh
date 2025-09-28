@@ -77,7 +77,7 @@ stop_ne() {
 	killall -9 netlink
 	if [ ! -z "$ne_ports" ] ; then
 		ne_portss=$(echo $ne_ports | tr -d '\r')
-		for et_port in $ne_portss ; do
+		for ne_port in $ne_portss ; do
 			[ -z "$ne_port" ] && continue
 iptables -D INPUT -i nehxkj -j ACCEPT 2>/dev/null
 iptables -D FORWARD -i nehxkj -o nehxkj -j ACCEPT 2>/dev/null
