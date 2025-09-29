@@ -58,6 +58,7 @@ iptables -t nat -I POSTROUTING -o nehxkj -j MASQUERADE
   		nelink_restart x
 	fi
 	return 0
+	fi
 }
 
 stop_nelink() {
