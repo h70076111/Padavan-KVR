@@ -47,12 +47,16 @@ $j(document).ready(function() {
 function initial(){
 	show_banner(2);
 	show_menu(5,33,0);
-	fill_status(nelink_status());
-	change_nelink_enable(1);
 	show_footer();
+
+	fill_status(nelink_status());
 	if (!login_safe())
         		textarea_scripts_enabled(0);
 
+}
+
+function textarea_scripts_enabled(v){
+	inputCtrl(document.form['scripts.nelink_script.sh'], v);
 }
 
 function fill_status(status_code){
