@@ -103,10 +103,6 @@ function done_validating(action){
 	refreshpage();
 }
 
-function textarea_scripts_enabled(v){
-    	inputCtrl(document.form['scripts.nelink_script.sh'], v);
-}
-
 function button_nelink_web(){
 	var port = '23336';
 	var url = window.location.protocol + "//" + window.location.hostname + ":" + port;
