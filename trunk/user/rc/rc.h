@@ -628,9 +628,9 @@ void start_hxcli(void);
 void restart_hxcli(void);
 #endif
 #if defined(APP_NELINK)
-void stop_ne(void);
-void start_ne(void);
-void restart_ne(void);
+void stop_nelink(void);
+void start_nelink(void);
+void restart_nelink(void);
 #endif
 #if defined(APP_ETINK)
 void stop_etink(void);
