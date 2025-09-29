@@ -18,7 +18,7 @@ echo $nelink_log2
 nelink_log3=$(nvram get nelink_log3)
 echo $nelink_log3
 
-start_ne() {
+start_nelink() {
 	[ "$nelink_enable" = "0" ] && return 1
 	logg "正在启动nelink"
   	if [ -z "$ne_cli" ] ; then
@@ -51,16 +51,16 @@ iptables -t nat -I POSTROUTING -o nehxkj -j MASQUERADE
   		logg "内存占用 ${mem} CPU占用 ${necpu}%"
   		et_restart o
 		echo `date +%s` > /tmp/nelink_time
-		et_rules
+		nelink_rules
 	else
 		logg "运行失败, 注意检查${ne_cli}是否下载完整,10 秒后自动尝试重新启动"
   		sleep 10
-  		et_restart x
+  		nelink_restart x
 	fi
 	return 0
 }
 
-stop_ne() {
+stop_nelink() {
 	logg  "正在关闭..."
 	sed -Ei '/【nelink】|^$/d' /tmp/script/_opt_script_check
 	scriptname=$(basename $0)
@@ -94,14 +94,14 @@ cmdfile="/tmp/nelink.log"
 
 case $1 in
 start)
-	start_ne &
+	start_nelink &
 	;;
 stop)
-	stop_ne
+	stop_nelink
 	;;
 restart)
-	stop_ne
-	start_ne &
+	stop_nelink
+	start_nelink &
 	;;
 *)
 	echo "check"
