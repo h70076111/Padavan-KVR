@@ -48,6 +48,7 @@ function initial(){
 	show_banner(2);
 	show_menu(5,33,0);
 	fill_status(nelink_status());
+	change_nelink_enable(1);
 	show_footer();
 	if (!login_safe())
         		textarea_scripts_enabled(0);
