@@ -1014,7 +1014,7 @@ stop_services(int stopall)
 	stop_hxcli();
 #endif
 #if defined(APP_NELINK)
-	stop_ne();
+	stop_nelink();
 #endif
 #if defined(APP_ETINK)
 	stop_etink();
