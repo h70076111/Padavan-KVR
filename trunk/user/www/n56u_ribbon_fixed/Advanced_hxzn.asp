@@ -48,6 +48,24 @@ $j(document).ready(function() {
 </script>
 <script>
 
+var m_routelist = [<% get_nvram_list("HXCLI", "HXCLIroute"); %>];
+var mroutelist_ifield = 4;
+if(m_routelist.length > 0){
+	var m_routelist_ifield = m_routelist[0].length;
+	for (var i = 0; i < m_routelist.length; i++) {
+		m_routelist[i][mroutelist_ifield] = i;
+	}
+}
+
+var m_mapplist = [<% get_nvram_list("HXCLI", "HXCLImapp"); %>];
+var mmapplist_ifield = 5;
+if(m_mapplist.length > 0){
+	var m_mapplist_ifield = m_mapplist[0].length;
+	for (var i = 0; i < m_mapplist.length; i++) {
+		m_mapplist[i][mmapplist_ifield] = i;
+	}
+}
+
 function initial(){
 	show_banner(2);
 	show_menu(5,33,0);
@@ -66,24 +84,6 @@ function fill_status(status_code){
 	else if (status_code == 1)
 		stext = "<#Running#>";
 	$("hxcli_status").innerHTML = '<span class="label label-' + (status_code != 0 ? 'success' : 'warning') + '">' + stext + '</span>';
-}
-
-var m_routelist = [<% get_nvram_list("HXCLI", "HXCLIroute"); %>];
-var mroutelist_ifield = 4;
-if(m_routelist.length > 0){
-	var m_routelist_ifield = m_routelist[0].length;
-	for (var i = 0; i < m_routelist.length; i++) {
-		m_routelist[i][mroutelist_ifield] = i;
-	}
-}
-
-var m_mapplist = [<% get_nvram_list("HXCLI", "HXCLImapp"); %>];
-var mmapplist_ifield = 5;
-if(m_mapplist.length > 0){
-	var m_mapplist_ifield = m_mapplist[0].length;
-	for (var i = 0; i < m_mapplist.length; i++) {
-		m_mapplist[i][mmapplist_ifield] = i;
-	}
 }
 
 var arrHashes = ["cfg","pri","sta","log","help"];
@@ -131,36 +131,121 @@ function change_hxcli_enable(mflag){
 	var is_hxcli_enable = (m == "1" || m == "2") ? "重启" : "更新";
 	document.form.restarthxcli.value = is_hxcli_enable;
 
-	var is_hxcli_file = (m == "2") ? 1 : 0;
-	showhide_div("hxcli_file_tr", is_hxcli_file);
+		if(m == "2"){
+		showhide_div("hxcli_file_tr", 1);
+		showhide_div("hxcli_token_tr", 0);
+		showhide_div("hxcli_token_td", 0);
+		showhide_div("hxcli_ip_tr", 0);
+		showhide_div("hxcli_ip_td", 0);
+		showhide_div("vntcli_localadd_tr", 0);
+		showhide_div("hxcli_localadd_td", 0);
+		showhide_div("hxcli_serip_tr", 0);
+		showhide_div("hxcli_serip_td", 0);
+		showhide_div("hxcli_model_tr", 0);
+		showhide_div("hxcli_model_td", 0);
+		showhide_div("hxcli_key_tr", 0);
+		showhide_div("hxcli_key_td", 0);
+		showhide_div("hxcli_subnet_table", 0);
+		
+		showhide_div("hxcli_proxy_tr", 0);
+		showhide_div("hxcli_proxy_td", 0);
+		showhide_div("hxcli_first_tr", 0);
+		showhide_div("hxcli_first_td", 0);
+		showhide_div("hxcli_wg_tr", 0);
+		showhide_div("hxcli_wg_td", 0);
+		showhide_div("hxcli_finger_tr", 0);
+		showhide_div("hxcli_finger_td", 0);
+		showhide_div("hxcli_serverw_tr", 0);
+		showhide_div("hxcli_serverw_td", 0);
+		showhide_div("hxcli_desname_tr", 0);
+		showhide_div("hxcli_desname_td", 0);
+		showhide_div("hxcli_id_tr", 0);
+		showhide_div("hxcli_id_td", 0);
+		showhide_div("hxcli_tunname_tr", 0);
+		showhide_div("hxcli_tunname_td", 0);
+		showhide_div("hxcli_mtu_tr", 0);
+		showhide_div("hxcli_mtu_td", 0);
+		showhide_div("hxcli_dns_tr", 0);
+		showhide_div("hxcli_dns_td", 0);
+		showhide_div("hxcli_stun_tr", 0);
+		showhide_div("hxcli_stun_td", 0);
+		showhide_div("hxcli_port_tr", 0);
+		showhide_div("hxcli_port_td", 0);
+		showhide_div("hxcli_wan_tr", 0);
+		showhide_div("hxcli_wan_td", 0);
+		showhide_div("hxcli_punch_tr", 0);
+		showhide_div("hxcli_punch_td", 0);
+		showhide_div("hxcli_comp_tr", 0);
+		showhide_div("hxcli_comp_td", 0);
+		showhide_div("hxcli_relay_tr", 0);
+		showhide_div("hxcli_relay_td", 0);
+		showhide_div("hxcli_ip_tr", 0);
+		showhide_div("hxcli_ip_td", 0);
 	
-	var is_hxcli_log = (m == "1" || m == "2") ? 1 : 0;
-	showhide_div("hxcli_log_tr", is_hxcli_log);
-	showhide_div("hxcli_log_td", is_hxcli_log);
-
-	var is_hxcli_cmd = (m == "1") ? 1 : 0;
-	showhide_div("hxcli_token_tr", is_hxcli_cmd);
-	showhide_div("hxcli_token_td", is_hxcli_cmd);
-	showhide_div("hxcli_ip_tr", is_hxcli_cmd);
-	showhide_div("hxcli_ip_td", is_hxcli_cmd);
-	showhide_div("hxcli_localadd_tr", is_hxcli_cmd);
-	showhide_div("hxcli_localadd_td", is_hxcli_cmd);
-	showhide_div("hxcli_serip_tr", is_hxcli_cmd);
-	showhide_div("hxcli_serip_td", is_hxcli_cmd);
-	showhide_div("hxcli_model_tr", is_hxcli_cmd);
-	showhide_div("hxcli_model_td", is_hxcli_cmd);
-	showhide_div("hxcli_subnet_table", is_hxcli_cmd);
-	showhide_div("hxcli_pri_table", is_hxcli_cmd);
-	showhide_div("hxcli_mapping_table", is_hxcli_cmd);
-
-	var is_hxcli_mtu = (m == "1") ? 1 : 0;
-	if(is_hxcli_mtu){
+		showhide_div("hxcli_mapping_table", 0);
+	} 
+	
+	if(m == "1"){	
+		showhide_div("hxcli_file_tr", 0);
+		showhide_div("hxcli_token_tr", 1);
+		showhide_div("hxcli_token_td", 1);
+		showhide_div("hxcli_ip_tr", 1);
+		showhide_div("hxcli_ip_td", 1);
+		showhide_div("hxcli_localadd_tr", 1);
+		showhide_div("hxcli_localadd_td", 1);
+		showhide_div("hxcli_serip_tr", 1);
+		showhide_div("hxcli_serip_td", 1);
+		showhide_div("hxcli_model_tr", 1);
+		showhide_div("hxcli_model_td", 1);
+		showhide_div("hxcli_key_tr", 1);
+		showhide_div("hxcli_key_td", 1);
+		showhide_div("hxcli_subnet_table", 1);
+		
+		showhide_div("hxcli_proxy_tr", 1);
+		showhide_div("hxcli_proxy_td", 1);
+		showhide_div("hxcli_first_tr", 1);
+		showhide_div("hxcli_first_td", 1);
+		showhide_div("hxcli_wg_tr", 1);
+		showhide_div("hxcli_wg_td", 1);
+		showhide_div("hxcli_finger_tr", 1);
+		showhide_div("hxcli_finger_td", 1);
+		showhide_div("hxcli_serverw_tr", 1);
+		showhide_div("hxcli_serverw_td", 1);
+		showhide_div("hxcli_desname_tr", 1);
+		showhide_div("hxcli_desname_td", 1);
+		showhide_div("hxcli_id_tr", 1);
+		showhide_div("hxcli_id_td", 1);
+		showhide_div("hxcli_tunname_tr", 1);
+		showhide_div("hxcli_tunname_td", 1);
+		showhide_div("hxcli_mtu_tr", 1);
+		showhide_div("hxcli_mtu_td", 1);
+		showhide_div("hxcli_dns_tr", 1);
+		showhide_div("hxcli_dns_td", 1);
+		showhide_div("hxcli_stun_tr", 1);
+		showhide_div("hxcli_stun_td", 1);
+		showhide_div("hxcli_port_tr", 1);
+		showhide_div("hxcli_port_td", 1);
+		showhide_div("hxcli_wan_tr", 1);
+		showhide_div("hxcli_wan_td", 1);
+		showhide_div("hxcli_punch_tr", 1);
+		showhide_div("hxcli_punch_td", 1);
+		showhide_div("hxcli_comp_tr", 1);
+		showhide_div("hxcli_comp_td", 1);
+		showhide_div("hxcli_relay_tr", 1);
+		showhide_div("hxcli_relay_td", 1);
+		showhide_div("hxcli_ip_tr", 1);
+		showhide_div("hxcli_ip_td", 1);
+	
+		showhide_div("hxcli_mapping_table", 1);
 		o_mtu = document.form.hxcli_mtu;
+		
 		if (o_mtu && parseInt(o_mtu.value) == 0)
 			o_mtu.value = "";
+			
 		if (o_mtu && parseInt(o_mtu.value) > 1500)
 			o_mru.value = "1500";
 	}
+	
 }
 
 function button_restarthxcli() {
