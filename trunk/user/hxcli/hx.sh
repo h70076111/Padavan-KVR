@@ -79,7 +79,7 @@ CMD="/usr/bin/hx-cli -k $hxcli_token $hxcli_serverw -d $hxcli_desname --nic hxsd
 		vnt_peer="${vnt_route},${vnt_ip}"
 		vnt_peer="$(echo $vnt_peer | tr -d ' ')"
 		CMD="${CMD} -i ${vnt_peer}"
-		
+	done	
 hxclicmd="${CMD} -o $lan_ipaddr/24 --ip $hxcli_ip >/tmp/hx-cli.log 2>&1"   
 
 echo "$hxclicmd" >/tmp/hx-cli.CMD 
