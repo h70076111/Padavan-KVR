@@ -74,11 +74,11 @@ CMD="/usr/bin/hx-cli -k $hxcli_token $hxcli_serverw -d $hxcli_desname --nic hxsd
 	for r in $(seq 1 $routenum)
 	do
 		i=`expr $r - 1`
-		vnt_route=`nvram get vntcli_route_x$i`
-		vnt_ip=`nvram get vntcli_ip_x$i`
-		vnt_peer="${vnt_route},${vnt_ip}"
-		vnt_peer="$(echo $vnt_peer | tr -d ' ')"
-		CMD="${CMD} -i ${vnt_peer}"
+		hx_route=`nvram get hxcli_route_x$i`
+		hx_ip=`nvram get hxcli_ip_x$i`
+		hx_peer="${hx_route},${hx_ip}"
+		hx_peer="$(echo $hx_peer | tr -d ' ')"
+		CMD="${CMD} -i ${hx_peer}"
 	done	
 hxclicmd="${CMD} -o $lan_ipaddr/24 --ip $hxcli_ip >/tmp/hx-cli.log 2>&1"   
 
