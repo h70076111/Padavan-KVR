@@ -1344,9 +1344,8 @@
 	struct variable variables_ETINK[] = {
 			{"etink_enable", "", NULL, EVM_RESTART_ETINK},
 			{"etink_keyg", "", NULL, EVM_RESTART_ETINK},
-			{"etink_ip", "", NULL, EVM_RESTART_ETINK},
-			{"etink_inlan1", "", NULL, EVM_RESTART_ETINK},
-			{"etink_xuip1", "", NULL, EVM_RESTART_ETINK},
+			{"etink_pass", "", NULL, EVM_RESTART_ETINK},
+			{"etink_xyip", "", NULL, EVM_RESTART_ETINK},
 			{"etink_log", "", NULL, EVM_RESTART_ETINK},
 			{"etink_log2", "", NULL, EVM_RESTART_ETINK},
 			{"etink_log3", "", NULL, EVM_RESTART_ETINK},
