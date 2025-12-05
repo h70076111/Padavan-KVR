@@ -70,7 +70,7 @@ start_hxcli
 	[ "$hxcli_enable" = "0" ] && exit 1
 	logger -t "【HX客户端】" "正在启动hx-cli"
 CMD="/usr/bin/hx-cli -k $hxcli_token $hxcli_serverw -d $hxcli_desname --nic hxsdwan"
-	routenum=`nvram get vntcli_routenum_x`
+	routenum=`nvram get hxcli_routenum_x`
 	for r in $(seq 1 $routenum)
 	do
 		i=`expr $r - 1`
