@@ -56,21 +56,10 @@ if(m_routelist.length > 0){
 	}
 }
 
-var m_mapplist = [<% get_nvram_list("HXCLI", "HXCLImapp"); %>];
-var mmapplist_ifield = 5;
-if(m_mapplist.length > 0){
-	var m_mapplist_ifield = m_mapplist[0].length;
-	for (var i = 0; i < m_mapplist.length; i++) {
-		m_mapplist[i][mmapplist_ifield] = i;
-	}
-}
-
 function initial(){
 	show_banner(2);
 	show_menu(5, 27, 0);
 	showROUTEList();
-	showMAPPList();
-	show_footer();
 	fill_status(hxcli_status());
 	change_hxcli_enable(1);
 	change_hxcli_model(1);
@@ -544,13 +533,11 @@ function button_hxcli_status() {
 									</p>
 										</div>
 									<table width="100%" align="center" cellpadding="4" cellspacing="0" class="table">
-	</tr>
-	<tr>
-	<th><#running_status#>
-	</th>
-	<td id="hxcli_status"></td><td></td>
-	</tr>
-	<tr>
+									<tr> <th><#running_status#></th>
+                                            <td id="hxcli_status" colspan="3"></td>
+                                        </tr><td></td><td></td><td></td>
+										<tr>
+										<tr>
 										<th width="30%" style="border-top: 0 none;">启用组网客户端</th>
 											<td style="border-top: 0 none;">
 													<div class="main_itoggle">
