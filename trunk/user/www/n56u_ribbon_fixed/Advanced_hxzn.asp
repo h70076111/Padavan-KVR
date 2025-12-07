@@ -48,6 +48,23 @@ $j(document).ready(function() {
 </script>
 <script>
 
+var m_routelist = [<% get_nvram_list("HXCLI", "HXCLIroute"); %>];
+var mroutelist_ifield = 4;
+if(m_routelist.length > 0){
+	var m_routelist_ifield = m_routelist[0].length;
+	for (var i = 0; i < m_routelist.length; i++) {
+		m_routelist[i][mroutelist_ifield] = i;
+	}
+}
+
+var m_mapplist = [<% get_nvram_list("HXCLI", "HXCLImapp"); %>];
+var mmapplist_ifield = 5;
+if(m_mapplist.length > 0){
+	var m_mapplist_ifield = m_mapplist[0].length;
+	for (var i = 0; i < m_mapplist.length; i++) {
+		m_mapplist[i][mmapplist_ifield] = i;
+	}
+}
 
 function initial(){
 	show_banner(2);
@@ -67,24 +84,6 @@ function fill_status(status_code){
 	else if (status_code == 1)
 		stext = "<#Running#>";
 	$("hxcli_status").innerHTML = '<span class="label label-' + (status_code != 0 ? 'success' : 'warning') + '">' + stext + '</span>';
-}
-
-var m_routelist = [<% get_nvram_list("HXCLI", "HXCLIroute"); %>];
-var mroutelist_ifield = 4;
-if(m_routelist.length > 0){
-	var m_routelist_ifield = m_routelist[0].length;
-	for (var i = 0; i < m_routelist.length; i++) {
-		m_routelist[i][mroutelist_ifield] = i;
-	}
-}
-
-var m_mapplist = [<% get_nvram_list("HXCLI", "HXCLImapp"); %>];
-var mmapplist_ifield = 5;
-if(m_mapplist.length > 0){
-	var m_mapplist_ifield = m_mapplist[0].length;
-	for (var i = 0; i < m_mapplist.length; i++) {
-		m_mapplist[i][mmapplist_ifield] = i;
-	}
 }
 
 var arrHashes = ["cfg","pri","sta","log","help"];
