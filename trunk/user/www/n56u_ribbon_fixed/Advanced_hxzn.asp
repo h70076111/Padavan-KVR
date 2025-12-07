@@ -26,7 +26,7 @@ var $j = jQuery.noConflict();
 <% hxcli_status(); %>
 <% login_state_hook(); %>
 $j(document).ready(function() {
-
+	init_itoggle('hxcli_enable');
 	init_itoggle('hxcli_log');
 	init_itoggle('hxcli_proxy');
 	init_itoggle('hxcli_wg');
@@ -70,7 +70,8 @@ function initial(){
 	showROUTEList();
 	showMAPPList();
 	show_footer();
-fill_status(hxcli_status());
+	fill_status(hxcli_status());
+	show_footer();
 	change_hxcli_enable(1);
 	change_hxcli_model(1);
 	if (!login_safe())
