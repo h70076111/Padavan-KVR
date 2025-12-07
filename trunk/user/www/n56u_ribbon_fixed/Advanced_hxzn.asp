@@ -51,10 +51,7 @@ $j(document).ready(function() {
 
 function initial(){
 	show_banner(2);
-	show_menu(5, 27, 0);
-	showROUTEList();
-	showMAPPList();
-	show_footer();
+	show_menu(5,33,0);
 	fill_status(hxcli_status());
 	change_hxcli_enable(1);
 	change_hxcli_model(1);
