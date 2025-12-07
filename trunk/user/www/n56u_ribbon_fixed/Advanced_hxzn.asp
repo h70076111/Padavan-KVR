@@ -23,7 +23,6 @@
 <script type="text/javascript" src="/help.js"></script>
 <script>
 var $j = jQuery.noConflict();
-
 <% hxcli_status(); %>
 <% login_state_hook(); %>
 $j(document).ready(function() {
@@ -68,7 +67,7 @@ if(m_mapplist.length > 0){
 
 function initial(){
 	show_banner(2);
-	show_menu(5,33,0);
+	show_menu(5, 27, 0);
 	showROUTEList();
 	showMAPPList();
 	show_footer();
@@ -545,11 +544,13 @@ function button_hxcli_status() {
 									</p>
 										</div>
 									<table width="100%" align="center" cellpadding="4" cellspacing="0" class="table">
-									<tr> <th><#running_status#></th>
-                                            <td id="hxcli_status" colspan="3"></td>
-                                        </tr><td></td><td></td><td></td>
-										<tr>
-										<tr>
+	</tr>
+	<tr>
+	<th><#running_status#>
+	</th>
+	<td id="vntcli_status"></td><td></td>
+	</tr>
+	<tr>
 										<th width="30%" style="border-top: 0 none;">启用组网客户端</th>
 											<td style="border-top: 0 none;">
 													<div class="main_itoggle">
