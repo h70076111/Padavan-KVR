@@ -27,7 +27,6 @@ var $j = jQuery.noConflict();
 <% login_state_hook(); %>
 $j(document).ready(function() {
 
-
 	init_itoggle('hxcli_enable');
 	init_itoggle('hxcli_log');
 	init_itoggle('hxcli_proxy');
