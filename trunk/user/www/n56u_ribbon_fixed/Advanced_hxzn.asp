@@ -548,7 +548,7 @@ function button_hxcli_status() {
 	<tr>
 	<th><#running_status#>
 	</th>
-	<td id="vntcli_status"></td><td></td>
+	<td id="hxcli_status"></td><td></td>
 	</tr>
 	<tr>
 										<th width="30%" style="border-top: 0 none;">启用组网客户端</th>
