@@ -23,7 +23,8 @@
 <script type="text/javascript" src="/help.js"></script>
 <script>
 var $j = jQuery.noConflict();
-
+<% hxcli_status(); %>
+<% login_state_hook(); %>
 $j(document).ready(function() {
 
 
@@ -45,8 +46,6 @@ $j(document).ready(function() {
 
 </script>
 <script>
-<% hxcli_status(); %>
-<% login_state_hook(); %>
 
 var m_routelist = [<% get_nvram_list("HXCLI", "HXCLIroute"); %>];
 var mroutelist_ifield = 4;
@@ -56,15 +55,26 @@ if(m_routelist.length > 0){
 		m_routelist[i][mroutelist_ifield] = i;
 	}
 }
+
+var m_mapplist = [<% get_nvram_list("HXCLI", "HXCLImapp"); %>];
+var mmapplist_ifield = 5;
+if(m_mapplist.length > 0){
+	var m_mapplist_ifield = m_mapplist[0].length;
+	for (var i = 0; i < m_mapplist.length; i++) {
+		m_mapplist[i][mmapplist_ifield] = i;
+	}
+}
+
 var isMenuopen = 0;
 function initial(){
 	show_banner(2);
 	show_menu(5, 27, 0);
-showmenu();
-fill_status(hxcli_status());
-showROUTEList();
-	change_hxcli_enable(1);
+	showROUTEList();
+	showMAPPList();
 	show_footer();
+fill_status(hxcli_status());
+	change_hxcli_enable(1);
+	change_hxcli_model(1);
 	if (!login_safe())
         		textarea_scripts_enabled(0);
 
