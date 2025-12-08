@@ -2409,7 +2409,7 @@ static int nelink_status_hook(int eid, webs_t wp, int argc, char **argv)
 #if defined (APP_N2V2)
 static int n2v2_status_hook(int eid, webs_t wp, int argc, char **argv)
 {
-	int nelink_status_code = pids("n2v2");
+	int n2v2_status_code = pids("n2v2");
 	websWrite(wp, "function n2v2_status() { return %d;}\n", n2v2_status_code);
 	return 0;
 }
