@@ -2406,6 +2406,15 @@ static int nelink_status_hook(int eid, webs_t wp, int argc, char **argv)
 }
 #endif
 
+#if defined (APP_N2V2)
+static int n2v2_status_hook(int eid, webs_t wp, int argc, char **argv)
+{
+	int nelink_status_code = pids("n2v2");
+	websWrite(wp, "function n2v2_status() { return %d;}\n", n2v2_status_code);
+	return 0;
+}
+#endif
+
 #if defined (APP_ETINK)
 static int etink_status_hook(int eid, webs_t wp, int argc, char **argv)
 {
@@ -2714,6 +2723,11 @@ ej_firmware_caps_hook(int eid, webs_t wp, int argc, char **argv)
 #else
 	int found_app_nelink = 0;
 #endif
+#if defined(APP_N2V2)
+	int found_app_n2v2 = 1;
+#else
+	int found_app_n2v2 = 0;
+#endif
 #if defined(APP_ETINK)
 	int found_app_etink = 1;
 #else
@@ -2913,6 +2927,7 @@ ej_firmware_caps_hook(int eid, webs_t wp, int argc, char **argv)
 		"function found_app_bafa() { return %d;}\n"
 		"function found_app_hxcli() { return %d;}\n"
 		"function found_app_nelink() { return %d;}\n"
+		"function found_app_n2v2() { return %d;}\n"
 		"function found_app_etink() { return %d;}\n"
 		"function found_app_xupnpd() { return %d;}\n"
 		"function found_app_mentohust() { return %d;}\n",
@@ -2955,6 +2970,7 @@ ej_firmware_caps_hook(int eid, webs_t wp, int argc, char **argv)
 		found_app_bafa,
 		found_app_hxcli,
 		found_app_nelink,
+		found_app_n2v2,
 		found_app_etink,
 		found_app_xupnpd,
 		found_app_mentohust
@@ -4977,6 +4993,9 @@ struct ej_handler ej_handlers[] =
 #endif
 #if defined (APP_NELINK)
 	{ "nelink_status", nelink_status_hook},
+#endif
+#if defined (APP_N2V2)
+	{ "n2v2_status", n2v2_status_hook},
 #endif
 #if defined (APP_ETINK)
 	{ "etink_status", etink_status_hook},
