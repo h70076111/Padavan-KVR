@@ -105,7 +105,7 @@ typedef u_int8_t u8;
 #define EVM_RESTART_NELINK	    	(1ULL << 61)
 #define EVM_RESTART_WIREGUARD		(1ULL << 62)
 #define EVM_RESTART_HXCLI		(1ULL << 63)
-#define EVM_RESTART_ALDRIVER		(1ULL << 64)
+#define EVM_RESTART_N2V2	    	(1ULL << 61)
 #define EVM_RESTART_REBOOT			(1ULL << 65)
 
 #define EVM_BLOCK_UNSAFE			(1ULL << 66) /* special case */
@@ -167,7 +167,7 @@ typedef u_int8_t u8;
 #define EVT_RESTART_DNSFORWARDER	1
 #define EVT_RESTART_MENTOHUST		2
 #define EVT_RESTART_PDNSD			1
-#define EVT_RESTART_ALIDDNS			2
+#define EVT_RESTART_N2V2			2
 #define EVT_RESTART_SMARTDNS		1
 #define EVT_RESTART_FRP      		2
 #define EVT_RESTART_CADDY      		2
