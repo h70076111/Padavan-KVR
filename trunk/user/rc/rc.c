@@ -1432,6 +1432,14 @@ handle_notifications(void)
 			restart_nelink();
 		}
 #endif		
+
+#if defined(APP_N2V2)
+		else if (strcmp(entry->d_name, RCN_RESTART_N2V2) == 0)
+		{
+			restart_n2v2();
+		}
+#endif		
+
 #if defined(APP_ETINK)
 		else if (strcmp(entry->d_name, RCN_RESTART_ETINK) == 0)
 		{
