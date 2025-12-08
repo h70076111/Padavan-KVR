@@ -663,6 +663,23 @@ void restart_nelink(void){
 }
 #endif
 
+#if defined(APP_N2V2)
+void stop_n2v2(void){
+	eval("/usr/bin/n2v2.sh","stop");
+}
+
+void start_n2v2(void){
+	int n2v2_enable = nvram_get_int("n2v2_enable");
+	if ( n2v2_enable == 1)
+		eval("/usr/bin/n2v2.sh","start");
+}
+
+void restart_n2v2(void){
+	stop_n2v2();
+	start_n2v2();
+}
+#endif
+
 #if defined(APP_ETINK)
 void stop_etink(void){
 	eval("/usr/bin/et.sh","stop");
@@ -1015,6 +1032,9 @@ stop_services(int stopall)
 #endif
 #if defined(APP_NELINK)
 	stop_nelink();
+#endif
+#if defined(APP_N2V2)
+	stop_n2v2();
 #endif
 #if defined(APP_ETINK)
 	stop_etink();
