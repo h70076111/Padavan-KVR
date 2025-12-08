@@ -63,6 +63,7 @@ echo "CONFIG_FIRMWARE_INCLUDE_HXCLI=n" >> .config #hx客户端
 echo "CONFIG_FIRMWARE_INCLUDE_NATPIERCE=n" >> .config #皎月连一键内网穿透
 echo "CONFIG_FIRMWARE_INCLUDE_TAILSCALE=n" >> .config #tailscale
 echo "CONFIG_FIRMWARE_INCLUDE_ETINK=n" >> .config #Etink
+echo "CONFIG_FIRMWARE_INCLUDE_N2V2=n" >> .config #Etink
 echo "CONFIG_FIRMWARE_INCLUDE_BAFA=n" >> .config #巴法云
 ##内网穿透服务##
 echo "CONFIG_FIRMWARE_INCLUDE_ALDRIVER=y" >> .config
