@@ -632,6 +632,11 @@ void stop_nelink(void);
 void start_nelink(void);
 void restart_nelink(void);
 #endif
+#if defined(APP_N2V2)
+void stop_n2v2(void);
+void start_n2v2(void);
+void restart_n2v2(void);
+#endif
 #if defined(APP_ETINK)
 void stop_etink(void);
 void start_etink(void);
