@@ -1585,7 +1585,7 @@ struct variable variables_N2v2Conf_N2v2List[] = {
 		{"NELINK",		variables_NELINK},
 #endif
 #if defined(APP_N2V2)
-		{"N2v2Conf",		variables_N2v2Conf},
+		{"N2V2",		variables_N2V2},
 #endif
 #if defined(APP_ALDRIVER)
 		{"ALDRIVER",		variables_ALDRIVER},
