@@ -128,6 +128,14 @@
 			{"hxcli_ip_x", "24", NULL, FALSE},
 			{0,0,0,0}
 		};
+	
+struct variable variables_N2v2Conf_N2v2List[] = {
+			{"n2v2_enable_x", "24", NULL, FALSE},
+			{"n2v2_ip_x", "24", NULL, FALSE},
+			{"n2v2_route_x", "24", NULL, FALSE},
+			{0,0,0,0}
+		};
+
 
 	struct variable variables_SspConf_SspList[] = {
 			{"ssp_type_x", "24", NULL, FALSE},
@@ -1340,6 +1348,23 @@
 	};
 #endif
 
+#if defined(APP_N2V2)
+	struct variable variables_N2V2[] = {
+			{"n2v2_enable", "", NULL, EVM_RESTART_N2V2},
+			{"n2v2_keyg", "", NULL, EVM_RESTART_N2V2},
+			{"n2v2_ip", "", NULL, EVM_RESTART_N2V2},
+			{"n2v2_inlan1", "", NULL, EVM_RESTART_N2V2},
+			{"n2v2_xuip1", "", NULL, EVM_RESTART_N2V2},
+			{"n2v2_inlan2", "", NULL, EVM_RESTART_N2V2},
+			{"n2v2_xuip2", "", NULL, EVM_RESTART_N2V2},
+			{"n2v2_log", "", NULL, EVM_RESTART_N2V2},
+			{"n2v2_log2", "", NULL, EVM_RESTART_N2V2},
+			{"n2v2_log3", "", NULL, EVM_RESTART_N2V2},
+			{"N2v2List", "Group", ARGV((char*)variables_N2v2Conf_N2v2List, "8", "55", "n2v2_staticnum_x"), EVM_RESTART_N2V2},
+			{0,0,0,0}
+	};
+#endif
+
 #if defined(APP_ETINK)
 	struct variable variables_ETINK[] = {
 			{"etink_enable", "", NULL, EVM_RESTART_ETINK},
@@ -1559,8 +1584,11 @@
 #if defined(APP_NELINK)
 		{"NELINK",		variables_NELINK},
 #endif
-#if defined(APP_ETINK)
-		{"ETINK",		variables_ETINK},
+#if defined(APP_NELINK)
+		{"NELINK",		variables_NELINK},
+#endif
+#if defined(APP_N2V2)
+		{"N2v2Conf",		variables_N2v2Conf},
 #endif
 #if defined(APP_ALDRIVER)
 		{"ALDRIVER",		variables_ALDRIVER},
@@ -1702,6 +1730,9 @@
 #endif
 #if defined(APP_ETINK)
 		{EVM_RESTART_ETINK,		EVT_RESTART_ETINK,		RCN_RESTART_ETINK,	0},
+#endif
+#if defined(APP_N2V2)
+		{EVM_RESTART_N2V2,		EVT_RESTART_ETINK,		RCN_RESTART_N2V2,	0},
 #endif
 #if defined(APP_ALDRIVER)
 		{EVM_RESTART_ALDRIVER,		EVT_RESTART_ALDRIVER,		RCN_RESTART_ALDRIVER,	0},
