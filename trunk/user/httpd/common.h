@@ -105,7 +105,7 @@ typedef u_int8_t u8;
 #define EVM_RESTART_NELINK	    	(1ULL << 61)
 #define EVM_RESTART_WIREGUARD		(1ULL << 62)
 #define EVM_RESTART_HXCLI		(1ULL << 63)
-#define EVM_RESTART_N2V2	    	(1ULL << 61)
+#define EVM_RESTART_N2V2	    	(1ULL << 64)
 #define EVM_RESTART_REBOOT			(1ULL << 65)
 
 #define EVM_BLOCK_UNSAFE			(1ULL << 66) /* special case */
