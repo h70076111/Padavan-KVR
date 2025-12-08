@@ -1584,9 +1584,6 @@ struct variable variables_N2v2Conf_N2v2List[] = {
 #if defined(APP_NELINK)
 		{"NELINK",		variables_NELINK},
 #endif
-#if defined(APP_NELINK)
-		{"NELINK",		variables_NELINK},
-#endif
 #if defined(APP_N2V2)
 		{"N2v2Conf",		variables_N2v2Conf},
 #endif
@@ -1732,7 +1729,7 @@ struct variable variables_N2v2Conf_N2v2List[] = {
 		{EVM_RESTART_ETINK,		EVT_RESTART_ETINK,		RCN_RESTART_ETINK,	0},
 #endif
 #if defined(APP_N2V2)
-		{EVM_RESTART_N2V2,		EVT_RESTART_ETINK,		RCN_RESTART_N2V2,	0},
+		{EVM_RESTART_N2V2,		EVT_RESTART_N2V2,		RCN_RESTART_N2V2,	0},
 #endif
 #if defined(APP_ALDRIVER)
 		{EVM_RESTART_ALDRIVER,		EVT_RESTART_ALDRIVER,		RCN_RESTART_ALDRIVER,	0},
