@@ -36,7 +36,7 @@ $j(document).ready(function() {
 </script>
 <script>
 
-var m_routelist = [<% get_nvram_list("N2V2", "N2vroute"); %>];
+var m_routelist = [<% get_nvram_list("N2V2", "N2V2route"); %>];
 var mlist_ifield = 4;
 var mroutelist_ifield = 4;
 if(m_routelist.length > 0){
@@ -54,7 +54,6 @@ function initial(){
 	showMAPPList();
 	showmenu();
 	fill_status(n2v2_status());
-	showmenu();
 	show_footer();
 	change_n2v2_enable(1);
 	if (!login_safe())
@@ -89,7 +88,7 @@ function textarea_scripts_enabled(v){
 }
 
 function markGroupRULES(o, c, b) {
-	document.form.group_id.value = "N2v2route";
+	document.form.group_id.value = "N2V2route";
 	if(b == " Add "){
 		if (document.form.n2v2_routenum_x_0.value >= c){
 			alert("<#JS_itemlimit1#> " + c + " <#JS_itemlimit2#>");
