@@ -129,10 +129,10 @@
 			{0,0,0,0}
 		};
 	
-struct variable variables_N2v2Conf_N2v2List[] = {
-			{"n2v2_enable_x", "24", NULL, FALSE},
-			{"n2v2_ip_x", "24", NULL, FALSE},
+struct variable variables_N2V2_N2V2route[] = {
+			{"n2v2_name_x", "24", NULL, FALSE},
 			{"n2v2_route_x", "24", NULL, FALSE},
+			{"n2v2_ip_x", "24", NULL, FALSE},
 			{0,0,0,0}
 		};
 
