@@ -24,11 +24,11 @@
 <script>
 var $j = jQuery.noConflict();
 
-<% nelink_status(); %>
+<% n2v2_status(); %>
 <% login_state_hook(); %>
 $j(document).ready(function() {
 	init_itoggle('n2v2_enable');
-	$j("#tab_n2v2_cfg, #tab_nelink_web, #tab_n2v2_sta, #tab_n2v2_log").click(
+	$j("#tab_n2v2_cfg, #tab_n2v2_log").click(
 	function () {
 		var newHash = $j(this).attr('href').toLowerCase();
 		showTab(newHash);
@@ -37,8 +37,6 @@ $j(document).ready(function() {
 
 </script>
 <script>
-<% n2v2_status(); %>
-<% login_state_hook(); %>
 
 var m_list = [<% get_nvram_list("N2v2Conf", "N2v2List"); %>];
 var mlist_ifield = 4;
