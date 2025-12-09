@@ -247,7 +247,7 @@ function showMRULESList(){
 										<tr>
 										<th>本机虚拟ip（格式 20）</th>
 				<td>
-					<input type="text" class="input" name="n2v2_ip" id="n2v2_ip" style="width: 30px" value="<% nvram_get_x("","n2v2_ip"); %>" />
+					<input type="text" class="input" name="n2v2_ip" id="n2v2_ip" style="width: 200px" value="<% nvram_get_x("","n2v2_ip"); %>" />
 				</td>
 
 										</tr>
