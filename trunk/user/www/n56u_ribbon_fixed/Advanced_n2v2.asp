@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title><#Web_Title#> - N2V2组网</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="-1">
@@ -37,14 +36,16 @@ $j(document).ready(function() {
 </script>
 <script>
 
-var m_list = [<% get_nvram_list("N2v2Conf", "N2v2List"); %>];
+var m_routelist = [<% get_nvram_list("N2V2", "N2vroute"); %>];
 var mlist_ifield = 4;
-if(m_list.length > 0){
-	var m_list_ifield = m_list[0].length;
-	for (var i = 0; i < m_list.length; i++) {
-		m_list[i][mlist_ifield] = i;
+var mroutelist_ifield = 4;
+if(m_routelist.length > 0){
+	var m_routelist_ifield = m_routelist[0].length;
+	for (var i = 0; i < m_routelist.length; i++) {
+		m_routelist[i][mroutelist_ifield] = i;
 	}
 }
+
 var isMenuopen = 0;
 function initial(){
 	show_banner(2);
@@ -88,27 +89,27 @@ function textarea_scripts_enabled(v){
 }
 
 function markGroupRULES(o, c, b) {
-	document.form.group_id.value = "N2v2List";
+	document.form.group_id.value = "N2v2route";
 	if(b == " Add "){
-		if (document.form.n2v2_staticnum_x_0.value >= c){
+		if (document.form.n2v2_routenum_x_0.value >= c){
 			alert("<#JS_itemlimit1#> " + c + " <#JS_itemlimit2#>");
 			return false;
-		}else if (document.form.n2v2_ip_x_0.value==""){
-			alert("<#JS_fieldblank#>");
-			document.form.n2v2_ip_x_0.focus();
-			document.form.n2v2_ip_x_0.select();
-			return false;
-		}else if(document.form.n2v2_route_x_0.value==""){
+		}else if (document.form.n2v2_route_x_0.value==""){
 			alert("<#JS_fieldblank#>");
 			document.form.n2v2_route_x_0.focus();
 			document.form.n2v2_route_x_0.select();
 			return false;
+		}else if(document.form.n2v2_ip_x_0.value==""){
+			alert("<#JS_fieldblank#>");
+			document.form.n2v2_ip_x_0.focus();
+			document.form.n2v2_ip_x_0.select();
+			return false;
 		}else{
-			for(i=0; i<m_list.length; i++){
-				if(document.form.n2v2_ip_x_0.value==m_list[i][0]) {
-				if(document.form.n2v2_route_x_0.value==m_list[i][1]) {
-					alert('<#JS_duplicate#>' + ' (' + m_list[i][1] + ')' );
-					document.form.n2v2_ip_x_0.focus();
+			for(i=0; i<m_routelist.length; i++){
+				if(document.form.n2v2_route_x_0.value==m_routelist[i][1]) {
+				if(document.form.n2v2_ip_x_0.value==m_routelist[i][2]) {
+					alert('<#JS_duplicate#>' + ' (' + m_routelist[i][1] + ')' );
+					document.form.n2v2_route_x_0.focus();
 					document.form.n2v2_ip_x_0.select();
 					return false;
 					}
@@ -121,33 +122,58 @@ function markGroupRULES(o, c, b) {
 	return true;
 }
 
-function showMRULESList(){
-	var code = '<table width="100%" cellspacing="0" cellpadding="3" class="table table-list">';
-	if(m_list.length == 0)
-		code +='<tr><td colspan="4" style="text-align: center;"><div class="alert alert-info"><#IPConnection_VSList_Norule#></div></td></tr>';
+function showROUTEList(){
+	var code = '<table width="100%" cellspacing="0" cellpadding="4" class="table table-list">';
+	if(m_routelist.length == 0)
+		code +='<tr><td colspan="5" style="text-align: center;"><div class="alert alert-info"><#IPConnection_VSList_Norule#></div></td></tr>';
 	else{
-	    for(var i = 0; i < m_list.length; i++){
-		if(m_list[i][0] == 0)
-		n2v2_enable="已禁用";
-		else{
-		n2v2_enable="已启用";
-		}
+	    for(var i = 0; i < m_routelist.length; i++){
 		code +='<tr id="rowrl' + i + '">';
-		code +='<td width="20%">&nbsp;' + n2v2_enable + '</td>';
-		code +='<td width="40%">&nbsp;' + m_list[i][1] + '</td>';
-		code +='<td width="40%">' + m_list[i][2] + '</td>';
+		code +='<td width="28%">&nbsp;' + m_routelist[i][0] + '</td>';
+		code +='<td width="38%">&nbsp;' + m_routelist[i][1] + '</td>';
+		code +='<td colspan="2" width="40%">' + m_routelist[i][2] + '</td>';
 		code +='<td width="50%"></td>';
-		code +='<center><td width="20%" style="text-align: center;"><input type="checkbox" name="N2v2List_s" value="' + m_list[i][mlist_ifield] + '" onClick="changeBgColorrl(this,' + i + ');" id="check' + m_list[i][mlist_ifield] + '"></td></center>';
+		code +='<center><td width="20%" style="text-align: center;"><input type="checkbox" name="HXCLIroute_s" value="' + m_routelist[i][mroutelist_ifield] + '" onClick="changeBgColorrl(this,' + i + ');" id="check' + m_routelist[i][mroutelist_ifield] + '"></td></center>';
 		
 		code +='</tr>';
 	    }
 		code += '<tr>';
-		code += '<td colspan="4">&nbsp;</td>'
-		code += '<td><button class="btn btn-danger" type="submit" onclick="markGroupRULES(this, 64, \' Del \');" name="N2v2List"><i class="icon icon-minus icon-white"></i></button></td>';
+		code += '<td colspan="5">&nbsp;</td>'
+		code += '<td><button class="btn btn-danger" type="submit" onclick="markrouteRULES(this, 64, \' Del \');" name="HXCLIroute"><i class="icon icon-minus icon-white"></i></button></td>';
 		code += '</tr>'
 	}
 	code +='</table>';
-	$("MRULESList_Block").innerHTML = code;
+	$("MrouteRULESList_Block").innerHTML = code;
+}
+
+function showMAPPList(){
+	var code = '<table width="100%" cellspacing="0" cellpadding="4" class="table table-list">';
+	if(m_mapplist.length == 0)
+		code +='<tr><td colspan="5" style="text-align: center;"><div class="alert alert-info"><#IPConnection_VSList_Norule#></div></td></tr>';
+	else{
+	    for(var i = 0; i < m_mapplist.length; i++){
+		if(m_mapplist[i][0] == 0)
+		n2v2_mappnet="TCP";
+		else{
+		n2v2_mappnet="UDP";
+		}
+		code +='<tr id="rowrl' + i + '">';
+		code +='<td width="15%">&nbsp;' + n2v2_mappnet + '</td>';
+		code +='<td width="25%">&nbsp;' + m_mapplist[i][1] + '</td>';
+		code +='<td width="30%">' + m_mapplist[i][2] + '</td>';
+		code +='<td width="20%">&nbsp;' + m_mapplist[i][3] + '</td>';
+		code +='<td width="50%"></td>';
+		code +='<center><td width="20%" style="text-align: center;"><input type="checkbox" name="HXCLImapp_s" value="' + m_mapplist[i][mmapplist_ifield] + '" onClick="changeBgColorrl(this,' + i + ');" id="check' + m_mapplist[i][mmapplist_ifield] + '"></td></center>';
+		
+		code +='</tr>';
+	    }
+		code += '<tr>';
+		code += '<td colspan="5">&nbsp;</td>'
+		code += '<td><button class="btn btn-danger" type="submit" onclick="markmappRULES(this, 64, \' Del \');" name="HXCLImapp"><i class="icon icon-minus icon-white"></i></button></td>';
+		code += '</tr>'
+	}
+	code +='</table>';
+	$("MmappRULESList_Block").innerHTML = code;
 }
 
 </script>
@@ -174,11 +200,11 @@ function showMRULESList(){
 	<input type="hidden" name="current_page" value="Advanced_n2v2.asp">
 	<input type="hidden" name="next_page" value="">
 	<input type="hidden" name="next_host" value="">
-	<input type="hidden" name="sid_list" value="N2v2Conf;">
-	<input type="hidden" name="group_id" value="N2v2List">
+	<input type="hidden" name="sid_list" value="N2V2;LANHostConfig;General;">
+	<input type="hidden" name="group_id" value="N2V2route;N2V2mapp">
 	<input type="hidden" name="action_mode" value="">
 	<input type="hidden" name="action_script" value="">
-	<input type="hidden" name="zero_staticnum_x_0" value="<% nvram_get_x("N2v2List", "n2v2_staticnum_x"); %>" readonly="1" />
+	<input type="hidden" name="n2v2_routenum_x_0" value="<% nvram_get_x("N2V2route", "n2v2_routenum_x"); %>" readonly="1" />
 
 	<div class="container-fluid">
 		<div class="row-fluid">
@@ -274,47 +300,30 @@ function showMRULESList(){
 
 										</tr>
 										<tr>
-									</table>
-<table width="100%" align="center" cellpadding="4" cellspacing="0" class="table">
-	<tr> <th colspan="4">需要访问其它n2v2的内网LAN网段,IP和网关和n2v2后台对应即可(本机的LAN网段不用填进去)</th></tr>
-                                        <tr id="row_rules_caption">
-										 
-                                            <th width="10%">
-                                                启用 <i class="icon-circle-arrow-down"></i>
-                                            </th>
-											<th width="20%">
-                                                IP <i class="icon-circle-arrow-down"></i>
-                                            </th>
-											<th width="25%">
-                                                网关 <i class="icon-circle-arrow-down"></i>
-                                            </th>
-                                            <th width="5%">
-                                                <center><i class="icon-th-list"></i></center>
-                                            </th>
-                                        </tr>
-                                         <tr>
-                                         	<th>
-                                          	<select name="n2v2_enable_x_0" class="input" style="width: 100px">
-													<option value="1" <% nvram_match_x("","n2v2_enable_x_0", "0","selected"); %>>是</option>
-													<option value="0" <% nvram_match_x("","n2v2_enable_x_0", "0","selected"); %>>否</option>
-												</select>
-                                           </th>
-                                         <th><input type="text" maxlength="255" class="span12" style="width: 200px" size="200" name="n2v2_ip_x_0" value="<% nvram_get_x("", "n2v2_ip_x_0"); %>"/>
-                                            </th>
-                                         <th>
-                                                <input type="text" maxlength="255" class="span12" style="width: 200px" size="200" name="n2v2_route_x_0" value="<% nvram_get_x("", "n2v2_route_x_0"); %>" />
-                                            </th>
-                                         <th>
-                                                <button class="btn" style="max-width: 219px" type="submit" onclick="return markGroupRULES(this, 64, ' Add ');" name="markGroupRULES2" value="<#CTL_add#>" size="12"><i class="icon icon-plus"></i></button>
-                                            </th>
-                                            </td>
-                                        </tr>
-                                        <tr id="row_rules_body" >
-                                            <td colspan="4" style="border-top: 0 none; padding: 0px;">
-                                                <div id="MRULESList_Block"></div>
-                                            </td>
-                                        </tr>
-										</table>
+	</div>
+	</td>
+	</tr><tr id="n2v2_log_td"><td colspan="3"></td></tr>
+	<table id="n2v2_subnet_table" width="100%" align="center" cellpadding="4" cellspacing="0" class="table">
+	<tr> <th colspan="4" style="background-color: #756c78;">子网配置 (访问对端内网设备，还需对端配置本地网段)</th></tr>
+	<tr id="row_rules_caption">
+	<th width="10%"> 备注名称 </th>
+	<th width="20%">对端目标网段 </th>
+	<th width="20%">对端接口IP </th>
+	<th width="5%"><center><i class="icon-th-list"></i></center></th>
+	</tr>
+	<tr>
+	<th><input type="text" placeholder="可留空" maxlength="128" class="span12" style="width: 100px" size="200" name="n2v2_name_x_0" value="<% nvram_get_x("", "n2v2_name_x_0"); %>"/></th>
+	<th><input type="text" placeholder="192.168.2.0/24" maxlength="255" class="span12" style="width: 150px" size="200" name="n2v2_route_x_0" value="<% nvram_get_x("", "n2v2_route_x_0"); %>"/></th>
+	<th><input type="text" placeholder="10.26.0.2" maxlength="255" class="span12" style="width: 150px" size="200" name="n2v2_ip_x_0" value="<% nvram_get_x("", "n2v2_ip_x_0"); %>" /></th>
+	<th><button class="btn" style="max-width: 219px" type="submit" onclick="return markrouteRULES(this, 64, ' Add ');" name="markrouteRULES2" value="<#CTL_add#>" size="12"><i class="icon icon-plus"></i></button></th>
+	</tr>
+	<tr id="row_rules_body" >
+	<td colspan="4" style="border-top: 0 none; padding: 0px;">
+	<div id="MrouteRULESList_Block"></div>
+	</td>
+	</tr>
+										</tr>
+										<tr>
 										<tr>
 											<td colspan="4" style="border-top: 0 none;">
 												<br />
