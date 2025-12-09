@@ -17,20 +17,23 @@
 <script type="text/javascript" src="/bootstrap/js/engage.itoggle.min.js"></script>
 <script type="text/javascript" src="/state.js"></script>
 <script type="text/javascript" src="/general.js"></script>
-<script type="text/javascript" src="/itoggle.js"></script>
 <script type="text/javascript" src="/client_function.js"></script>
+<script type="text/javascript" src="/itoggle.js"></script>
 <script type="text/javascript" src="/popup.js"></script>
 <script type="text/javascript" src="/help.js"></script>
-<script type="text/javascript" src="/help_b.js"></script>
 <script>
 var $j = jQuery.noConflict();
 
+<% nelink_status(); %>
+<% login_state_hook(); %>
 $j(document).ready(function() {
-
 	init_itoggle('n2v2_enable');
-	init_itoggle('zerotiermoon_enable');
-
-});
+	$j("#tab_n2v2_cfg, #tab_nelink_web, #tab_n2v2_sta, #tab_n2v2_log").click(
+	function () {
+		var newHash = $j(this).attr('href').toLowerCase();
+		showTab(newHash);
+		return false;
+	});
 
 </script>
 <script>
@@ -49,9 +52,9 @@ var isMenuopen = 0;
 function initial(){
 	show_banner(2);
 	show_menu(5,17,0);
+	showMRULESList();
 	showmenu();
 	fill_status(n2v2_status());
-	showMRULESList();
 	show_footer();
 }
 
