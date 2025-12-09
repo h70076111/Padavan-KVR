@@ -23,7 +23,6 @@
 <script type="text/javascript" src="/help.js"></script>
 <script>
 var $j = jQuery.noConflict();
-
 <% n2v2_status(); %>
 <% login_state_hook(); %>
 $j(document).ready(function() {
@@ -51,15 +50,29 @@ function initial(){
 	show_banner(2);
 	show_menu(5,17,0);
 	showMRULESList();
+	showMAPPList();
 	showmenu();
 	fill_status(n2v2_status());
+	showmenu();
 	show_footer();
+	change_n2v2_enable(1);
+	if (!login_safe())
+        		textarea_scripts_enabled(0)
+}
+
+function fill_status(status_code){
+	var stext = "Unknown";
+	if (status_code == 0)
+		stext = "<#Stopped#>";
+	else if (status_code == 1)
+		stext = "<#Running#>";
+	$("n2v2_status").innerHTML = '<span class="label label-' + (status_code != 0 ? 'success' : 'warning') + '">' + stext + '</span>';
 }
 
 function applyRule(){
 	showLoading();
 	
-	document.form.action_mode.value = " Restart ";
+	document.form.action_mode.value = " Apply ";
 	document.form.current_page.value = "/Advanced_n2v2.asp";
 	document.form.next_page.value = "";
 	
@@ -70,13 +83,8 @@ function done_validating(action){
 	refreshpage();
 }
 
-function fill_status(status_code){
-	var stext = "Unknown";
-	if (status_code == 0)
-		stext = "<#Stopped#>";
-	else if (status_code == 1)
-		stext = "<#Running#>";
-	$("n2v2_status").innerHTML = '<span class="label label-' + (status_code != 0 ? 'success' : 'warning') + '">' + stext + '</span>';
+function textarea_scripts_enabled(v){
+    	inputCtrl(document.form['scripts.n2v2.conf'], v);
 }
 
 function markGroupRULES(o, c, b) {
@@ -120,9 +128,9 @@ function showMRULESList(){
 	else{
 	    for(var i = 0; i < m_list.length; i++){
 		if(m_list[i][0] == 0)
-		zero_enable="已禁用";
+		n2v2_enable="已禁用";
 		else{
-		zero_enable="已启用";
+		n2v2_enable="已启用";
 		}
 		code +='<tr id="rowrl' + i + '">';
 		code +='<td width="20%">&nbsp;' + n2v2_enable + '</td>';
