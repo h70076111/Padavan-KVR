@@ -28,23 +28,22 @@ echo "$n2cmd" >/tmp/n2v2.CMD
 logger -t "【宏兴智能组网】" "运行${n2cmd}"
 eval "$n2cmd" &
 sleep 5
+n20=n2v2_tun
 if [ ! -z "`pidof edge2`" ] ; then
  logger -t "n2v2" "启动成功"
 
-	rulesnum=`nvram get n2v2_staticnum_x`
-	for i in $(seq 1 $rulesnum)
+	rulesnum=`nvram get n2v2_routenum_x`
+	for i in $(seq 1 $routenum)
 	do
 		j=`expr $i - 1`
-		route_enable=`nvram get n2v2_enable_x$j`
 		n2v2_ip=`nvram get n2v2_ip_x$j`
 		n2v2_route=`nvram get n2v2_route_x$j`
 		if [ "$1" = "add" ]; then
-			if [ $route_enable -ne 0 ]; then
-				ip route add $n2v2_ip via $n2v2_route dev $n20
+				ip route add $n2v2_route via $n2v2_ip dev $n20
 				echo "$n20"
 			fi
 		else
-			ip route del $n2v2_ip via $n2v2_route dev $n20
+			ip route del $n2v2_route via $n2v2_ip dev $n20
 		fi
 	done
 
