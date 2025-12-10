@@ -48,12 +48,12 @@ var isMenuopen = 0;
 function initial(){
 	show_banner(2);
 	show_menu(5,17,0);
-	showROUTEList();
-	showMRULESList();
-	fill_status(n2v2_status());
-	show_footer();
-	change_n2v2_enable(1);
-	if (!login_safe())
+showmenu();
+fill_status(n2v2_status());
+showROUTEList();
+show_footer();
+change_n2v2_enable(1);
+if (!login_safe())
         		textarea_scripts_enabled(0);
 }
 
