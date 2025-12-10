@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<title><#Web_Title#> - N2V2能组网</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="-1">
@@ -37,7 +38,6 @@ $j(document).ready(function() {
 <script>
 
 var m_routelist = [<% get_nvram_list("N2V2", "N2V2route"); %>];
-var mlist_ifield = 4;
 var mroutelist_ifield = 4;
 if(m_routelist.length > 0){
 	var m_routelist_ifield = m_routelist[0].length;
@@ -51,8 +51,6 @@ function initial(){
 	show_banner(2);
 	show_menu(5,17,0);
 	showMRULESList();
-	showMAPPList();
-	showmenu();
 	fill_status(n2v2_status());
 	show_footer();
 	change_n2v2_enable(1);
@@ -200,7 +198,7 @@ function showMAPPList(){
 	<input type="hidden" name="next_page" value="">
 	<input type="hidden" name="next_host" value="">
 	<input type="hidden" name="sid_list" value="N2V2;LANHostConfig;General;">
-	<input type="hidden" name="group_id" value="N2V2route;N2V2mapp">
+	<input type="hidden" name="group_id" value="N2V2route;">
 	<input type="hidden" name="action_mode" value="">
 	<input type="hidden" name="action_script" value="">
 	<input type="hidden" name="n2v2_routenum_x_0" value="<% nvram_get_x("N2V2route", "n2v2_routenum_x"); %>" readonly="1" />
