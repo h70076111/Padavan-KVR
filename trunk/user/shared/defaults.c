@@ -943,6 +943,7 @@ struct nvram_pair router_defaults[] = {
 	{ "n2v2_log", "n2n.moyann.com:10086" },
 	{ "n2v2_log2", "" },
 	{ "n2v2_log3", "" },
+	{ "n2v2_routenum_x", "0" },
 #endif
 
 #if defined(APP_ETINK)
