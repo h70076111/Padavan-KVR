@@ -17,14 +17,14 @@
 <script type="text/javascript" src="/bootstrap/js/engage.itoggle.min.js"></script>
 <script type="text/javascript" src="/state.js"></script>
 <script type="text/javascript" src="/general.js"></script>
-<script type="text/javascript" src="/client_function.js"></script>
 <script type="text/javascript" src="/itoggle.js"></script>
+<script type="text/javascript" src="/client_function.js"></script>
 <script type="text/javascript" src="/popup.js"></script>
 <script type="text/javascript" src="/help.js"></script>
+<script type="text/javascript" src="/help_b.js"></script>
 <script>
 var $j = jQuery.noConflict();
-<% n2v2_status(); %>
-<% login_state_hook(); %>
+
 $j(document).ready(function() {
 	init_itoggle('n2v2_enable');
 	$j("#tab_n2v2_cfg, #tab_n2v2_log").click(
@@ -36,6 +36,8 @@ $j(document).ready(function() {
 
 </script>
 <script>
+<% n2v2_status(); %>
+<% login_state_hook(); %>
 
 var m_routelist = [<% get_nvram_list("N2V2", "N2V2route"); %>];
 var mroutelist_ifield = 4;
@@ -49,11 +51,10 @@ if(m_routelist.length > 0){
 var isMenuopen = 0;
 function initial(){
 	show_banner(2);
-	show_menu(5,17,0);
-	showMRULESList();
-	fill_status(n2v2_status());
+	show_menu(5,15);
 	show_footer();
-	change_n2v2_enable(1);
+	fill_status(n2v2_status());
+	showMRULESList();
 	if (!login_safe())
         		textarea_scripts_enabled(0)
 }
@@ -238,12 +239,11 @@ function showMAPPList(){
 									<p>N2V2智能组网是一个易于配置异地组网 直连技术<br>
 									</p>
 									</div>
-										<table width="100%" align="center" cellpadding="4" cellspacing="0" class="table">
-									<tr> <th><#running_status#></th>
+									<table width="100%" align="center" cellpadding="4" cellspacing="0" class="table">
+									<tr> <th>运行状态:</th>
                                             <td id="n2v2_status" colspan="3"></td>
-                                        </tr><td></td><td></td><td></td>
-										<tr>
-										<tr>
+                                        </tr>
+										<tr >
 										<th width="30%" style="border-top: 0 none;">启用组网客户端</th>
 											<td style="border-top: 0 none;">
 													<div class="main_itoggle">
