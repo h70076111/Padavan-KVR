@@ -3742,6 +3742,13 @@ apply_cgi(const char *url, webs_t wp)
 #endif
 		return 0;
 	}
+	else if (!strcmp(value, " RestartN2V2 "))
+	{
+#if defined(APP_N2V2)
+		system("/usr/bin/n2v2.sh restart &");
+#endif
+		return 0;
+	}
 	else if (!strcmp(value, " Restartnelink "))
 	{
 #if defined(APP_NELINK)
