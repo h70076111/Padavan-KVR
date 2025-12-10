@@ -35,7 +35,6 @@ $j(document).ready(function() {
 <script>
 <% n2v2_status(); %>
 <% login_state_hook(); %>
-
 var m_routelist = [<% get_nvram_list("N2V2", "N2V2route"); %>];
 var mroutelist_ifield = 4;
 if(m_routelist.length > 0){
