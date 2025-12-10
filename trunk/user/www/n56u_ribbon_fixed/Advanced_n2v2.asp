@@ -52,9 +52,9 @@ var isMenuopen = 0;
 function initial(){
 	show_banner(2);
 	show_menu(5,15);
+	showMRULESList();
 	show_footer();
 	fill_status(n2v2_status());
-	showMRULESList();
 	if (!login_safe())
         		textarea_scripts_enabled(0)
 }
@@ -174,6 +174,14 @@ function showMAPPList(){
 	$("MmappRULESList_Block").innerHTML = code;
 }
 
+function button_restartN2V2(){
+    	var $j = jQuery.noConflict();
+    	$j.post('/apply.cgi',
+    	{
+        		'action_mode': ' RestartN2V2 ',
+    	});
+}
+
 </script>
 </head>
 
@@ -238,24 +246,29 @@ function showMAPPList(){
 									<div class="alert alert-info" style="margin: 10px;">
 									<p>N2V2智能组网是一个易于配置异地组网 直连技术<br>
 									</p>
-									</div>
-									<table width="100%" align="center" cellpadding="4" cellspacing="0" class="table">
-									<tr> <th>运行状态:</th>
-                                            <td id="n2v2_status" colspan="3"></td>
-                                        </tr>
-										<tr >
-										<th width="30%" style="border-top: 0 none;">启用组网客户端</th>
-											<td style="border-top: 0 none;">
-													<div class="main_itoggle">
-													<div id="n2v2_enable_on_of">
-														<input type="checkbox" id="n2v2_enable_fake" <% nvram_match_x("", "n2v2_enable", "1", "value=1 checked"); %><% nvram_match_x("", "n2v2_enable", "0", "value=0"); %>  />
-													</div>
-												</div>
-												<div style="position: absolute; margin-left: -10000px;">
-													<input type="radio" value="1" name="n2v2_enable" id="n2v2_enable_1" class="input" value="1" <% nvram_match_x("", "n2v2_enable", "1", "checked"); %> /><#checkbox_Yes#>
-													<input type="radio" value="0" name="n2v2_enable" id="n2v2_enable_0" class="input" value="0" <% nvram_match_x("", "n2v2_enable", "0", "checked"); %> /><#checkbox_No#>
-												</div>
-											</td>
+	</div>
+	<table width="100%" cellpadding="4" cellspacing="0" class="table">
+	<tr>
+	<th><#running_status#>
+	</th>
+	<td colspan="4" id="n2v2_status"></td>
+	</tr><td colspan="4"></td>
+	<tr>
+	<th width="30%" style="border-top: 0 none;">启用客户端</th>
+	<td style="border-top: 0 none;">
+	<div class="main_itoggle">
+	<div id="n2v2_enable_on_of">
+		<input type="checkbox" id="n2v2_enable_fake" <% nvram_match_x("", "n2v2_enable", "1", "value=1 checked"); %><% nvram_match_x("", "n2v2_enable", "0", "value=0"); %>  />
+	</div>
+	</div>
+	<div style="position: absolute; margin-left: -10000px;">
+	<input type="radio" value="1" name="bafa_enable" id="n2v2_enable_1" class="input" value="1" <% nvram_match_x("", "n2v2_enable", "1", "checked"); %> /><#checkbox_Yes#>
+	<input type="radio" value="0" name="bafa_enable" id="n2v2_enable_0" class="input" value="0" <% nvram_match_x("", "n2v2_enable", "0", "checked"); %> /><#checkbox_No#>
+	</div>
+	</td>
+	<td colspan="4" style="border-top: 0 none;">
+	<input class="btn btn-success" style="width:150px" type="button" name="restartJYL" value="重启" onclick="button_restartN2V2()" />
+	</td>
 
 										</tr>
 
