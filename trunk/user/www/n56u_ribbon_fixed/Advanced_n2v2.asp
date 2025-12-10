@@ -130,7 +130,7 @@ function showROUTEList(){
 		code +='<td width="38%">&nbsp;' + m_routelist[i][1] + '</td>';
 		code +='<td colspan="2" width="40%">' + m_routelist[i][2] + '</td>';
 		code +='<td width="50%"></td>';
-		code +='<center><td width="20%" style="text-align: center;"><input type="checkbox" name="HXCLIroute_s" value="' + m_routelist[i][mroutelist_ifield] + '" onClick="changeBgColorrl(this,' + i + ');" id="check' + m_routelist[i][mroutelist_ifield] + '"></td></center>';
+		code +='<center><td width="20%" style="text-align: center;"><input type="checkbox" name="N2V2route_s" value="' + m_routelist[i][mroutelist_ifield] + '" onClick="changeBgColorrl(this,' + i + ');" id="check' + m_routelist[i][mroutelist_ifield] + '"></td></center>';
 		
 		code +='</tr>';
 	    }
@@ -160,7 +160,7 @@ function showMAPPList(){
 		code +='<td width="30%">' + m_mapplist[i][2] + '</td>';
 		code +='<td width="20%">&nbsp;' + m_mapplist[i][3] + '</td>';
 		code +='<td width="50%"></td>';
-		code +='<center><td width="20%" style="text-align: center;"><input type="checkbox" name="HXCLImapp_s" value="' + m_mapplist[i][mmapplist_ifield] + '" onClick="changeBgColorrl(this,' + i + ');" id="check' + m_mapplist[i][mmapplist_ifield] + '"></td></center>';
+		code +='<center><td width="20%" style="text-align: center;"><input type="checkbox" name="N2V2mapp_s" value="' + m_mapplist[i][mmapplist_ifield] + '" onClick="changeBgColorrl(this,' + i + ');" id="check' + m_mapplist[i][mmapplist_ifield] + '"></td></center>';
 		
 		code +='</tr>';
 	    }
