@@ -80,6 +80,10 @@ start)
 stop)
 	stop_n2v &
 	;;
+restart)
+	stop_n2v
+	start_n2v &
+	;;
 *)
 	echo "check"
 	#exit 0
