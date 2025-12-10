@@ -48,10 +48,11 @@ var isMenuopen = 0;
 function initial(){
 	show_banner(2);
 	show_menu(5,17,0);
-	fill_status(n2v2_status());
-	show_footer();
 	showROUTEList();
 	showMRULESList();
+	fill_status(n2v2_status());
+	show_footer();
+	change_n2v2_enable(1);
 
 }
 
