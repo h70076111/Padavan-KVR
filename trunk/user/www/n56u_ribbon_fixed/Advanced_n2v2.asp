@@ -50,6 +50,7 @@ function initial(){
 	show_menu(5,17,0);
 	fill_status(n2v2_status());
 	show_footer();
+	showROUTEList();
 	showMRULESList();
 
 }
