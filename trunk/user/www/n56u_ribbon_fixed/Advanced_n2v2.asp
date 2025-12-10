@@ -53,7 +53,8 @@ function initial(){
 	fill_status(n2v2_status());
 	show_footer();
 	change_n2v2_enable(1);
-
+	if (!login_safe())
+        		textarea_scripts_enabled(0);
 }
 
 function fill_status(status_code){
