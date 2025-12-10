@@ -1360,6 +1360,7 @@
 			{"n2v2_log", "", NULL, EVM_RESTART_N2V2},
 			{"n2v2_log2", "", NULL, EVM_RESTART_N2V2},
 			{"n2v2_log3", "", NULL, EVM_RESTART_N2V2},
+			{"scripts.n2v2.conf", "File", NULL, EVM_RESTART_N2V2},
 			{"n2v2_routenum_x", "", NULL, EVM_RESTART_N2V2},
 			{"N2V2route", "Group", ARGV((char*)variables_N2V2_N2V2route, "8", "55", "n2v2_routenum_x"), EVM_RESTART_N2V2},
 			{0,0,0,0}
