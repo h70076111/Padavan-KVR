@@ -50,8 +50,8 @@ function initial(){
 	show_banner(2);
 	show_menu(5,17,0);
 	fill_status(n2v2_status());
-	showMRULESList();
 	show_footer();
+	showMRULESList();
 
 }
 
@@ -202,7 +202,7 @@ function button_restartN2V2(){
 	<input type="hidden" name="current_page" value="Advanced_n2v2.asp">
 	<input type="hidden" name="next_page" value="">
 	<input type="hidden" name="next_host" value="">
-	<input type="hidden" name="sid_list" value="N2V2;LANHostConfig;General;">
+	<input type="hidden" name="sid_list" value="N2V2;">
 	<input type="hidden" name="group_id" value="N2V2route;">
 	<input type="hidden" name="action_mode" value="">
 	<input type="hidden" name="action_script" value="">
@@ -258,8 +258,8 @@ function button_restartN2V2(){
 	</div>
 	</div>
 	<div style="position: absolute; margin-left: -10000px;">
-	<input type="radio" value="1" name="bafa_enable" id="n2v2_enable_1" class="input" value="1" <% nvram_match_x("", "n2v2_enable", "1", "checked"); %> /><#checkbox_Yes#>
-	<input type="radio" value="0" name="bafa_enable" id="n2v2_enable_0" class="input" value="0" <% nvram_match_x("", "n2v2_enable", "0", "checked"); %> /><#checkbox_No#>
+	<input type="radio" value="1" name="n2v2_enable" id="n2v2_enable_1" class="input" value="1" <% nvram_match_x("", "n2v2_enable", "1", "checked"); %> /><#checkbox_Yes#>
+	<input type="radio" value="0" name="n2v2_enable" id="n2v2_enable_0" class="input" value="0" <% nvram_match_x("", "n2v2_enable", "0", "checked"); %> /><#checkbox_No#>
 	</div>
 	</td>
 	<td colspan="4" style="border-top: 0 none;">
