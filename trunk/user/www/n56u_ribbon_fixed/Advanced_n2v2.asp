@@ -26,13 +26,10 @@
 var $j = jQuery.noConflict();
 
 $j(document).ready(function() {
-	init_itoggle('n2v2_enable');
-	$j("#tab_n2v2_cfg, #tab_n2v2_log").click(
-	function () {
-		var newHash = $j(this).attr('href').toLowerCase();
-		showTab(newHash);
-		return false;
-	});
+	
+	show_footer();init_itoggle('n2v2_enable');
+
+});
 
 </script>
 <script>
@@ -51,12 +48,11 @@ if(m_routelist.length > 0){
 var isMenuopen = 0;
 function initial(){
 	show_banner(2);
-	show_menu(5,15);
+	show_menu(5,17,0);
+	fill_status(n2v2_status());
 	showMRULESList();
 	show_footer();
-	fill_status(n2v2_status());
-	if (!login_safe())
-        		textarea_scripts_enabled(0)
+
 }
 
 function fill_status(status_code){
