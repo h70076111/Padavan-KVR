@@ -25,26 +25,24 @@ ifconfig n2v2_tun down && ip tuntap del n2v2_tun mode tun
 
 n2cmd="/usr/bin/n2v2 -c $n2v2_keyg -a $n2v2_ip -d n2v2_tun -l $n2v2_log"
 echo "$n2cmd" >/tmp/n2v2.CMD 
-logger -t "【宏兴智能组网】" "运行${n2cmd}"
+logger -t "【N2V2智能组网】" "运行${n2cmd}"
 eval "$n2cmd" &
 sleep 5
-n20=n2v2_tun
-if [ ! -z "`pidof edge2`" ] ; then
+if [ ! -z "`pidof n2v2`" ] ; then
  logger -t "n2v2" "启动成功"
-
-	rulesnum=`nvram get n2v2_routenum_x`
-	for i in $(seq 1 $routenum)
+	
+	n20=n2v2_tun
+	routenum=`nvram get n2v2_routenum_x`
+	for r in $(seq 1 $routenum)
 	do
-		j=`expr $i - 1`
-		n2v2_ip=`nvram get n2v2_ip_x$j`
-		n2v2_route=`nvram get n2v2_route_x$j`
-		if [ "$1" = "add" ]; then
-				ip route add $n2v2_route via $n2v2_ip dev $n20
-				echo "$n20"
-			fi
-		else
-			ip route del $n2v2_route via $n2v2_ip dev $n20
-		fi
+		i=`expr $r - 1`
+		n2v2_route=`nvram get n2v2_route_x$i`
+		n2v2_ip=`nvram get n2v2_ip_x$i`
+		hx_peer="ip route add ${n2v2_route} via ${n2v2_ip} dev ${n20}"
+		n2_peer="$(echo $n2_peer | tr -d ' ')"
+		CMD="${n2_peer}"  
+		echo "$CMD"
+		eval "$CMD"
 	done
 
 #放行vnt防火墙
@@ -69,7 +67,7 @@ stop_n2v() {
 	
 	n2v2_process=$(pidof n2v2)
 	if [ -n "$n2v2_process" ]; then
-		logger -t "组网" "关闭进程..."
+		logger -t "N2组网" "关闭进程..."
 		killall n2v2 >/dev/null 2>&1
 		kill -9 "$n2v2_process" >/dev/null 2>&1
 	fi
