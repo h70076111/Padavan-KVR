@@ -27,7 +27,7 @@ var $j = jQuery.noConflict();
 <% n2v2_status(); %>
 <% login_state_hook(); %>
 $j(document).ready(function() {
-		init_itoggle('n2v2_enable');
+	init_itoggle('n2v2_enable');
 
 });
 
@@ -46,7 +46,7 @@ if(m_routelist.length > 0){
 var isMenuopen = 0;
 function initial(){
 	show_banner(2);
-	show_menu(5,17,0);
+	show_menu(5, 17, 0);
 	showROUTEList();
 	fill_status(n2v2_status());
 	show_footer();
@@ -78,6 +78,24 @@ function done_validating(action){
 
 function textarea_scripts_enabled(v){
     	inputCtrl(document.form['scripts.n2v2.conf'], v);
+}
+function change_n2v2_enable(mflag){
+	var m = document.form.n2v2_enable.value;
+	var is_n2v2_enable = (m == "1" || m == "2") ? "重启" : "更新";
+	document.form.restartN2V2.value = is_n2v2_enable;
+}
+
+function button_restartN2V2() {
+    var m = document.form.n2v2_enable.value;
+
+    var actionMode = (m == "1" || m == "2") ? ' RestartN2V2 ' : ' Updaten2v2 ';
+
+    change_n2v2_enable(m); 
+
+    var $j = jQuery.noConflict(); 
+    $j.post('/apply.cgi', {
+        'action_mode': actionMode 
+    });
 }
 
 function markrouteRULES(o, c, b) {
