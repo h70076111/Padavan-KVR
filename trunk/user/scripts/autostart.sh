@@ -107,9 +107,9 @@ if [ $(nvram get nelink_enable) = 1 ] ; then
 logger -t "自动启动" "正在启ne组网"
 /usr/bin/ne.sh start &
 fi
-if [ $(nvram get n2v2_enable) = 1 ] ; then
+if [ $(nvram get ntwon_enable) = 1 ] ; then
 logger -t "自动启动" "正在启N2V2组网"
-/usr/bin/n2v2.sh start &
+/usr/bin/ntwon.sh start &
 fi
 if [ $(nvram get etink_enable) = 1 ] ; then
 logger -t "自动启动" "正在启et组网"
