@@ -68,13 +68,8 @@ function initial(){
 	show_banner(2);
 	show_menu(5, 17, 0);
 	showROUTEList();
-	showMAPPList();
 	fill_status(hxcli_status());
 	show_footer();
-	change_hxcli_enable(1);
-	change_hxcli_model(1);
-	if (!login_safe())
-        		textarea_scripts_enabled(0);
 
 }
 
@@ -300,49 +295,6 @@ function markrouteRULES(o, c, b) {
 	return true;
 }
 
-function markmappRULES(o, c, b) {
-	document.form.group_id.value = "HXCLImapp";
-	if(b == " Add "){
-		if (document.form.hxcli_mappnum_x_0.value >= c){
-			alert("<#JS_itemlimit1#> " + c + " <#JS_itemlimit2#>");
-			return false;
-		}else if (document.form.hxcli_mappport_x_0.value==""){
-			alert("<#JS_fieldblank#>");
-			document.form.hxcli_mappport_x_0.focus();
-			document.form.hxcli_mappport_x_0.select();
-			return false;
-		}else if(document.form.hxcli_mappip_x_0.value==""){
-			alert("<#JS_fieldblank#>");
-			document.form.hxcli_mappip_x_0.focus();
-			document.form.hxcli_mappip_x_0.select();
-			return false;
-		}else if(document.form.hxcli_mapeerport_x_0.value==""){
-			alert("<#JS_fieldblank#>");
-			document.form.hxcli_mapeerport_x_0.focus();
-			document.form.hxcli_mapeerport_x_0.select();
-			return false;
-		}else{
-			for(i=0; i<m_mapplist.length; i++){
-				if(document.form.hxcli_mappnet_x_0.value==m_mapplist[i][0]) {
-					if(document.form.hxcli_mappport_x_0.value==m_mapplist[i][1]) {
-						if(document.form.hxcli_mappip_x_0.value==m_mapplist[i][2]) {
-							if(document.form.hxcli_mapeerport_x_0.value==m_mapplist[i][3]) {
-								alert('<#JS_duplicate#>' + ' (' + m_mapplist[i][1] + ')' );
-								document.form.hxcli_mapeerport_x_0.focus();
-								document.form.hxcli_mapeerport_x_0.select();
-								return false;
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-	pageChanged = 0;
-	document.form.action_mode.value = b;
-	return true;
-}
-
 function showROUTEList(){
 	var code = '<table width="100%" cellspacing="0" cellpadding="4" class="table table-list">';
 	if(m_routelist.length == 0)
@@ -365,36 +317,6 @@ function showROUTEList(){
 	}
 	code +='</table>';
 	$("MrouteRULESList_Block").innerHTML = code;
-}
-
-function showMAPPList(){
-	var code = '<table width="100%" cellspacing="0" cellpadding="4" class="table table-list">';
-	if(m_mapplist.length == 0)
-		code +='<tr><td colspan="5" style="text-align: center;"><div class="alert alert-info"><#IPConnection_VSList_Norule#></div></td></tr>';
-	else{
-	    for(var i = 0; i < m_mapplist.length; i++){
-		if(m_mapplist[i][0] == 0)
-		hxcli_mappnet="TCP";
-		else{
-		hxcli_mappnet="UDP";
-		}
-		code +='<tr id="rowrl' + i + '">';
-		code +='<td width="15%">&nbsp;' + hxcli_mappnet + '</td>';
-		code +='<td width="25%">&nbsp;' + m_mapplist[i][1] + '</td>';
-		code +='<td width="30%">' + m_mapplist[i][2] + '</td>';
-		code +='<td width="20%">&nbsp;' + m_mapplist[i][3] + '</td>';
-		code +='<td width="50%"></td>';
-		code +='<center><td width="20%" style="text-align: center;"><input type="checkbox" name="HXCLImapp_s" value="' + m_mapplist[i][mmapplist_ifield] + '" onClick="changeBgColorrl(this,' + i + ');" id="check' + m_mapplist[i][mmapplist_ifield] + '"></td></center>';
-		
-		code +='</tr>';
-	    }
-		code += '<tr>';
-		code += '<td colspan="5">&nbsp;</td>'
-		code += '<td><button class="btn btn-danger" type="submit" onclick="markmappRULES(this, 64, \' Del \');" name="HXCLImapp"><i class="icon icon-minus icon-white"></i></button></td>';
-		code += '</tr>'
-	}
-	code +='</table>';
-	$("MmappRULESList_Block").innerHTML = code;
 }
 
 function clearLog(){
@@ -542,11 +464,13 @@ function button_hxcli_status() {
 									<p>宏兴智能组网是一个易于配置异地组网 直连技术支持IPV6<br>
 									</p>
 										</div>
-									<table width="100%" align="center" cellpadding="4" cellspacing="0" class="table">
-									<tr> <th><#running_status#></th>
-                                            <td id="hxcli_status" colspan="3"></td>
-                                        </tr><td></td><td></td><td></td>
-										<tr>
+		<table width="100%" cellpadding="4" cellspacing="0" class="table">
+	<tr>
+	<th><#running_status#>
+	</th>
+	<td colspan="4" id="hxcli_status"></td>
+	</tr><td colspan="4"></td>
+	<tr>
 										<tr>
 										<th width="30%" style="border-top: 0 none;">启用组网客户端</th>
 											<td style="border-top: 0 none;">
