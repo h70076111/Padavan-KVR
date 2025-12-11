@@ -28,6 +28,14 @@ var $j = jQuery.noConflict();
 <% login_state_hook(); %>
 $j(document).ready(function() {
 	init_itoggle('n2v2_enable');
+	$j("#tab_n2v2_cfg, #tab_n2v2_log").click(
+	function () {
+		var newHash = $j(this).attr('href').toLowerCase();
+		showTab(newHash);
+		return false;
+	});
+
+});
 
 });
 
@@ -62,6 +70,23 @@ function fill_status(status_code){
 	$("n2v2_status").innerHTML = '<span class="label label-' + (status_code != 0 ? 'success' : 'warning') + '">' + stext + '</span>';
 }
 
+var arrHashes = ["cfg","log"];
+function showTab(curHash) {
+	var obj = $('tab_n2v2_' + curHash.slice(1));
+	if (obj == null || obj.style.display == 'none')
+	curHash = '#cfg';
+	for (var i = 0; i < arrHashes.length; i++) {
+		if (curHash == ('#' + arrHashes[i])) {
+			$j('#tab_n2v2_' + arrHashes[i]).parents('li').addClass('active');
+			$j('#wnd_n2v2_' + arrHashes[i]).show();
+		} else {
+			$j('#wnd_n2v2_' + arrHashes[i]).hide();
+			$j('#tab_n2v2_' + arrHashes[i]).parents('li').removeClass('active');
+			}
+		}
+	window.location.hash = curHash;
+}
+
 function applyRule(){
 	showLoading();
 	
@@ -79,10 +104,28 @@ function done_validating(action){
 function textarea_scripts_enabled(v){
     	inputCtrl(document.form['scripts.n2v2.conf'], v);
 }
+
 function change_n2v2_enable(mflag){
 	var m = document.form.n2v2_enable.value;
 	var is_n2v2_enable = (m == "1" || m == "2") ? "重启" : "更新";
 	document.form.restartN2V2.value = is_n2v2_enable;
+		if(m == "2"){
+		showhide_div("n2v2_ip_td", 0);
+	
+	} 
+	
+	if(m == "1"){	
+		showhide_div("hxcli_ip_td", 1);
+	
+		showhide_div("n2v2_mapping_table", 1);
+		o_mtu = document.form.n2v2_mtu;
+		
+		if (o_mtu && parseInt(o_mtu.value) == 0)
+			o_mtu.value = "";
+			
+		if (o_mtu && parseInt(o_mtu.value) > 1500)
+			o_mru.value = "1500";
+	}
 }
 
 function button_restartN2V2() {
