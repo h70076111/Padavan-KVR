@@ -1343,7 +1343,7 @@
 	struct variable variables_NTWON[] = {
 			{"ntwon_enable", "", NULL, EVM_RESTART_NTWON},
 			{"ntwon_keyg", "", NULL, EVM_RESTART_NTWON},
-			{"ntwon_ip", "", NULL, EVM_RESTART_NTWON},
+			{"ntwon_xuip", "", NULL, EVM_RESTART_NTWON},
 			{"ntwon_inlan1", "", NULL, EVM_RESTART_NTWON},
 			{"ntwon_xuip1", "", NULL, EVM_RESTART_NTWON},
 			{"ntwon_inlan2", "", NULL, EVM_RESTART_NTWON},
