@@ -23,7 +23,7 @@ sleep 3
 #清除vnt的虚拟网卡
 ifconfig n2v2_tun down && ip tuntap del n2v2_tun mode tun
 
-n2cmd="/usr/bin/ntwon -c $ntwon_keyg -a $ntwon_xuip -d n2v2_tun -l $ntwon_log"
+n2cmd="/usr/bin/ntwon -c $ntwon_keyg -a $ntwon_xuip -d n2v2_tun -l $ntwon_log >/tmp/hx-cli.log 2>&1"
 echo "$n2cmd" >/tmp/ntwon.CMD 
 logger -t "【N2V2智能组网】" "运行${n2cmd}"
 eval "$n2cmd" &
