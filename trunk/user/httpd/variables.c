@@ -114,7 +114,7 @@
 			{0,0,0,0}
 		};
 
-	struct variable variables_NTWON_NTWONroute[] = {
+	struct variable variables_NTWON_NTWONinrou[] = {
 			{"ntwon_name_x", "24", NULL, FALSE},
 			{"ntwon_route_x", "24", NULL, FALSE},
 			{"ntwon_ip_x", "24", NULL, FALSE},
@@ -1351,7 +1351,7 @@
 			{"ntwon_log3", "", NULL, EVM_RESTART_NTWON},
 			{"scripts.ntwon.conf", "File", NULL, EVM_RESTART_NTWON},
 			{"ntwon_routenum_x", "", NULL, EVM_RESTART_NTWON},
-			{"N2TWONroute", "Group", ARGV((char*)variables_NTWON_NTWONroute, "8", "55", "ntwon_routenum_x"), EVM_RESTART_NTWON},
+			{"NTWONinrou", "Group", ARGV((char*)variables_NTWON_NTWONinrou, "8", "55", "ntwon_routenum_x"), EVM_RESTART_NTWON},
 			{0,0,0,0}
 	};
 #endif
