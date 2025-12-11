@@ -54,15 +54,6 @@ if(m_routelist.length > 0){
 	}
 }
 
-var m_mapplist = [<% get_nvram_list("HXCLI", "HXCLImapp"); %>];
-var mmapplist_ifield = 5;
-if(m_mapplist.length > 0){
-	var m_mapplist_ifield = m_mapplist[0].length;
-	for (var i = 0; i < m_mapplist.length; i++) {
-		m_mapplist[i][mmapplist_ifield] = i;
-	}
-}
-
 var isMenuopen = 0;
 function initial(){
 	show_banner(2);
