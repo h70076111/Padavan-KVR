@@ -324,7 +324,7 @@ function clearLog(){
 										<tr>
 										<th>本机虚拟ip（格式 20）</th>
 				<td>
-					<input type="text" class="input" name="ntwon_ip" id="ntwon_ip" style="width: 200px" value="<% nvram_get_x("","ntwon_ip"); %>" />
+					<input type="text" class="input" name="ntwon_xuip" id="ntwon_uxip" style="width: 200px" value="<% nvram_get_x("","ntwon_xuip"); %>" />
 				</td>
 
 										</tr>
@@ -353,7 +353,7 @@ function clearLog(){
 										<tr>
 	</div>
 	</td>
-	</tr><tr id="ntwon_ntwon_td"><td colspan="3"></td></tr>
+	</tr><tr id="ntwon_log_td"><td colspan="3"></td></tr>
 	<table id="ntwon_subnet_table" width="100%" align="center" cellpadding="4" cellspacing="0" class="table">
 	<tr> <th colspan="4" style="background-color: #756c78;">子网配置 (访问对端内网设备，还需对端配置本地网段)</th></tr>
 	<tr id="row_rules_caption">
