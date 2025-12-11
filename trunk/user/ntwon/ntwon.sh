@@ -38,11 +38,14 @@ if [ ! -z "`pidof ntwon`" ] ; then
 		i=`expr $r - 1`
 		ntwon_route=`nvram get ntwon_route_x$i`
 		ntwon_ip=`nvram get ntwon_ip_x$i`
-		n2_peer="ip route add ${ntwon_route} via ${ntwon_ip} dev ${n20}"
-		n2_peer="$(echo $n2_peer | tr -d ' ')"
-		CMD="${n2_peer}"  
-		echo "$CMD"
-		eval "$CMD"
+		if [ "$1" = "add" ]; then
+			if [ $ntwon_name -ne 0 ]; then
+		ip route add $ntwon_route via $ntwon_ip dev $n20
+		echo "$n20"
+		fi
+	else
+		ip route add $ntwon_route via $ntwon_ip dev $n20
+	fi
 	done
 
 #放行vnt防火墙
