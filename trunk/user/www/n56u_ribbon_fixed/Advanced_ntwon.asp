@@ -333,36 +333,21 @@ function clearLog(){
 					<input type="text" class="input" name="ntwon_log" id="ntwon_log" style="width: 240px" value="<% nvram_get_x("","ntwon_log"); %>" />
 				</td>
 
-
-										</tr>
-										<tr>
-										<th>开起第2个设备(不用留空）</th>
-				<td>
-					<input type="text" class="input" name="ntwon_log2" id="ntwon_log2" style="width: 240px" value="<% nvram_get_x("","ntwon_log2"); %>" />
-				</td>
-
-										</tr>
-										<tr>
-										<th>开起第3个设备(route add -net inip/24 gw xuip）</th>
-				<td>
-					<input type="text" class="input" name="ntwon_log3" id="ntwon_log3" style="width: 240px" value="<% nvram_get_x("","ntwon_log3"); %>" />
-				</td>
-
 										</tr>
 										<tr>
 	</div>
 	</td>
 	</tr><tr id="ntwon_log_td"><td colspan="3"></td></tr>
 	<table id="ntwon_subnet_table" width="100%" align="center" cellpadding="4" cellspacing="0" class="table">
-	<tr> <th colspan="4" style="background-color: #756c78;">子网配置 (访问对端内网设备，还需对端配置本地网段)</th></tr>
+	<tr> <th colspan="4" style="background-color: #fef0ff;">子网配置 (访问远端内网设备，还需远端配置到本地网段)</th></tr>
 	<tr id="row_rules_caption">
 	<th width="10%"> 备注名称 </th>
-	<th width="20%">对端目标网段 </th>
-	<th width="20%">对端接口IP </th>
+	<th width="20%">远端目标网段 </th>
+	<th width="20%">远端虚拟IP </th>
 	<th width="5%"><center><i class="icon-th-list"></i></center></th>
 	</tr>
 	<tr>
-	<th><input type="text" placeholder="可留空" maxlength="128" class="span12" style="width: 100px" size="200" name="ntwon_name_x_0" value="<% nvram_get_x("", "ntwon_name_x_0"); %>"/></th>
+	<th><input type="text" placeholder="如：家里" maxlength="128" class="span12" style="width: 100px" size="200" name="ntwon_name_x_0" value="<% nvram_get_x("", "ntwon_name_x_0"); %>"/></th>
 	<th><input type="text" placeholder="192.168.2.0/24" maxlength="255" class="span12" style="width: 150px" size="200" name="ntwon_route_x_0" value="<% nvram_get_x("", "ntwon_route_x_0"); %>"/></th>
 	<th><input type="text" placeholder="10.26.0.2" maxlength="255" class="span12" style="width: 150px" size="200" name="ntwon_ip_x_0" value="<% nvram_get_x("", "ntwon_ip_x_0"); %>" /></th>
 	<th><button class="btn" style="max-width: 219px" type="submit" onclick="return markrouteRULES(this, 64, ' Add ');" name="markrouteRULES2" value="<#CTL_add#>" size="12"><i class="icon icon-plus"></i></button></th>
