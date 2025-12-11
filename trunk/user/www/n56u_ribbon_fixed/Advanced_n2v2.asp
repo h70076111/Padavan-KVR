@@ -52,6 +52,9 @@ showmenu();
 fill_status(n2v2_status());
 showROUTEList();
 show_footer();
+	change_n2v2_enable(1);
+	if (!login_safe())
+        		textarea_scripts_enabled(0);
 
 }
 
@@ -76,6 +79,10 @@ function applyRule(){
 
 function done_validating(action){
 	refreshpage();
+}
+
+function textarea_scripts_enabled(v){
+    	inputCtrl(document.form['scripts.n2v2.conf'], v);
 }
 
 function textarea_scripts_enabled(v){
@@ -138,36 +145,6 @@ function showROUTEList(){
 	}
 	code +='</table>';
 	$("MrouteRULESList_Block").innerHTML = code;
-}
-
-function showMAPPList(){
-	var code = '<table width="100%" cellspacing="0" cellpadding="4" class="table table-list">';
-	if(m_mapplist.length == 0)
-		code +='<tr><td colspan="5" style="text-align: center;"><div class="alert alert-info"><#IPConnection_VSList_Norule#></div></td></tr>';
-	else{
-	    for(var i = 0; i < m_mapplist.length; i++){
-		if(m_mapplist[i][0] == 0)
-		n2v2_mappnet="TCP";
-		else{
-		n2v2_mappnet="UDP";
-		}
-		code +='<tr id="rowrl' + i + '">';
-		code +='<td width="15%">&nbsp;' + n2v2_mappnet + '</td>';
-		code +='<td width="25%">&nbsp;' + m_mapplist[i][1] + '</td>';
-		code +='<td width="30%">' + m_mapplist[i][2] + '</td>';
-		code +='<td width="20%">&nbsp;' + m_mapplist[i][3] + '</td>';
-		code +='<td width="50%"></td>';
-		code +='<center><td width="20%" style="text-align: center;"><input type="checkbox" name="N2V2mapp_s" value="' + m_mapplist[i][mmapplist_ifield] + '" onClick="changeBgColorrl(this,' + i + ');" id="check' + m_mapplist[i][mmapplist_ifield] + '"></td></center>';
-		
-		code +='</tr>';
-	    }
-		code += '<tr>';
-		code += '<td colspan="5">&nbsp;</td>'
-		code += '<td><button class="btn btn-danger" type="submit" onclick="markmappRULES(this, 64, \' Del \');" name="N2V2mapp"><i class="icon icon-minus icon-white"></i></button></td>';
-		code += '</tr>'
-	}
-	code +='</table>';
-	$("MmappRULESList_Block").innerHTML = code;
 }
 
 function button_restartN2V2(){
