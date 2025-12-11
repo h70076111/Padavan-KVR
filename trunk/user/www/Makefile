@@ -252,8 +252,8 @@ endif
 ifneq ($(CONFIG_FIRMWARE_INCLUDE_NELINK),y)
 	rm -f $(INSTALLDIR)/www/Advanced_nelink.asp
 endif
-ifneq ($(CONFIG_FIRMWARE_INCLUDE_N2V2),y)
-	rm -f $(INSTALLDIR)/www/Advanced_n2v2.asp
+ifneq ($(CONFIG_FIRMWARE_INCLUDE_NTWON),y)
+	rm -f $(INSTALLDIR)/www/Advanced_ntwon.asp
 endif
 ifneq ($(CONFIG_FIRMWARE_INCLUDE_ETINK),y)
 	rm -f $(INSTALLDIR)/www/Advanced_etink.asp
