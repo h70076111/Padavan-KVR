@@ -24,16 +24,16 @@
 <script type="text/javascript" src="/help_b.js"></script>
 <script>
 var $j = jQuery.noConflict();
-
+<% n2v2_status(); %>
+<% login_state_hook(); %>
 $j(document).ready(function() {
-		show_footer();init_itoggle('n2v2_enable');
+		init_itoggle('n2v2_enable');
 
 });
 
 </script>
 <script>
-<% n2v2_status(); %>
-<% login_state_hook(); %>
+
 var m_routelist = [<% get_nvram_list("N2V2", "N2V2route"); %>];
 var mroutelist_ifield = 4;
 if(m_routelist.length > 0){
@@ -47,13 +47,9 @@ var isMenuopen = 0;
 function initial(){
 	show_banner(2);
 	show_menu(5,17,0);
-showmenu();
-fill_status(n2v2_status());
-showROUTEList();
-show_footer();
-	change_n2v2_enable(1);
-	if (!login_safe())
-        		textarea_scripts_enabled(0);
+	showROUTEList();
+	fill_status(n2v2_status());
+	show_footer();
 
 }
 
