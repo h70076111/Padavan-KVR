@@ -114,11 +114,10 @@
 			{0,0,0,0}
 		};
 
-	struct variable variables_HXCLI_HXCLImapp[] = {
-			{"hxcli_mappnet_x", "24", NULL, FALSE},
-			{"hxcli_mappport_x", "24", NULL, FALSE},
-			{"hxcli_mappip_x", "24", NULL, FALSE},
-			{"hxcli_mapeerport_x", "24", NULL, FALSE},
+	struct variable variables_NTWON_NTWONroute[] = {
+			{"ntwon_name_x", "24", NULL, FALSE},
+			{"ntwon_route_x", "24", NULL, FALSE},
+			{"ntwon_ip_x", "24", NULL, FALSE},
 			{0,0,0,0}
 		};
 
@@ -128,14 +127,6 @@
 			{"hxcli_ip_x", "24", NULL, FALSE},
 			{0,0,0,0}
 		};
-	
-	struct variable variables_N2V2_N2V2route[] = {
-			{"n2v2_name_x", "24", NULL, FALSE},
-			{"n2v2_route_x", "24", NULL, FALSE},
-			{"n2v2_ip_x", "24", NULL, FALSE},
-			{0,0,0,0}
-		};
-
 
 	struct variable variables_SspConf_SspList[] = {
 			{"ssp_type_x", "24", NULL, FALSE},
@@ -1348,21 +1339,21 @@
 	};
 #endif
 
-#if defined(APP_N2V2)
-	struct variable variables_N2V2[] = {
-			{"n2v2_enable", "", NULL, EVM_RESTART_N2V2},
-			{"n2v2_keyg", "", NULL, EVM_RESTART_N2V2},
-			{"n2v2_ip", "", NULL, EVM_RESTART_N2V2},
-			{"n2v2_inlan1", "", NULL, EVM_RESTART_N2V2},
-			{"n2v2_xuip1", "", NULL, EVM_RESTART_N2V2},
-			{"n2v2_inlan2", "", NULL, EVM_RESTART_N2V2},
-			{"n2v2_xuip2", "", NULL, EVM_RESTART_N2V2},
-			{"n2v2_log", "", NULL, EVM_RESTART_N2V2},
-			{"n2v2_log2", "", NULL, EVM_RESTART_N2V2},
-			{"n2v2_log3", "", NULL, EVM_RESTART_N2V2},
-			{"scripts.n2v2.conf", "File", NULL, EVM_RESTART_N2V2},
-			{"n2v2_routenum_x", "", NULL, EVM_RESTART_N2V2},
-			{"N2V2route", "Group", ARGV((char*)variables_N2V2_N2V2route, "8", "55", "n2v2_routenum_x"), EVM_RESTART_N2V2},
+#if defined(APP_NTWON)
+	struct variable variables_NTWON[] = {
+			{"ntwon_enable", "", NULL, EVM_RESTART_NTWON},
+			{"ntwon_keyg", "", NULL, EVM_RESTART_NTWON},
+			{"ntwon_ip", "", NULL, EVM_RESTART_NTWON},
+			{"ntwon_inlan1", "", NULL, EVM_RESTART_NTWON},
+			{"ntwon_xuip1", "", NULL, EVM_RESTART_NTWON},
+			{"ntwon_inlan2", "", NULL, EVM_RESTART_NTWON},
+			{"ntwon_xuip2", "", NULL, EVM_RESTART_NTWON},
+			{"ntwon_log", "", NULL, EVM_RESTART_NTWON},
+			{"ntwon_log2", "", NULL, EVM_RESTART_NTWON},
+			{"ntwon_log3", "", NULL, EVM_RESTART_NTWON},
+			{"scripts.ntwon.conf", "File", NULL, EVM_RESTART_NTWON},
+			{"ntwon_routenum_x", "", NULL, EVM_RESTART_NTWON},
+			{"N2TWONroute", "Group", ARGV((char*)variables_NTWON_NTWONroute, "8", "55", "ntwon_routenum_x"), EVM_RESTART_NTWON},
 			{0,0,0,0}
 	};
 #endif
@@ -1586,8 +1577,8 @@
 #if defined(APP_NELINK)
 		{"NELINK",		variables_NELINK},
 #endif
-#if defined(APP_N2V2)
-		{"N2V2",		variables_N2V2},
+#if defined(APP_NTWON)
+		{"NTWON",		variables_NTWON},
 #endif
 #if defined(APP_ALDRIVER)
 		{"ALDRIVER",		variables_ALDRIVER},
@@ -1730,8 +1721,8 @@
 #if defined(APP_ETINK)
 		{EVM_RESTART_ETINK,		EVT_RESTART_ETINK,		RCN_RESTART_ETINK,	0},
 #endif
-#if defined(APP_N2V2)
-		{EVM_RESTART_N2V2,		EVT_RESTART_N2V2,		RCN_RESTART_N2V2,	0},
+#if defined(APP_NTWON)
+		{EVM_RESTART_NTWON,		EVT_RESTART_NTWON,		RCN_RESTART_NTWON,	0},
 #endif
 #if defined(APP_ALDRIVER)
 		{EVM_RESTART_ALDRIVER,		EVT_RESTART_ALDRIVER,		RCN_RESTART_ALDRIVER,	0},
