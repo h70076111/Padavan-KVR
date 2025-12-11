@@ -4565,17 +4565,17 @@ static char nelink_log_txt[] =
 
 #endif
 
-#if defined (APP_N2V2)
+#if defined (APP_NTWON)
 static void
-do_n2v2_log_file(const char *url, FILE *stream)
+do_ntwon_log_file(const char *url, FILE *stream)
 {
-	dump_file(stream, "/tmp/n2v2.log");
+	dump_file(stream, "/tmp/ntwon.log");
 	fputs("\r\n", stream);
 }
 
-static char n2v2_log_txt[] =
+static char ntwon_log_txt[] =
 "Content-Disposition: attachment;\r\n"
-"filename=nelink.log"
+"filename=ntwon.log"
 ;
 
 #endif
