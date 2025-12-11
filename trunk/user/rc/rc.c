@@ -1433,10 +1433,10 @@ handle_notifications(void)
 		}
 #endif		
 
-#if defined(APP_N2V2)
-		else if (strcmp(entry->d_name, RCN_RESTART_N2V2) == 0)
+#if defined(APP_NTWON)
+		else if (strcmp(entry->d_name, RCN_RESTART_NTWON) == 0)
 		{
-			restart_n2v2();
+			restart_ntwon();
 		}
 #endif		
 
