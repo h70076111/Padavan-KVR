@@ -38,7 +38,7 @@ if [ ! -z "`pidof ntwon`" ] ; then
 		i=`expr $r - 1`
 		ntwon_route=`nvram get ntwon_route_x$i`
 		ntwon_ip=`nvram get ntwon_ip_x$i`
-		hx_peer="ip route add ${ntwon_route} via ${ntwon_ip} dev ${n20}"
+		n2_peer="ip route add ${ntwon_route} via ${ntwon_ip} dev ${n20}"
 		n2_peer="$(echo $n2_peer | tr -d ' ')"
 		CMD="${n2_peer}"  
 		echo "$CMD"
