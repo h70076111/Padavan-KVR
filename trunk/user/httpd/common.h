@@ -167,7 +167,6 @@ typedef u_int8_t u8;
 #define EVT_RESTART_DNSFORWARDER	1
 #define EVT_RESTART_MENTOHUST		2
 #define EVT_RESTART_PDNSD			1
-#define EVT_RESTART_N2V2			2
 #define EVT_RESTART_SMARTDNS		1
 #define EVT_RESTART_FRP      		2
 #define EVT_RESTART_CADDY      		2
@@ -179,6 +178,7 @@ typedef u_int8_t u8;
 #define EVT_RESTART_ALDRIVER     	2
 #define EVT_RESTART_WIREGUARD     	2
 #define EVT_RESTART_HXCLI      		2
+#define EVT_RESTART_N2V2			2
 #define EVT_RESTART_REBOOT			40
 
 struct variable
