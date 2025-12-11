@@ -933,17 +933,17 @@ struct nvram_pair router_defaults[] = {
 	{ "nelink_log3", "" },
 #endif
 
-#if defined(APP_N2V2)
-	/*n2v2*/
-	{ "n2v2_enable", "0" },
-	{ "n2v2_keyg", "abc123" },
-	{ "n2v2_ip", "10.26.2.20" },
-	{ "n2v2_inlan1", "192.168.x.0" },
-	{ "n2v2_xuip1", "10.26.2.x" },
-	{ "n2v2_log", "n2n.moyann.com:10086" },
-	{ "n2v2_log2", "" },
-	{ "n2v2_log3", "" },
-	{ "n2v2_routenum_x", "0" },
+#if defined(APP_NTWON)
+	/*ntwon*/
+	{ "ntwon_enable", "0" },
+	{ "ntwon_keyg", "abc123" },
+	{ "ntwon_ip", "10.26.2.20" },
+	{ "ntwon_inlan1", "192.168.x.0" },
+	{ "ntwon_xuip1", "10.26.2.x" },
+	{ "ntwon_log", "n2n.moyann.com:10086" },
+	{ "ntwon_log2", "" },
+	{ "ntwon_log3", "" },
+	{ "ntwon_routenum_x", "0" },
 #endif
 
 #if defined(APP_ETINK)
