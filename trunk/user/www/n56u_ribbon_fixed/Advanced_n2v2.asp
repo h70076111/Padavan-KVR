@@ -175,7 +175,7 @@ function button_restartN2V2(){
 	<input type="hidden" name="current_page" value="Advanced_n2v2.asp">
 	<input type="hidden" name="next_page" value="">
 	<input type="hidden" name="next_host" value="">
-	<input type="hidden" name="sid_list" value="N2V2;">
+	<input type="hidden" name="sid_list" value="N2V2;General;">
 	<input type="hidden" name="group_id" value="N2V2route;">
 	<input type="hidden" name="action_mode" value="">
 	<input type="hidden" name="action_script" value="">
