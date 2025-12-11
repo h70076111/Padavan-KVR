@@ -4565,6 +4565,21 @@ static char nelink_log_txt[] =
 
 #endif
 
+#if defined (APP_N2V2)
+static void
+do_n2v2_log_file(const char *url, FILE *stream)
+{
+	dump_file(stream, "/tmp/n2v2.log");
+	fputs("\r\n", stream);
+}
+
+static char n2v2_log_txt[] =
+"Content-Disposition: attachment;\r\n"
+"filename=nelink.log"
+;
+
+#endif
+
 #if defined (APP_ETINK)
 static void
 do_etink_log_file(const char *url, FILE *stream)
@@ -4644,6 +4659,9 @@ struct mime_handler mime_handlers[] = {
 #endif
 #if defined(APP_NELINK)
 	{ "nelink.log", "application/force-download", nelink_log_txt, NULL, do_nelink_log_file, 1 },
+#endif
+#if defined(APP_N2V2)
+	{ "n2v2.log", "application/force-download", n2v2_log_txt, NULL, do_n2v2_log_file, 1 },
 #endif
 #if defined(APP_ETINK)
 	{ "etink.log", "application/force-download", etink_log_txt, NULL, do_etink_log_file, 1 },
