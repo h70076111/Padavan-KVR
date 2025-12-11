@@ -71,7 +71,7 @@ stop_n2v() {
 	n2v2_process=$(pidof ntwon)
 	if [ -n "$n2v2_process" ]; then
 		logger -t "N2组网" "关闭进程..."
-		killall n2v2 >/dev/null 2>&1
+		killall ntwon >/dev/null 2>&1
 		kill -9 "$n2v2_process" >/dev/null 2>&1
 	fi
 }
