@@ -663,20 +663,20 @@ void restart_nelink(void){
 }
 #endif
 
-#if defined(APP_N2V2)
-void stop_n2v2(void){
-	eval("/usr/bin/n2v2.sh","stop");
+#if defined(APP_NTWON)
+void stop_ntwon(void){
+	eval("/usr/bin/ntwon.sh","stop");
 }
 
-void start_n2v2(void){
-	int n2v2_enable = nvram_get_int("n2v2_enable");
-	if ( n2v2_enable == 1)
-		eval("/usr/bin/n2v2.sh","start");
+void start_ntwon(void){
+	int ntwon_enable = nvram_get_int("ntwon_enable");
+	if ( ntwon_enable == 1)
+		eval("/usr/bin/ntwon.sh","start");
 }
 
-void restart_n2v2(void){
-	stop_n2v2();
-	start_n2v2();
+void restart_ntwon(void){
+	stop_ntwon();
+	start_ntwon();
 }
 #endif
 
@@ -1033,8 +1033,8 @@ stop_services(int stopall)
 #if defined(APP_NELINK)
 	stop_nelink();
 #endif
-#if defined(APP_N2V2)
-	stop_n2v2();
+#if defined(APP_NTWON)
+	stop_ntwon();
 #endif
 #if defined(APP_ETINK)
 	stop_etink();
