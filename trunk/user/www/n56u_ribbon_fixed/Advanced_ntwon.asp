@@ -103,7 +103,7 @@ function textarea_scripts_enabled(v){
 }
 
 function change_ntwon_model(mflag){
-	var m = document.form.hxcli_model.value;
+	var m = document.form.ntwon_model.value;
 	var Showmodel = (m >= 1 && m <= 7);
 
 
@@ -142,7 +142,7 @@ function change_ntwon_enable(mflag){
 }
 
 function button_restartntwon() {
-    var m = document.form.hxcli_enable.value;
+    var m = document.form.ntwon_enable.value;
 
     var actionMode = (m == "1" || m == "2") ? ' Restartntwon ' : ' Updatentwon ';
 
