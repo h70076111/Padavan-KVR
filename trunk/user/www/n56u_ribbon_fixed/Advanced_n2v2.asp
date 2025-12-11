@@ -26,8 +26,7 @@
 var $j = jQuery.noConflict();
 
 $j(document).ready(function() {
-	
-	show_footer();init_itoggle('n2v2_enable');
+		show_footer();init_itoggle('n2v2_enable');
 
 });
 
@@ -85,7 +84,7 @@ function textarea_scripts_enabled(v){
     	inputCtrl(document.form['scripts.n2v2.conf'], v);
 }
 
-function markGroupRULES(o, c, b) {
+function markrouteRULES(o, c, b) {
 	document.form.group_id.value = "N2V2route";
 	if(b == " Add "){
 		if (document.form.n2v2_routenum_x_0.value >= c){
@@ -96,7 +95,7 @@ function markGroupRULES(o, c, b) {
 			document.form.n2v2_route_x_0.focus();
 			document.form.n2v2_route_x_0.select();
 			return false;
-		}else if(document.form.n2v2_ip_x_0.value==""){
+		}else if(document.form.hxcli_ip_x_0.value==""){
 			alert("<#JS_fieldblank#>");
 			document.form.n2v2_ip_x_0.focus();
 			document.form.n2v2_ip_x_0.select();
