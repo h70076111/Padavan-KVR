@@ -85,10 +85,6 @@ function textarea_scripts_enabled(v){
     	inputCtrl(document.form['scripts.n2v2.conf'], v);
 }
 
-function textarea_scripts_enabled(v){
-    	inputCtrl(document.form['scripts.n2v2.conf'], v);
-}
-
 function markGroupRULES(o, c, b) {
 	document.form.group_id.value = "N2V2route";
 	if(b == " Add "){
