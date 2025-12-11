@@ -748,9 +748,9 @@ if (found_app_nelink()) {
 	menuL2.push(mx);
 	tabMenuHash.put('24', mx2);
 }
-if (found_app_n2v2()) {
-	var mx = { "title": "<#menu5_41#>", "link": "Advanced_n2v2.asp", index: "25" };
-	var mx2 = [{ "title": "<#Web_Title#_1#>", "link": "Advanced_n2v2.asp" }];
+if (found_app_ntwon()) {
+	var mx = { "title": "<#menu5_41#>", "link": "Advanced_ntwon.asp", index: "25" };
+	var mx2 = [{ "title": "<#Web_Title#_1#>", "link": "Advanced_ntwon.asp" }];
 	menuL2.push(mx);
 	tabMenuHash.put('25', mx2);
 }
