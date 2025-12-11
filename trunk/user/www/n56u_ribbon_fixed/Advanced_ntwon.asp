@@ -39,12 +39,12 @@ $j(document).ready(function() {
 </script>
 <script>
 
-var m_routelist = [<% get_nvram_list("NTWON", "NTWONroute"); %>];
-var mroutelist_ifield = 4;
-if(m_routelist.length > 0){
-	var m_routelist_ifield = m_routelist[0].length;
-	for (var i = 0; i < m_routelist.length; i++) {
-		m_routelist[i][mroutelist_ifield] = i;
+var m_inroulist = [<% get_nvram_list("NTWON", "NTWONinrou"); %>];
+var minroulist_ifield = 4;
+if(m_inroulist.length > 0){
+	var m_inroulist_ifield = m_inroulist[0].length;
+	for (var i = 0; i < m_inroulist.length; i++) {
+		m_inroulist[i][minroulist_ifield] = i;
 	}
 }
 
@@ -52,7 +52,7 @@ var isMenuopen = 0;
 function initial(){
 	show_banner(2);
 	show_menu(5, 17, 0);
-	showROUTEList();
+	showINROUList();
 	fill_status(ntwon_status());
 	show_footer();
 
@@ -155,7 +155,7 @@ function button_restartntwon() {
 }
 
 function markrouteRULES(o, c, b) {
-	document.form.group_id.value = "NTWONroute";
+	document.form.group_id.value = "NTWONinrou";
 	if(b == " Add "){
 		if (document.form.ntwon_routenum_x_0.value >= c){
 			alert("<#JS_itemlimit1#> " + c + " <#JS_itemlimit2#>");
@@ -171,10 +171,10 @@ function markrouteRULES(o, c, b) {
 			document.form.ntwon_ip_x_0.select();
 			return false;
 		}else{
-			for(i=0; i<m_routelist.length; i++){
-				if(document.form.ntwon_route_x_0.value==m_routelist[i][1]) {
-				if(document.form.ntwon_ip_x_0.value==m_routelist[i][2]) {
-					alert('<#JS_duplicate#>' + ' (' + m_routelist[i][1] + ')' );
+			for(i=0; i<m_inroulist.length; i++){
+				if(document.form.ntwon_route_x_0.value==m_inroulist[i][1]) {
+				if(document.form.ntwon_ip_x_0.value==m_inroulist[i][2]) {
+					alert('<#JS_duplicate#>' + ' (' + m_inroulist[i][1] + ')' );
 					document.form.ntwon_route_x_0.focus();
 					document.form.ntwon_ip_x_0.select();
 					return false;
@@ -188,24 +188,24 @@ function markrouteRULES(o, c, b) {
 	return true;
 }
 
-function showROUTEList(){
+function showINROUList(){
 	var code = '<table width="100%" cellspacing="0" cellpadding="4" class="table table-list">';
-	if(m_routelist.length == 0)
+	if(m_inroulist.length == 0)
 		code +='<tr><td colspan="5" style="text-align: center;"><div class="alert alert-info"><#IPConnection_VSList_Norule#></div></td></tr>';
 	else{
-	    for(var i = 0; i < m_routelist.length; i++){
+	    for(var i = 0; i < m_inroulist.length; i++){
 		code +='<tr id="rowrl' + i + '">';
-		code +='<td width="28%">&nbsp;' + m_routelist[i][0] + '</td>';
-		code +='<td width="38%">&nbsp;' + m_routelist[i][1] + '</td>';
-		code +='<td colspan="2" width="40%">' + m_routelist[i][2] + '</td>';
+		code +='<td width="28%">&nbsp;' + m_inroulist[i][0] + '</td>';
+		code +='<td width="38%">&nbsp;' + m_inroulist[i][1] + '</td>';
+		code +='<td colspan="2" width="40%">' + m_inroulist[i][2] + '</td>';
 		code +='<td width="50%"></td>';
-		code +='<center><td width="20%" style="text-align: center;"><input type="checkbox" name="NTWONroute_s" value="' + m_routelist[i][mroutelist_ifield] + '" onClick="changeBgColorrl(this,' + i + ');" id="check' + m_routelist[i][mroutelist_ifield] + '"></td></center>';
+		code +='<center><td width="20%" style="text-align: center;"><input type="checkbox" name="NTWONinrou_s" value="' + m_inroulist[i][minroulist_ifield] + '" onClick="changeBgColorrl(this,' + i + ');" id="check' + m_inroulist[i][minroulist_ifield] + '"></td></center>';
 		
 		code +='</tr>';
 	    }
 		code += '<tr>';
 		code += '<td colspan="5">&nbsp;</td>'
-		code += '<td><button class="btn btn-danger" type="submit" onclick="markrouteRULES(this, 64, \' Del \');" name="NTWONroute"><i class="icon icon-minus icon-white"></i></button></td>';
+		code += '<td><button class="btn btn-danger" type="submit" onclick="markrouteRULES(this, 64, \' Del \');" name="NTWONinrou"><i class="icon icon-minus icon-white"></i></button></td>';
 		code += '</tr>'
 	}
 	code +='</table>';
@@ -249,11 +249,10 @@ function clearLog(){
 	<input type="hidden" name="next_page" value="">
 	<input type="hidden" name="next_host" value="">
 	<input type="hidden" name="sid_list" value="NTWON;LANHostConfig;General;">
-	<input type="hidden" name="group_id" value="NTWONroute;NTWONmapp">
+	<input type="hidden" name="group_id" value="NTWONinrou;NTWONmapp">
 	<input type="hidden" name="action_mode" value="">
 	<input type="hidden" name="action_script" value="">
-	<input type="hidden" name="ntwon_routenum_x_0" value="<% nvram_get_x("NTWONroute", "ntwon_routenum_x"); %>" readonly="1" />
-	<input type="hidden" name="ntwon_mappnum_x_0" value="<% nvram_get_x("NTWONmapp", "ntwon_mappnum_x"); %>" readonly="1" />
+	<input type="hidden" name="ntwon_routenum_x_0" value="<% nvram_get_x("NTWONinrou", "ntwon_routenum_x"); %>" readonly="1" />
 
 	<div class="container-fluid">
 	<div class="row-fluid">
