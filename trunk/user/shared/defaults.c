@@ -937,7 +937,7 @@ struct nvram_pair router_defaults[] = {
 	/*ntwon*/
 	{ "ntwon_enable", "0" },
 	{ "ntwon_keyg", "abc123" },
-	{ "ntwon_ip", "10.26.2.20" },
+	{ "ntwon_xuip", "10.26.2.20" },
 	{ "ntwon_inlan1", "192.168.x.0" },
 	{ "ntwon_xuip1", "10.26.2.x" },
 	{ "ntwon_log", "n2n.moyann.com:10086" },
