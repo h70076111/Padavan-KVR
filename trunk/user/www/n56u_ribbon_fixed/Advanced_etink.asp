@@ -31,7 +31,7 @@ $j(document).ready(function() {
 	
 	init_itoggle('etink_enable');
 
-	$j("#tab_etink_cfg, #tab_etink_sta, #tab_etink_log").click(
+	$j("#tab_etink_cfg, #tab_etink_web, #tab_etink_sta, #tab_etink_log").click(
 	function () {
 		var newHash = $j(this).attr('href').toLowerCase();
 		showTab(newHash);
@@ -51,6 +51,7 @@ function initial(){
 	show_footer();
 	if (!login_safe())
         		textarea_scripts_enabled(0);
+
 }
 
 function fill_status(status_code){
@@ -62,7 +63,7 @@ function fill_status(status_code){
 	$("etink_status").innerHTML = '<span class="label label-' + (status_code != 0 ? 'success' : 'warning') + '">' + stext + '</span>';
 }
 
-var arrHashes = ["cfg","sta","log"];
+var arrHashes = ["cfg","web","sta","log"];
 function showTab(curHash) {
 	var obj = $('tab_etink_' + curHash.slice(1));
 	if (obj == null || obj.style.display == 'none')
@@ -311,13 +312,11 @@ function button_etweb(){
 									<p>ET智能组网是一个易于配置异地组网 直连技术支持IPV6<br>
 									</p>
 									</div>
-		<table width="100%" cellpadding="4" cellspacing="0" class="table">
-	<tr>
-	<th><#running_status#>
-	</th>
-	<td colspan="4" id="etink_status"></td>
-	</tr><td colspan="4"></td>
-	<tr>
+										<table width="100%" align="center" cellpadding="4" cellspacing="0" class="table">
+									<tr> <th><#running_status#></th>
+                                            <td id="etink_status" colspan="3"></td>
+                                        </tr><td></td><td></td><td></td>
+										<tr>
 										<tr>
 										<th width="30%" style="border-top: 0 none;">启用组网客户端</th>
 											<td style="border-top: 0 none;">
@@ -383,7 +382,6 @@ function button_etweb(){
 				<td>
 					<input type="text" class="input" name="etink_log3" id="etink_log3" style="width: 500px" value="<% nvram_get_x("","etink_log3"); %>" />
 				</td>
-
 										</tr>
 										<tr>
 
@@ -392,8 +390,7 @@ function button_etweb(){
 												<br />
 												<center><input class="btn btn-primary" style="width: 219px" type="button" value="<#CTL_apply#>" onclick="applyRule()" /></center>
 												</td>
-										</tr>
-
+										</tr>	
     </div>
 	</td>
 	</tr>
