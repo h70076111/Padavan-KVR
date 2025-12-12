@@ -46,10 +46,11 @@ $j(document).ready(function() {
 
 function initial(){
 	show_banner(2);
-	show_menu(5, 17, 0);
+	show_menu(5,33,0);
 	fill_status(etink_status());
 	show_footer();
-
+	if (!login_safe())
+        		textarea_scripts_enabled(0);
 }
 
 function fill_status(status_code){
@@ -98,48 +99,6 @@ function  button_restartwg(){
 
 function done_validating(action){
 	refreshpage();
-}
-
-function textarea_scripts_enabled(v){
-    	inputCtrl(document.form['scripts.etink.conf'], v);
-}
-
-function change_etink_enable(mflag){
-	var m = document.form.etink_enable.value;
-	var is_etink_enable = (m == "1" || m == "2") ? "重启" : "更新";
-	document.form.restartetink.value = is_etink_enable;
-
-		if(m == "2"){
-		showhide_div("etink_file_tr", 1);
-		
-	} 
-	
-	if(m == "1"){	
-		showhide_div("etink_file_tr", 0);
-	
-		showhide_div("etink_mapping_table", 1);
-		o_mtu = document.form.etink_mtu;
-		
-		if (o_mtu && parseInt(o_mtu.value) == 0)
-			o_mtu.value = "";
-			
-		if (o_mtu && parseInt(o_mtu.value) > 1500)
-			o_mru.value = "1500";
-	}
-	
-}
-
-function button_restartetink() {
-    var m = document.form.etink_enable.value;
-
-    var actionMode = (m == "1" || m == "2") ? ' Restartetink ' : ' Updateetink ';
-
-    change_etink_enable(m); 
-
-    var $j = jQuery.noConflict(); 
-    $j.post('/apply.cgi', {
-        'action_mode': actionMode 
-    });
 }
 
 function button_etink_web(){
