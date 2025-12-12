@@ -1,5 +1,6 @@
 #!/bin/sh
 
+etink_enable=$(nvram get etink_enable)
 etink_keyg=$(nvram get etink_keyg)
 echo $etink_keyg
 etink_pass=$(nvram get etink_pass)
