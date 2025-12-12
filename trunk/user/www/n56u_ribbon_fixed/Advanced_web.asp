@@ -343,11 +343,25 @@ function applyRule(){
 												</div>
 											</td>
 										</tr>
+										<tr id="row_wntwon" style="display:none">
+											<th width="50%" >N2V2智能组网</th>
+											<td>
+													<div class="main_itoggle">
+													<div id="w_ntwon_on_of">
+														<input type="checkbox" id="w_ntwon_fake" <% nvram_match_x("", "w_ntwon", "1", "value=1 checked"); %><% nvram_match_x("", "w_ntwon", "0", "value=0"); %>  />
+													</div>
+												</div>
+												<div style="position: absolute; margin-left: -10000px;">
+													<input type="radio" value="1" name="w_ntwon" id="w_etink_1" class="input" <% nvram_match_x("", "w_ntwon", "1", "checked"); %> /><#checkbox_Yes#>
+													<input type="radio" value="0" name="w_ntwon" id="w_etink_0" class="input" <% nvram_match_x("", "w_ntwon", "0", "checked"); %> /><#checkbox_No#>
+												</div>
+											</td>
+										</tr>			
 										<tr id="row_wetink" style="display:none">
 											<th width="50%" >ET异地组网</th>
 											<td>
 													<div class="main_itoggle">
-													<div id="w_easytier_on_of">
+													<div id="w_etink_on_of">
 														<input type="checkbox" id="w_etink_fake" <% nvram_match_x("", "w_etink", "1", "value=1 checked"); %><% nvram_match_x("", "w_etink", "0", "value=0"); %>  />
 													</div>
 												</div>
