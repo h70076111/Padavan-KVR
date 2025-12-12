@@ -734,31 +734,31 @@ if (found_app_bafa()) {
 	var mx = { "title": "<#menu5_40#>", "link": "Advanced_bafa.asp", index: "22" };
 	var mx2 = [{ "title": "<#Web_Title#_1#>", "link": "Advanced_bafa.asp" }];
 	menuL2.push(mx);
-	tabMenuHash.put('22', mx2);
+	tabMenuHash.put('21', mx2);
 }
 if (found_app_hxcli()) {
 	var mx = { "title": "<#menu5_37#>", "link": "Advanced_hxzn.asp", index: "23" };
 	var mx2 = [{ "title": "<#Web_Title#_1#>", "link": "Advanced_hxzn.asp" }];
 	menuL2.push(mx);
-	tabMenuHash.put('23', mx2);
+	tabMenuHash.put('22', mx2);
 }
 if (found_app_nelink()) {
 	var mx = { "title": "<#menu5_38#>", "link": "Advanced_nelink.asp", index: "24" };
 	var mx2 = [{ "title": "<#Web_Title#_1#>", "link": "Advanced_nelink.asp" }];
 	menuL2.push(mx);
-	tabMenuHash.put('24', mx2);
+	tabMenuHash.put('23', mx2);
 }
 if (found_app_ntwon()) {
 	var mx = { "title": "<#menu5_41#>", "link": "Advanced_ntwon.asp", index: "25" };
 	var mx2 = [{ "title": "<#Web_Title#_1#>", "link": "Advanced_ntwon.asp" }];
 	menuL2.push(mx);
-	tabMenuHash.put('25', mx2);
+	tabMenuHash.put('24', mx2);
 }
 if (found_app_etink()) {
 	var mx = { "title": "<#menu5_39#>", "link": "Advanced_etink.asp", index: "25" };
 	var mx2 = [{ "title": "<#Web_Title#_1#>", "link": "Advanced_etink.asp" }];
 	menuL2.push(mx);
-	tabMenuHash.put('26', mx2);
+	tabMenuHash.put('25', mx2);
 }
 /* plugin menu 插件菜单 结束*/
 
