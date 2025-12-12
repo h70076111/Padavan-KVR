@@ -40,6 +40,7 @@ $j(document).ready(function() {
 	init_itoggle('w_adbyby');
 	init_itoggle('w_pdnsd');
 	init_itoggle('w_hxcli');
+	init_itoggle('w_ntwon');
 	init_itoggle('w_etink');
 
 });
@@ -73,6 +74,9 @@ if (found_app_smartdns() || found_app_adguardhome()){
 }
 if (found_app_hxcli()){
 	showhide_div('row_whxcli', true);
+}
+if (found_app_ntwon()){
+	showhide_div('row_wntwon', true);
 }
 if (found_app_etink()){
 	showhide_div('row_wetink', true);
