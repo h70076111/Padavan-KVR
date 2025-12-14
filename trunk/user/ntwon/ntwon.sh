@@ -44,11 +44,11 @@ if [ ! -z "`pidof ntwon`" ] ; then
 		ntwon_ip=`nvram get ntwon_ip_x$i`
 		if [ "$1" = "add" ]; then
 			if [ $ntwon_name -ne 0 ]; then
-		ip route add $ntwon_route via $ntwon_ip dev $n2nname
+		route add -net $ntwon_route gw $ntwon_ip
 		echo "$n2nname"
 		fi
 	else
-		ip route add $ntwon_route via $ntwon_ip dev $n2nname
+		route add -net $ntwon_route gw $ntwon_ip
 	fi
 	done
 #开启arp
