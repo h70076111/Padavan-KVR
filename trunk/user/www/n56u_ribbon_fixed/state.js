@@ -754,11 +754,17 @@ if (found_app_ntwon()) {
 	menuL2.push(mx);
 	tabMenuHash.put('24', mx2);
 }
-if (found_app_etink()) {
-	var mx = { "title": "<#menu5_39#>", "link": "Advanced_etink.asp", index: "25" };
-	var mx2 = [{ "title": "<#Web_Title#_1#>", "link": "Advanced_etink.asp" }];
+if (found_app_n2v6()) {
+	var mx = { "title": "<#menu5_42#>", "link": "Advanced_nn2v6.asp", index: "26" };
+	var mx2 = [{ "title": "<#Web_Title#_1#>", "link": "Advanced_n2v6.asp" }];
 	menuL2.push(mx);
 	tabMenuHash.put('25', mx2);
+}
+if (found_app_etink()) {
+	var mx = { "title": "<#menu5_39#>", "link": "Advanced_etink.asp", index: "27" };
+	var mx2 = [{ "title": "<#Web_Title#_1#>", "link": "Advanced_etink.asp" }];
+	menuL2.push(mx);
+	tabMenuHash.put('26', mx2);
 }
 /* plugin menu 插件菜单 结束*/
 
