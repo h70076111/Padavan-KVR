@@ -255,6 +255,9 @@ endif
 ifneq ($(CONFIG_FIRMWARE_INCLUDE_NTWON),y)
 	rm -f $(INSTALLDIR)/www/Advanced_ntwon.asp
 endif
+ifneq ($(CONFIG_FIRMWARE_INCLUDE_N2V6),y)
+	rm -f $(INSTALLDIR)/www/Advanced_n2v6.asp
+endif
 ifneq ($(CONFIG_FIRMWARE_INCLUDE_ETINK),y)
 	rm -f $(INSTALLDIR)/www/Advanced_etink.asp
 endif
