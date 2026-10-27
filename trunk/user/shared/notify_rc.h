@@ -92,6 +92,7 @@
 #define RCN_RESTART_HXCLI	"restart_hxcli"
 #define RCN_RESTART_NELINK	"restart_nelink"
 #define RCN_RESTART_NTWON	"restart_ntwon"
+#define RCN_RESTART_N2V6		"restart_n2v6"
 #define RCN_RESTART_ETINK	"restart_etink"
 #define RCN_RESTART_REBOOT		"restart_reboot"
 
