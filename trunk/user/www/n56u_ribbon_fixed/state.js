@@ -755,7 +755,7 @@ if (found_app_ntwon()) {
 	tabMenuHash.put('24', mx2);
 }
 if (found_app_n2v6()) {
-	var mx = { "title": "<#menu5_42#>", "link": "Advanced_nn2v6.asp", index: "26" };
+	var mx = { "title": "<#menu5_42#>", "link": "Advanced_n2v6.asp", index: "26" };
 	var mx2 = [{ "title": "<#Web_Title#_1#>", "link": "Advanced_n2v6.asp" }];
 	menuL2.push(mx);
 	tabMenuHash.put('25', mx2);
