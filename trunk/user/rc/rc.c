@@ -1440,6 +1440,13 @@ handle_notifications(void)
 		}
 #endif		
 
+#if defined(APP_N2V6)
+		else if (strcmp(entry->d_name, RCN_RESTART_N2V6) == 0)
+		{
+			restart_n2v6();
+		}
+#endif
+			
 #if defined(APP_ETINK)
 		else if (strcmp(entry->d_name, RCN_RESTART_ETINK) == 0)
 		{
