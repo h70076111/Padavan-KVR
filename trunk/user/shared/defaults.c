@@ -940,10 +940,21 @@ struct nvram_pair router_defaults[] = {
 	{ "ntwon_xuip", "10.26.2.20" },
 	{ "ntwon_inlan1", "192.168.x.0" },
 	{ "ntwon_xuip1", "10.26.2.x" },
-	{ "ntwon_log", "n2n.moyann.com:10086" },
+	{ "ntwon_log", "ouno.eu.org:10086" },
 	{ "ntwon_log2", "" },
 	{ "ntwon_log3", "" },
 	{ "ntwon_routenum_x", "0" },
+#endif
+
+#if defined(APP_N2V6)
+	/*n2v6*/
+	{ "n2v6_enable", "0" },
+	{ "n2v6_keyg", "abc1234" },
+	{ "n2v6_xuip", "10.0.0.20" },
+	{ "n2v6_log", "ouno.eu.org:10084" },
+	{ "n2v6_inlan1", "192.168.10.0/24,10.0.0.10" },
+	{ "n2v6_inlan2", "" },
+	{ "n2v6_inlan3", "" },
 #endif
 
 #if defined(APP_ETINK)
