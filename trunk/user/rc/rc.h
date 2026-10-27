@@ -637,6 +637,11 @@ void stop_ntwon(void);
 void start_ntwon(void);
 void restart_ntwon(void);
 #endif
+#if defined(APP_N2V6)
+void stop_n2v6(void);
+void start_n2v6(void);
+void restart_n2v6(void);
+#endif
 #if defined(APP_ETINK)
 void stop_etink(void);
 void start_etink(void);
