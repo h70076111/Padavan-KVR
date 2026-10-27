@@ -2415,6 +2415,15 @@ static int ntwon_status_hook(int eid, webs_t wp, int argc, char **argv)
 }
 #endif
 
+#if defined (APP_N2V6)
+static int n2v6_status_hook(int eid, webs_t wp, int argc, char **argv)
+{
+	int n2v6_status_code = pids("edge6");
+	websWrite(wp, "function n2v6_status() { return %d;}\n", n2v6_status_code);
+	return 0;
+}
+#endif
+
 #if defined (APP_ETINK)
 static int etink_status_hook(int eid, webs_t wp, int argc, char **argv)
 {
@@ -2728,6 +2737,11 @@ ej_firmware_caps_hook(int eid, webs_t wp, int argc, char **argv)
 #else
 	int found_app_ntwon = 0;
 #endif
+#if defined(APP_N2V6)
+	int found_app_n2v6 = 1;
+#else
+	int found_app_n2v6 = 0;
+#endif
 #if defined(APP_ETINK)
 	int found_app_etink = 1;
 #else
@@ -2928,6 +2942,7 @@ ej_firmware_caps_hook(int eid, webs_t wp, int argc, char **argv)
 		"function found_app_hxcli() { return %d;}\n"
 		"function found_app_nelink() { return %d;}\n"
 		"function found_app_ntwon() { return %d;}\n"
+		"function found_app_n2v6() { return %d;}\n"
 		"function found_app_etink() { return %d;}\n"
 		"function found_app_xupnpd() { return %d;}\n"
 		"function found_app_mentohust() { return %d;}\n",
@@ -2971,6 +2986,7 @@ ej_firmware_caps_hook(int eid, webs_t wp, int argc, char **argv)
 		found_app_hxcli,
 		found_app_nelink,
 		found_app_ntwon,
+		found_app_n2v6,
 		found_app_etink,
 		found_app_xupnpd,
 		found_app_mentohust
@@ -3739,6 +3755,13 @@ apply_cgi(const char *url, webs_t wp)
 	{
 #if defined(APP_BAFA)
 		system("/usr/bin/bafa.sh restart &");
+#endif
+		return 0;
+	}
+	else if (!strcmp(value, " RestartN2V6 "))
+	{
+#if defined(APP_N2V6)
+		system("/usr/bin/nv6.sh restart &");
 #endif
 		return 0;
 	}
@@ -4580,6 +4603,20 @@ static char ntwon_log_txt[] =
 
 #endif
 
+#endif
+#if defined (APP_N2V6)
+static void
+do_n2v6_log_file(const char *url, FILE *stream)
+{
+	dump_file(stream, "/tmp/n2v6.log");
+	fputs("\r\n", stream);
+}
+
+static char n2v6_log_txt[] =
+"Content-Disposition: attachment;\r\n"
+"filename=n2v6.log"
+;
+
 #if defined (APP_ETINK)
 static void
 do_etink_log_file(const char *url, FILE *stream)
@@ -5018,6 +5055,9 @@ struct ej_handler ej_handlers[] =
 #endif
 #if defined (APP_NELINK)
 	{ "nelink_status", nelink_status_hook},
+#endif
+#if defined (APP_N2V6)
+	{ "n2v6_status", n2v6_status_hook},
 #endif
 #if defined (APP_NTWON)
 	{ "ntwon_status", ntwon_status_hook},
