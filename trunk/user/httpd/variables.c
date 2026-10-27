@@ -1356,6 +1356,20 @@
 	};
 #endif
 
+#if defined(APP_N2V6)
+	struct variable variables_N2V6[] = {
+			{"n2v6_enable", "", NULL, EVM_RESTART_N2V6},
+			{"n2v6_keyg", "", NULL, EVM_RESTART_N2V6},
+			{"n2v6_xuip", "", NULL, EVM_RESTART_N2V6},
+			{"n2v6_log", "", NULL, EVM_RESTART_N2V6},
+			{"n2v6_inlan1", "", NULL, EVM_RESTART_N2V6},
+			{"n2v6_inlan2", "", NULL, EVM_RESTART_N2V6},
+			{"n2v6_inlan3", "", NULL, EVM_RESTART_N2V6},
+			{"scripts.n2v6.conf", "File", NULL, EVM_RESTART_N2V6},
+			{0,0,0,0}
+	};
+#endif
+
 #if defined(APP_ETINK)
 	struct variable variables_ETINK[] = {
 			{"etink_enable", "", NULL, EVM_RESTART_ETINK},
@@ -1721,6 +1735,9 @@
 #endif
 #if defined(APP_NTWON)
 		{EVM_RESTART_NTWON,		EVT_RESTART_NTWON,		RCN_RESTART_NTWON,	0},
+#endif
+#if defined(APP_N2V6)
+		{EVM_RESTART_N2V6,		EVT_RESTART_N2V6,		RCN_RESTART_N2V6,	0},
 #endif
 #if defined(APP_ALDRIVER)
 		{EVM_RESTART_ALDRIVER,		EVT_RESTART_ALDRIVER,		RCN_RESTART_ALDRIVER,	0},
