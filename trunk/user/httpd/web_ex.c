@@ -4616,6 +4616,8 @@ static char n2v6_log_txt[] =
 "filename=n2v6.log"
 ;
 
+#endif
+
 #if defined (APP_ETINK)
 static void
 do_etink_log_file(const char *url, FILE *stream)
