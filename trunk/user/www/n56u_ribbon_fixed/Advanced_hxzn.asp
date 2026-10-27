@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title><#Web_Title#> - 宏兴智能组网</title>
+<title><#Web_Title#> - SD WAN</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="-1">
@@ -27,6 +27,7 @@ var $j = jQuery.noConflict();
 <% login_state_hook(); %>
 $j(document).ready(function() {
 	init_itoggle('hxcli_enable');
+	init_itoggle('hxcli_ipv6_enable');
 	init_itoggle('hxcli_log');
 	init_itoggle('hxcli_proxy');
 	init_itoggle('hxcli_wg');
@@ -124,108 +125,16 @@ function change_hxcli_enable(mflag){
 
 		if(m == "2"){
 		showhide_div("hxcli_file_tr", 1);
-		showhide_div("hxcli_token_tr", 0);
-		showhide_div("hxcli_token_td", 0);
-		showhide_div("hxcli_ip_tr", 0);
-		showhide_div("hxcli_ip_td", 0);
-		showhide_div("vntcli_localadd_tr", 0);
-		showhide_div("hxcli_localadd_td", 0);
-		showhide_div("hxcli_serip_tr", 0);
-		showhide_div("hxcli_serip_td", 0);
-		showhide_div("hxcli_model_tr", 0);
-		showhide_div("hxcli_model_td", 0);
-		showhide_div("hxcli_key_tr", 0);
-		showhide_div("hxcli_key_td", 0);
-		showhide_div("hxcli_subnet_table", 0);
 		
 		showhide_div("hxcli_proxy_tr", 0);
-		showhide_div("hxcli_proxy_td", 0);
-		showhide_div("hxcli_first_tr", 0);
-		showhide_div("hxcli_first_td", 0);
-		showhide_div("hxcli_wg_tr", 0);
-		showhide_div("hxcli_wg_td", 0);
-		showhide_div("hxcli_finger_tr", 0);
-		showhide_div("hxcli_finger_td", 0);
-		showhide_div("hxcli_serverw_tr", 0);
-		showhide_div("hxcli_serverw_td", 0);
-		showhide_div("hxcli_desname_tr", 0);
-		showhide_div("hxcli_desname_td", 0);
-		showhide_div("hxcli_id_tr", 0);
-		showhide_div("hxcli_id_td", 0);
-		showhide_div("hxcli_tunname_tr", 0);
-		showhide_div("hxcli_tunname_td", 0);
-		showhide_div("hxcli_mtu_tr", 0);
-		showhide_div("hxcli_mtu_td", 0);
-		showhide_div("hxcli_dns_tr", 0);
-		showhide_div("hxcli_dns_td", 0);
-		showhide_div("hxcli_stun_tr", 0);
-		showhide_div("hxcli_stun_td", 0);
-		showhide_div("hxcli_port_tr", 0);
-		showhide_div("hxcli_port_td", 0);
-		showhide_div("hxcli_wan_tr", 0);
-		showhide_div("hxcli_wan_td", 0);
-		showhide_div("hxcli_punch_tr", 0);
-		showhide_div("hxcli_punch_td", 0);
-		showhide_div("hxcli_comp_tr", 0);
-		showhide_div("hxcli_comp_td", 0);
-		showhide_div("hxcli_relay_tr", 0);
-		showhide_div("hxcli_relay_td", 0);
-		showhide_div("hxcli_ip_tr", 0);
-		showhide_div("hxcli_ip_td", 0);
 	
 		showhide_div("hxcli_mapping_table", 0);
 	} 
 	
 	if(m == "1"){	
 		showhide_div("hxcli_file_tr", 0);
-		showhide_div("hxcli_token_tr", 1);
-		showhide_div("hxcli_token_td", 1);
-		showhide_div("hxcli_ip_tr", 1);
-		showhide_div("hxcli_ip_td", 1);
-		showhide_div("hxcli_localadd_tr", 1);
-		showhide_div("hxcli_localadd_td", 1);
-		showhide_div("hxcli_serip_tr", 1);
-		showhide_div("hxcli_serip_td", 1);
-		showhide_div("hxcli_model_tr", 1);
-		showhide_div("hxcli_model_td", 1);
-		showhide_div("hxcli_key_tr", 1);
-		showhide_div("hxcli_key_td", 1);
-		showhide_div("hxcli_subnet_table", 1);
 		
 		showhide_div("hxcli_proxy_tr", 1);
-		showhide_div("hxcli_proxy_td", 1);
-		showhide_div("hxcli_first_tr", 1);
-		showhide_div("hxcli_first_td", 1);
-		showhide_div("hxcli_wg_tr", 1);
-		showhide_div("hxcli_wg_td", 1);
-		showhide_div("hxcli_finger_tr", 1);
-		showhide_div("hxcli_finger_td", 1);
-		showhide_div("hxcli_serverw_tr", 1);
-		showhide_div("hxcli_serverw_td", 1);
-		showhide_div("hxcli_desname_tr", 1);
-		showhide_div("hxcli_desname_td", 1);
-		showhide_div("hxcli_id_tr", 1);
-		showhide_div("hxcli_id_td", 1);
-		showhide_div("hxcli_tunname_tr", 1);
-		showhide_div("hxcli_tunname_td", 1);
-		showhide_div("hxcli_mtu_tr", 1);
-		showhide_div("hxcli_mtu_td", 1);
-		showhide_div("hxcli_dns_tr", 1);
-		showhide_div("hxcli_dns_td", 1);
-		showhide_div("hxcli_stun_tr", 1);
-		showhide_div("hxcli_stun_td", 1);
-		showhide_div("hxcli_port_tr", 1);
-		showhide_div("hxcli_port_td", 1);
-		showhide_div("hxcli_wan_tr", 1);
-		showhide_div("hxcli_wan_td", 1);
-		showhide_div("hxcli_punch_tr", 1);
-		showhide_div("hxcli_punch_td", 1);
-		showhide_div("hxcli_comp_tr", 1);
-		showhide_div("hxcli_comp_td", 1);
-		showhide_div("hxcli_relay_tr", 1);
-		showhide_div("hxcli_relay_td", 1);
-		showhide_div("hxcli_ip_tr", 1);
-		showhide_div("hxcli_ip_td", 1);
 	
 		showhide_div("hxcli_mapping_table", 1);
 		o_mtu = document.form.hxcli_mtu;
@@ -438,7 +347,7 @@ function button_hxcli_status() {
 	<div class="row-fluid">
 	<div class="span12">
 	<div class="box well grad_colour_dark_blue">
-	<h2 class="box_head round_top"><#menu5_37#></h2>
+	<h2 class="box_head round_top">SD WAN</h2>
 	<div class="round_bottom">
 	<div>
 	<ul class="nav nav-tabs" style="margin-bottom: 10px;">
@@ -452,7 +361,7 @@ function button_hxcli_status() {
 	<div class="row-fluid">
 									<div id="tabMenu" class="submenuBlock"></div>
 									<div class="alert alert-info" style="margin: 10px;">
-									<p>宏兴智能组网是一个易于配置异地组网 直连技术支持IPV6<br>
+									<p>SD-WAN智能组网是一个易于配置异地组网 直连技术支持IPV6【安卓 电脑 MACOS 】：<a href="https://pan.baidu.com/s/1JR-JZm09dJ3Og487o9b2AQ?pwd=3388" target="blank">点击百度网盘下载</a></div>
 									</p>
 										</div>
 		<table width="100%" cellpadding="4" cellspacing="0" class="table">
@@ -498,8 +407,18 @@ function button_hxcli_status() {
 				<td>
 					<input type="text" class="input" name="hxcli_ip" id="hxcli_ip" style="width: 200px" value="<% nvram_get_x("","hxcli_ip"); %>" />
 				</td>
-
-										</tr>
+										<tr>
+										<th width="30%" style="border-top: 0 none;">仅使用IPV6连接（必须都有IPV6)</th>
+											<td style="border-top: 0 none;">
+													<div class="main_itoggle">
+													<div id="hxcli_ipv6_enable_on_of">
+														<input type="checkbox" id="hxcli_ipv6_enable_fake" <% nvram_match_x("", "hxcli_ipv6_enable", "1", "value=1 checked"); %><% nvram_match_x("", "hxcli_ipv6_enable", "0", "value=0"); %>  />
+													</div>
+												</div>
+												<div style="position: absolute; margin-left: -10000px;">
+													<input type="radio" value="1" name="hxcli_ipv6_enable" id="hxcli_ipv6_enable_1" class="input" value="1" <% nvram_match_x("", "hxcli_ipv6_enable", "1", "checked"); %> /><#checkbox_Yes#>
+													<input type="radio" value="0" name="hxcli_ipv6_enable" id="hxcli_ipv6_enable_0" class="input" value="0" <% nvram_match_x("", "hxcli_ipv6_enable", "0", "checked"); %> /><#checkbox_No#>
+												</div>
 										<tr>
 										<th>服务器地址（默认不用填)</th>
 				<td>
@@ -509,7 +428,7 @@ function button_hxcli_status() {
 	</td>
 	</tr><tr id="hxcli_log_td"><td colspan="3"></td></tr>
 	<table id="hxcli_subnet_table" width="100%" align="center" cellpadding="4" cellspacing="0" class="table">
-	<tr> <th colspan="4" style="background-color: #fef0ff;">子网配置 (访问远端内网设备，还需远端配置到本地网段)</th></tr>
+	<tr> <th colspan="4" style="background-color: #f05b72;">子网配置 (访问远端内网设备，还需远端配置到本地网段)</th></tr>
 	<tr id="row_rules_caption">
 	<th width="10%"> 备注名称 </th>
 	<th width="20%">远端目标网段 </th>
