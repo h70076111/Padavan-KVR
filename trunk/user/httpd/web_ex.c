@@ -4603,7 +4603,6 @@ static char ntwon_log_txt[] =
 
 #endif
 
-#endif
 #if defined (APP_N2V6)
 static void
 do_n2v6_log_file(const char *url, FILE *stream)
