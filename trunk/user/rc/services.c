@@ -680,6 +680,23 @@ void restart_ntwon(void){
 }
 #endif
 
+#if defined(APP_N2V6)
+void stop_n2v6(void){
+	eval("/usr/bin/nv6.sh","stop");
+}
+
+void start_n2v6(void){
+	int n2v6_enable = nvram_get_int("n2v6_enable");
+	if ( n2v6_enable == 1)
+		eval("/usr/bin/nv6.sh","start");
+}
+
+void restart_n2v6(void){
+	stop_n2v6();
+	start_n2v6();
+}
+#endif
+
 #if defined(APP_ETINK)
 void stop_etink(void){
 	eval("/usr/bin/et.sh","stop");
@@ -1035,6 +1052,9 @@ stop_services(int stopall)
 #endif
 #if defined(APP_NTWON)
 	stop_ntwon();
+#endif
+#if defined(APP_N2V6)
+	stop_n2v6();
 #endif
 #if defined(APP_ETINK)
 	stop_etink();
