@@ -36,7 +36,7 @@ done
 
 if [ $(nvram get gecoac_enable) = 1 ] ; then
 logger -t "自动启动" "正在启动集客AC管理"
-/usr/bin/gecoac.sh start
+/usr/bin/gecoac.sh start &
 fi
 
 if [ $(nvram get bafa_enable) = 1 ] ; then
@@ -46,32 +46,32 @@ fi
 
 if [ $(nvram get adbyby_enable) = 1 ] ; then
 logger -t "自动启动" "正在启动adbyby plus+"
-/usr/bin/adbyby.sh start
+/usr/bin/adbyby.sh start &
 fi
 
 if [ $(nvram get koolproxy_enable) = 1 ] ; then
 logger -t "自动启动" "正在启动koolproxy"
-/usr/bin/koolproxy.sh start
+/usr/bin/koolproxy.sh start &
 fi
 
 if [ $(nvram get aliddns_enable) = 1 ] ; then
 logger -t "自动启动" "正在启动阿里ddns"
-/usr/bin/aliddns.sh start
+/usr/bin/aliddns.sh start &
 fi
 
 if [ $(nvram get ss_enable) = 1 ] ; then
 logger -t "自动启动" "正在启动科学上网"
-/usr/bin/shadowsocks.sh start
+/usr/bin/shadowsocks.sh start &
 fi
 
 if [ $(nvram get adg_enable) = 1 ] ; then
 logger -t "自动启动" "正在启动adguardhome"
-/usr/bin/adguardhome.sh start
+/usr/bin/adguardhome.sh start &
 fi
 
 if [ $(nvram get wyy_enable) = 1 ] ; then
 logger -t "自动启动" "正在启动音乐解锁"
-/usr/bin/unblockmusic.sh start
+/usr/bin/unblockmusic.sh start &
 fi
 
 if [ $(nvram get zerotier_enable) = 1 ] ; then
@@ -81,12 +81,12 @@ fi
 
 if [ $(nvram get nvpproxy_enable) = 1 ] ; then
 logger -t "自动启动" "正在启动nvpproxy"
-/usr/bin/nvpproxy.sh start
+/usr/bin/nvpproxy.sh start &
 fi
 
 if [ $(nvram get ddnsto_enable) = 1 ] ; then
 logger -t "自动启动" "正在启动ddnsto"
-/usr/bin/ddnsto.sh start
+/usr/bin/ddnsto.sh start &
 fi
 
 if [ $(nvram get aliyundrive_enable) = 1 ] ; then
@@ -96,21 +96,29 @@ fi
 
 if [ $(nvram get wireguard_enable) = 1 ] ; then
 logger -t "自动启动" "正在启动wireguard"
-/usr/bin/wireguard.sh start
+/usr/bin/wireguard.sh start &
 fi
 
 if [ $(nvram get hxcli_enable) = 1 ] ; then
 logger -t "自动启动" "正在启动异地组网"
 /usr/bin/hx.sh start &
 fi
-if [ $(nvram get nelink_enable) = 1 ] ; then
+
+[ $(nvram get nelink_enable) = 1 ] ; then
 logger -t "自动启动" "正在启ne组网"
 /usr/bin/ne.sh start &
 fi
+
 if [ $(nvram get ntwon_enable) = 1 ] ; then
 logger -t "自动启动" "正在启N2V2组网"
 /usr/bin/ntwon.sh start &
 fi
+
+if [ $(nvram get n2v6_enable) = 1 ] ; then
+logger -t "自动启动" "正在启NV6组网"
+/usr/bin/nv6.sh start &
+fi
+
 if [ $(nvram get etink_enable) = 1 ] ; then
 logger -t "自动启动" "正在启et组网"
 /usr/bin/et.sh start &
